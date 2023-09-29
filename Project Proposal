@@ -21,4 +21,16 @@ The following people are the target market for Budget Buddy:
 - Teenagers and working adults who wish to budget their money and save more wisely.
 - Anyone looking to make the process of tracking and assessing their costs simpler.
 
+# Research on Existing Tools
+
+Before the conception of Budget Buddy, a detailed investigation of other spending tracking applications was conducted. Popular apps in this category include:
+
+- **Expensify**
+- **PocketGuard**
+- **YNAB (You Need A Budget)**
+- **Mint**
+
+These applications offer various features for budgeting, cost tracking, and gaining financial insights. The research conducted on these existing tools served as an influence to ensure that Budget Buddy stands out in terms of usability and usefulness.
+
+By adhering to the architecture of this project, we aim to create Budget Buddy, a valuable app for individuals seeking efficient cost monitoring and money management on their mobile devices.
 
