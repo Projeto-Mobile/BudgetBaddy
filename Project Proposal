@@ -34,3 +34,35 @@ These applications offer various features for budgeting, cost tracking, and gain
 
 By adhering to the architecture of this project, we aim to create Budget Buddy, a valuable app for individuals seeking efficient cost monitoring and money management on their mobile devices.
 
+
+
+
+
+# FIRST PART OF THE APPLICATION (initial screen)
+
+- Register user
+- Log in
+- Password recovery
+- Create the initial page with:
+  - Logo
+  - Name
+  - Login
+  - Register
+  - Recover password
+
+# SECOND PART OF THE APPLICATION (main screen)
+
+- Create the main page
+- Create categories
+- Create budgets within the categories
+- Create communities
+- Create user profile:
+  - Name
+  - Registration email
+  - Age, etc.
+- Create the page for adding categories to your "wallet"
+
+# THIRD PART OF THE APPLICATION (database)
+
+- Establish the database connections and code integration for the application.
+
