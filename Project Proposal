@@ -65,7 +65,7 @@ By adhering to the architecture of this project, we aim to create Budget Buddy, 
 - Establish the database connections and code integration for the application.
 
 
-
+# Domain Model
 +------------------+   +----------------+   +----------------+   +------------------+
 |      User        |   |   Categories   |   |    Expenses    |   |  Bills & Receipts |
 +------------------+   +----------------+   +----------------+   +------------------+
