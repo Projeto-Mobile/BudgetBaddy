@@ -35,18 +35,25 @@ These applications offer various features for budgeting, cost tracking, and gain
 By adhering to the architecture of this project, we aim to create Budget Buddy, a valuable app for individuals seeking efficient cost monitoring and money management on their mobile devices.
 
 
+#Core 
+## Core Project Use Case
+A key use case for our project involves a user registering in the app with their name, email, and a password. After successful registration and the user will encounter a '+' icon. Clicking on this icon will enable them to select from a range of categories they wish to use for implementing their respective budgets or creat custom categories. Once the categories are chosen, the user will navigate to their wallet icon and proceed to create and manage budgets for each category, whether they are on a weekly, monthly, or annual basis.
+
+## Alternate Use Cases
+A different use case from our core functionality involves a user who wishes to capture and store or view receipts after making a purchase. To do this, the user needs to grant access to the camera and their gallery. Once granted, the user taps on the wallet icon. After accessing the wallet page, the user has two options. One option allows them to view receipts according to the month, and the other option enables them to take a photo of the receipt, which is immediately saved.
+Another usage of the app as an expense tracker is that after user is registered, on the goal icon the user will the challenge page. This page includes section which has challenges pre defined the user will find. These challenge once put the timer in and the start button is clicked, the challenge strats. The value saved would be then stored into a section on home page of the app. The user is also given option to create custom challenges.  
+
+
 # Project Plan
 # FIRST PART OF THE APPLICATION (initial screen)
 
 - Register user
 - Log in
-- Password recovery
 - Create the initial page with:
   - Logo
   - Name
   - Login
   - Register
-  - Recover password
 
 # SECOND PART OF THE APPLICATION (main screen)
 
@@ -56,8 +63,8 @@ By adhering to the architecture of this project, we aim to create Budget Buddy, 
 - Create communities
 - Create user profile:
   - Name
-  - Registration email
-  - Age, etc.
+  - Registration email, etc.
+
 - Create the page for adding categories to your "wallet"
 
 # THIRD PART OF THE APPLICATION (database)
@@ -96,7 +103,65 @@ By adhering to the architecture of this project, we aim to create Budget Buddy, 
               |  Reports/Analytics  |
               +----------------------+
               | ReportID (PK)        |
-              | Report Name           |
-              | Data Period           |
-              | ...                   |
+              | Report Name          |
+              | Data Period          |
+              | ...                  |
               +----------------------+
+
+
+# Functional Requirements
+
+Functional requirements describe what the software should do. They specify the features and capabilities that the application should have:
+
+1. **User Registration**
+
+2. **User Login**
+
+3. **Initial Screen**
+   - The initial screen includes:
+     - Logo
+     - Name
+     - Login
+     - Register
+
+4. **Main Screen**
+   - Create the main page.
+   - Create categories for budgeting.
+   - Create budgets within the categories.
+   - Create communities.
+   - User profile:
+     - Name
+     - Registration email, etc.
+   - Create a page for adding categories to the user's "wallet."
+
+5. **Database Integration**
+   - Establish database connections and integrate code for storing user data and application data.
+
+6. **Expense Tracking**
+
+7. **Budget Creation**
+
+8. **Data Visualization**
+   - Provide tools for data visualization, such as graphs and charts, to help users understand their spending habits.
+
+9. **Receipt Management**
+
+10. **Challenges**
+
+# Non-Functional Requirements
+
+Non-functional requirements focus on performance, security, and usability considerations:
+
+1. **Security**
+
+2. **Performance**
+
+3. **Usability**
+
+4. **Scalability**
+
+5. **Reliability**
+
+6. **Data Privacy**
+
+7. **Data Backup and Recovery**
