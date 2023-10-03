@@ -64,3 +64,39 @@ By adhering to the architecture of this project, we aim to create Budget Buddy, 
 
 - Establish the database connections and code integration for the application.
 
+
+
++------------------+   +----------------+   +----------------+   +------------------+
+|      User        |   |   Categories   |   |    Expenses    |   |  Bills & Receipts |
++------------------+   +----------------+   +----------------+   +------------------+
+| UserID (PK)      |   | CategoryID (PK)|   | ExpenseID (PK) |   | BillID (PK)      |
+| Username         |   | Name           |   | Name           |   | Name             |
+| Password         |   | Budget Limit   |   | Amount         |   | Amount           |
+| Email            |   | Description    |   | Date           |   | Due Date         |
+| Profile Picture  |   | Color Code     |   | Payment Method |   | Payment Status   |
+| Preferences      |   +----------------+   | Description    |   | Receipt Image    |
+| ...              |     |                 +----------------+   | ...              |
++------------------+     |                /                     +------------------+
+                        |               /
+                        |              /
+                        |             /
+                        |            /
+                        |           /
+                        |          /
+                        |         /
+                        |        /
+                        |       /
+                        |      /
+                        |     /
+                        |    /
+                        |   /
+                        |  /
+                        | /
+              +----------------------+
+              |  Reports/Analytics  |
+              +----------------------+
+              | ReportID (PK)        |
+              | Report Name           |
+              | Data Period           |
+              | ...                   |
+              +----------------------+
