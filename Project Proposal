@@ -41,7 +41,7 @@ A key use case for our project involves a user registering in the app with their
 
 ## Alternate Use Cases
 A different use case from our core functionality involves a user who wishes to capture and store or view receipts after making a purchase. To do this, the user needs to grant access to the camera and their gallery. Once granted, the user taps on the wallet icon. After accessing the wallet page, the user has two options. One option allows them to view receipts according to the month, and the other option enables them to take a photo of the receipt, which is immediately saved.
-Another usage of the app as an expense tracker is that after user is registered, on the goal icon the user will the challenge page. This page includes section which has challenges pre defined the user will find. These challenge once put the timer in and the start button is clicked, the challenge strats. The value saved would be then stored into a section on home page of the app. The user is also given option to create custom challenges.  
+Another usage of the app as an expense tracker is that after user is registered, on the goal icon the user will the challenge page. This page includes section which has challenges pre defined the user will find. These challenge once put the timer in and the start button is clicked, the challenge strats. The value saved would be then stored into a section on home page of the app.  
 
 
 # Project Plan
