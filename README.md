@@ -13,7 +13,7 @@ Os principais objetivos do projeto da aplicação móvel Budget Buddy são:
 - Oferecer aos consumidores uma plataforma simples e direta para acompanhar os seus gastos.
 - Permitir que os consumidores identifiquem e classifiquem os seus gastos para melhorar a análise financeira.
 - Auxiliar os utilizadores na criação e manutenção dos orçamentos para diversas categorias de gastos.
-- Fornecer ferramentas de visualização dos dados, como gráficos e tabelas, para auxiliar os utilizadores na compreensão dos seus hábitos de compra.
+- Fornecer ferramentas de visualização dos dados, como gráficos, para auxiliar os utilizadores na compreensão dos seus hábitos de compra.
 - Oferecer informações e análises que ajudem as pessoas a tomar decisões financeiras corretas.
 
 ## 4. Definição do Público Alvo
