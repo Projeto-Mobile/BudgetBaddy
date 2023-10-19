@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BudgetBuddy" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/lblue</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/pblue</item>
+        <item name="colorSecondaryVariant">@color/drakred</item>
+        <item name="colorOnSecondary">@color/pblue</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.BudgetBuddy" parent="Base.Theme.BudgetBuddy" />
+</resources>
