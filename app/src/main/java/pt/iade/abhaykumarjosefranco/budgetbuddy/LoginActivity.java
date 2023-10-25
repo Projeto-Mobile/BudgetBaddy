@@ -1,6 +1,7 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText loginName, loginEmail, loginPassword;
     private TextView loginRedirectText;
     private Button loginButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                     finish();
                                 }
+
+                               // public void onRequestPermissionResult()
                             });
                 }
             }
@@ -70,6 +74,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
+
+
+
+
     }
 }
 
