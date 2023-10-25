@@ -30,7 +30,7 @@
                 android:layout_width="238dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Budget Buddy would like to access the photos. "
+                android:text="Budget Buddy would like to access the camera. "
                 android:textAlignment="center"
                 android:textColor="@color/lblue"
                 android:textSize="20sp"
@@ -64,7 +64,7 @@
                     android:textColor="@color/blue"
                     android:cornerRadius="10dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="17dp"/>
 
 
             </LinearLayout>
