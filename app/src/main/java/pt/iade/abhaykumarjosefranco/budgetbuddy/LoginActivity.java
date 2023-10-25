@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView loginRedirectText;
     private Button loginButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
