@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".createNewChallenge">
+
+    <LinearLayout
+        android:layout_width="316dp"
+        android:layout_height="427dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/custom_edittext"
+        android:backgroundTint="@color/lblue"
+        android:orientation="vertical"
+        android:padding="23dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/edit_name_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name Challenge"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/start_challenge_button"
+            android:layout_width="107dp"
+            android:layout_height="45dp"
+            android:text="Start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/sentence_challenge_view3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let the countdown begin!"
+            app:layout_constraintBottom_toTopOf="@+id/start_challenge_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/sentence_challenge_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Challenge yourself to a mini adventure!"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/sentence_challenge_view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Begin a new challenge!!"
+            app:layout_constraintTop_toBottomOf="@+id/sentence_challenge_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/minutes_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minutes"
+            app:layout_constraintTop_toBottomOf="@+id/edit_name_challenge"
+            app:layout_constraintStart_toEndOf="@+id/sentence_challenge_view"
+            app:layout_constraintEnd_toStartOf="@+id/days_view" />
+
+        <TextView
+            android:id="@+id/days_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Days"
+            app:layout_constraintTop_toBottomOf="@+id/edit_name_challenge"
+            app:layout_constraintStart_toEndOf="@+id/minutes_view"
+            app:layout_constraintEnd_toStartOf="@+id/hours_view" />
+
+        <TextView
+            android:id="@+id/hours_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours"
+            app:layout_constraintTop_toBottomOf="@+id/edit_name_challenge"
+            app:layout_constraintStart_toEndOf="@+id/days_view"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/challengeView"
+            android:layout_width="91dp"
+            android:layout_height="17dp"
+            android:text="Challenges"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextClock
+            android:id="@+id/textClock"
+            android:layout_width="213dp"
+            android:layout_height="43dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
