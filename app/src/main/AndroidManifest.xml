@@ -19,7 +19,28 @@
         android:theme="@style/Theme.BudgetBuddy"
         tools:targetApi="31">
         <activity
-            android:name=".CameraPermission"
+            android:name=".overview"
+            android:exported="false" />
+        <activity
+            android:name=".profile"
+            android:exported="false" />
+        <activity
+            android:name=".category"
+            android:exported="false" />
+        <activity
+            android:name=".budgetTotalDue"
+            android:exported="false" />
+        <activity
+            android:name=".budgetCategories"
+            android:exported="false" />
+        <activity
+            android:name=".createNewChallenge"
+            android:exported="false" />
+        <activity
+            android:name=".TotalDue"
+            android:exported="false" />
+        <activity
+            android:name=".challenges"
             android:exported="false" />
         <activity
             android:name=".Category"

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TotalDue">
+
+    <TextView
+        android:id="@+id/totaldue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Due"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/countbills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set a count for Bills and essential spendings"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totaldue" />
+
+    <Button
+        android:id="@+id/waterbill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Water Bill"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countbills" />
+
+    <Button
+        android:id="@+id/electricity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Electricity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waterbill" />
+
+    <Button
+        android:id="@+id/health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Health"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/electricity" />
+
+    <Button
+        android:id="@+id/education"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Education"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/health" />
+
+    <Button
+        android:id="@+id/childcare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Child Care"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/education" />
+
+    <Button
+        android:id="@+id/mortgage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mortgage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waterbill" />
+
+    <Button
+        android:id="@+id/insurance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insurance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/electricity" />
+
+    <Button
+        android:id="@+id/loan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/health" />
+
+    <Button
+        android:id="@+id/taxes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Taxes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/education" />
+
+    <Button
+        android:id="@+id/cellphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cell Phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/childcare" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
