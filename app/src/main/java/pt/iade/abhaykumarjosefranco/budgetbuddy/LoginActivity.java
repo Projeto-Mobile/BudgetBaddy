@@ -24,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView loginRedirectText;
     private Button loginButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +43,9 @@ public class LoginActivity extends AppCompatActivity {
                 String email = loginEmail.getText().toString();
                 String pass = loginPassword.getText().toString();
 
-
-                 if (name.isEmpty() /*|| !Patterns.EMAIL_ADDRESS.matcher(email).matches()*/ ) {
+                if (name.isEmpty() /* || !Patterns.EMAIL_ADDRESS.matcher(email).matches() */ ) {
                     loginName.setError("Username cannot be empty.");
-                }
-                else if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() ) {
+                } else if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     loginEmail.setError("Invalid or empty email");
                 } else if (pass.isEmpty()) {
                     loginPassword.setError("Password cannot be empty.");
@@ -62,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                                     finish();
                                 }
 
-                               // public void onRequestPermissionResult()
+                                // public void onRequestPermissionResult()
                             });
                 }
             }
@@ -75,37 +72,19 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 }
 
-
-
-
-
-
-
-
-
-
-
 /*
-TO CHANGE THE ACTIVITY
-
- private void setupComponents() {
-    loginButton = (Button)findViewById(R.id.login_button);
-     loginButton.setOnClickListener(new View.OnClickListener() {
-         public void onClick(View v) {
-             Log.d(Button , "User tapped the change" );
-         }
-     });
- }
-
-*/
-
-
-
-
-
+ * TO CHANGE THE ACTIVITY
+ * 
+ * private void setupComponents() {
+ * loginButton = (Button)findViewById(R.id.login_button);
+ * loginButton.setOnClickListener(new View.OnClickListener() {
+ * public void onClick(View v) {
+ * Log.d(Button , "User tapped the change" );
+ * }
+ * });
+ * }
+ * 
+ */
