@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/dblue">
 
     <TextView
         android:id="@+id/overview_view"
@@ -15,6 +16,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="48dp"
         />
+
+    <Button
+        android:id="@+id/totalexpense_button"
+        android:layout_width="149dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="108dp"
+        android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
+        android:text="Total Expenses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/total_due_button"
@@ -32,6 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stat"
+        android:textSize="17dp"
+        android:textColor="@color/lblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
