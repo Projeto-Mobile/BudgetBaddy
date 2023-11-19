@@ -3,19 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/dblue"
+    >
 
     <TextView
         android:id="@+id/totaldue"
-        android:layout_width="64dp"
-        android:layout_height="21dp"
+        android:layout_width="132dp"
+        android:layout_height="32dp"
         android:layout_marginTop="120dp"
         android:text="Total Due"
+        android:textColor="@color/lblue"
+        android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/countbills"
@@ -23,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="Set a count for Bills and essential spendings"
+        android:textColor="@color/lblue"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,18 +118,18 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="67dp">
 
             <Button
                 android:id="@+id/taxes"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="58dp"
                 android:text="Taxes" />
 
             <Button
                 android:id="@+id/cellphone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="62dp"
                 android:text="Cell Phone" />
         </TableRow>
     </TableLayout>
