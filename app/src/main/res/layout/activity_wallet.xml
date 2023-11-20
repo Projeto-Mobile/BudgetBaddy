@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/skyblue">
+    android:background="@color/dblue">
 
     <TextView
         android:id="@+id/textView2"
@@ -13,6 +13,7 @@
         android:text="Chosen categories"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:textColor="@color/lblue"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="95dp" />
 
@@ -24,46 +25,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/overview_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HOME" />
-
-            <Button
-                android:id="@+id/wallet_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="WALLET" />
-
-            <Button
-                android:id="@+id/morecate_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+" />
-
-            <Button
-                android:id="@+id/challenge_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="challe" />
-
-            <Button
-                android:id="@+id/profile_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PERS" />
-        </TableRow>
 
     </TableLayout>
 
     <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="409dp"
+        android:layout_height="217dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="175dp"
         android:layout_marginEnd="24dp"
@@ -129,11 +97,23 @@
         </TableRow>
     </TableLayout>
 
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="132dp"
+        android:layout_height="38dp"
+        android:text="Record"
+        android:textSize="20dp"
+        android:textColor="@color/lblue"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="433dp" />
+
     <Button
         android:id="@+id/button15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Old Receipts"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="482dp" />
 
@@ -141,7 +121,7 @@
         android:id="@+id/button16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Take picture of the receipt. "
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="534dp" />
 
