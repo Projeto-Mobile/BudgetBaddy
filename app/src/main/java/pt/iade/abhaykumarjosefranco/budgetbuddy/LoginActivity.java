@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         auth = FirebaseAuth.getInstance();
         loginName = findViewById(R.id.login_name);
         loginEmail = findViewById(R.id.login_email);
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         loginRedirectText = findViewById(R.id.loginRedirectText);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 String name = loginName.getText().toString();
