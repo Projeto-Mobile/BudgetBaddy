@@ -19,9 +19,11 @@
         android:theme="@style/Theme.BudgetBuddy"
         tools:targetApi="31">
         <activity
+            android:name=".oldreceipt"
+            android:exported="false" />
+        <activity
             android:name=".Category"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

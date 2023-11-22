@@ -6,35 +6,43 @@
     android:layout_height="match_parent"
     android:background="@color/dblue">
 
-        <TextView
-            android:id="@+id/savingText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="8dp"
-            android:text="No savings yet."
-            android:textColor="@color/pblue"
-            android:textAlignment="center"
-            android:textSize="18dp"
-            tools:layout_editor_absoluteX="127dp"
-            tools:layout_editor_absoluteY="182dp" />
 
-        <TextView
-            android:id="@+id/savinText"
-            android:layout_width="317dp"
-            android:layout_height="85dp"
-            android:layout_gravity="center"
-            android:padding="8dp"
-            android:text="Take on fun challenges to booost your saving journey!."
-            android:textColor="@color/pblue"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="47dp"
-            tools:layout_editor_absoluteY="234dp" />
+    <TextView
+        android:id="@+id/savingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:text="No savings yet."
+        android:textAlignment="center"
+        android:textColor="@color/pblue"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/savinText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.962" />
 
+    <TextView
+        android:id="@+id/savinText"
+        android:layout_width="317dp"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:text="Take on fun challenges to booost your saving journey!."
+        android:textAlignment="center"
+        android:textColor="@color/pblue"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_challenges_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.858" />
 
     <Button
-        android:id="@+id/creat_challenges_button"
+        android:id="@+id/create_challenges_button"
         android:layout_width="238dp"
         android:layout_height="63dp"
         android:layout_marginBottom="288dp"
@@ -46,50 +54,23 @@
         app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TableLayout
-        android:layout_width="428dp"
-        android:layout_height="94dp"
-        android:layout_marginBottom="4dp"
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="384dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/bottom_background"
+        app:itemIconTint="@android:color/tab_indicator_text"
+        app:itemTextColor="@color/lblue"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/overview_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/baseline_home_24" />
 
-            <Button
-                android:id="@+id/wallet_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/baseline_account_balance_wallet_24" />
-
-            <Button
-                android:id="@+id/morecate_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/baseline_add_24" />
-
-            <Button
-                android:id="@+id/challenge_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="challe" />
-
-            <Button
-                android:id="@+id/profile_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/baseline_person_24" />
-        </TableRow>
-
-    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

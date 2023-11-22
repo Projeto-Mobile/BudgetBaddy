@@ -33,51 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categories" />
 
-    <TableLayout
-        android:layout_width="428dp"
-        android:layout_height="94dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/overview_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HOME" />
-
-            <Button
-                android:id="@+id/wallet_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="WALLET" />
-
-            <Button
-                android:id="@+id/morecate_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+" />
-
-            <Button
-                android:id="@+id/challenge_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="challe" />
-
-            <Button
-                android:id="@+id/profile_button_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PERS" />
-        </TableRow>
-
-    </TableLayout>
 
     <TableLayout
         android:layout_width="match_parent"
@@ -182,5 +138,22 @@
 
         </TableRow>
     </TableLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="384dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/bottom_background"
+        app:itemIconTint="@android:color/tab_indicator_text"
+        app:itemTextColor="@color/lblue"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
