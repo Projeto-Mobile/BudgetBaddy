@@ -9,6 +9,6 @@ public class createNewChallenge extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_new_challenge);
+        setContentView(R.layout.activity_create_chall2);
     }
 }

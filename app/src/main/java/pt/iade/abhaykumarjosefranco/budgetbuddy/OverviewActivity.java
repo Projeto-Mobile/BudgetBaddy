@@ -34,7 +34,7 @@ public class OverviewActivity extends AppCompatActivity  {
             }
         });
 
-        totalsaving_button = findViewById(R.id.totalsaving_button);
+        totalsaving_button = findViewById(R.id.total_saving_button);
         totalsaving_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

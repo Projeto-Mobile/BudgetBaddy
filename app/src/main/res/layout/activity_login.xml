@@ -81,9 +81,8 @@
                 android:id="@+id/login_button"
                 android:textSize="20dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/lblue"
-                android:textColor="@color/blue"
-                android:cornerRadius="20dp"/>
+                android:backgroundTint="@color/blue"
+                android:textColor="@color/lblue"/>
 
             <TextView
                 android:layout_width="wrap_content"

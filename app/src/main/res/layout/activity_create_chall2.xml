@@ -9,8 +9,8 @@
 
     <EditText
         android:id="@+id/edit_name_challenge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="227dp"
+        android:layout_height="52dp"
         android:layout_marginTop="212dp"
         android:ems="10"
         android:inputType="text"
@@ -26,17 +26,18 @@
 
     <Button
         android:id="@+id/start_challenge_button"
-        android:layout_width="107dp"
-        android:layout_height="45dp"
+        android:layout_width="108dp"
+        android:layout_height="57dp"
         android:layout_marginBottom="288dp"
         android:text="Start"
+        android:textSize="20dp"
         android:textStyle="bold"
-        android:textSize="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hours_view"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/sentence_challenge_view3"

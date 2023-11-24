@@ -20,9 +20,9 @@
 
     <EditText
         android:id="@+id/signup_name"
-        android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:layout_marginTop="260dp"
+        android:layout_width="338dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="252dp"
         android:background="@drawable/custom_edittext"
         android:drawableLeft="@drawable/baseline_person_24"
         android:drawablePadding="8dp"
@@ -31,15 +31,15 @@
         android:textColor="@color/lblue"
         android:textColorHint="@color/pblue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.328"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/signup_email"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="340dp"
+        android:layout_width="338dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="332dp"
         android:background="@drawable/custom_edittext"
         android:drawableLeft="@drawable/baseline_email_24"
         android:drawablePadding="8dp"
@@ -48,7 +48,7 @@
         android:textColor="@color/lblue"
         android:textColorHint="@color/pblue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.213"
+        app:layout_constraintHorizontal_bias="0.315"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,7 +56,7 @@
         android:id="@+id/signup_password"
         android:layout_width="337dp"
         android:layout_height="58dp"
-        android:layout_marginTop="376dp"
+        android:layout_marginTop="404dp"
         android:background="@drawable/custom_edittext"
         android:drawableLeft="@drawable/baseline_lock_24"
         android:drawablePadding="8dp"
@@ -65,23 +65,22 @@
         android:textColor="@color/lblue"
         android:textColorHint="@color/pblue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintHorizontal_bias="0.324"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/community_button"
         android:layout_width="185dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="188dp"
         android:text="Community"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
     <Button
         android:id="@+id/log_out_button"
