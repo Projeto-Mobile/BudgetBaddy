@@ -1,167 +1,180 @@
-create table userapp(
-					user_id int not null auto_increment,
-                    user_name VARCHAR(60) not null,
-                    user_email VARCHAR(30)not null,
-                    user_password VARCHAR(30) not null,
-					primary key (user_id));
 
-create table community(
-					comm_id int not null auto_increment,
-                    comm_name VARCHAR(30) not null,
-                    primary key(comm_id));
+CREATE TABLE userapp (
+    user_id INT NOT NULL AUTO_INCREMENT,
+    user_name VARCHAR(60) NOT NULL,
+    user_email VARCHAR(30) NOT NULL,
+    user_password VARCHAR(30) NOT NULL,
+    PRIMARY KEY (user_id)
+);
 
-create table usercommunity(
-						usercomm_id int not null auto_increment,
-                        usercomm_user_id int not null,
-                        usercomm_comm_id int not null,
-                        primary key(usercomm_id));
+CREATE TABLE community (
+    comm_id INT NOT NULL AUTO_INCREMENT,
+    comm_name VARCHAR(30) NOT NULL,
+    PRIMARY KEY (comm_id)
+);
 
-create table communitybudget(
-							commbud_id int not null auto_increment,
-                            commbud_comm_id int not null,
-                            commbud_bicate_id int not null,
-                            commbud_tipbud_id int not null,
-                            primary key(commbud_id));
+CREATE TABLE usercommunity (
+    usercomm_id INT NOT NULL AUTO_INCREMENT,
+    usercomm_user_id INT NOT NULL,
+    usercomm_comm_id INT NOT NULL,
+    PRIMARY KEY (usercomm_id)
+);
 
-create table communitybillbudget(
-								commbibud_id int not null auto_increment,
-                                commbibud_commbud_id int not null,
-                                commbibud_bi_id int not null,
-                                primary key(commbibud_id));
+CREATE TABLE communitybudget (
+    commbud_id INT NOT NULL AUTO_INCREMENT,
+    commbud_comm_id INT NOT NULL,
+    commbud_bicate_id INT NOT NULL,
+    commbud_tipbud_id INT NOT NULL,
+    PRIMARY KEY (commbud_id)
+);
 
-create table bill(
-				bi_id int not null auto_increment,
-                bi_name VARCHAR(30) not null,
-                bi_num int,
-                primary key (bi_id));
+CREATE TABLE communitybillbudget (
+    commbibud_id INT NOT NULL AUTO_INCREMENT,
+    commbibud_commbud_id INT NOT NULL,
+    commbibud_bi_id INT NOT NULL,
+    PRIMARY KEY (commbibud_id)
+);
 
-create table userbillbudget(
-							userbibud_id int not null auto_increment,
-                            userbibud_bi_id int not null,
-                            userbibud_user_id int not null,
-                            userbibud_tipbud_id int not null,
-                            primary key(userbibud_id));
+CREATE TABLE bill (
+    bi_id INT NOT NULL AUTO_INCREMENT,
+    bi_name VARCHAR(30) NOT NULL,
+    bi_num INT,
+    PRIMARY KEY (bi_id)
+);
 
-create table userbudget(
-						userbud_id int not null auto_increment,
-                        userbud_user_id int not null,
-                        userbud_bicate_id int not null,
-                        userbud_tipbud_id int not null,
-                        primary key (userbud_id));
+CREATE TABLE userbillbudget (
+    userbibud_id INT NOT NULL AUTO_INCREMENT,
+    userbibud_bi_id INT NOT NULL,
+    userbibud_user_id INT NOT NULL,
+    userbibud_tipbud_id INT NOT NULL,
+    PRIMARY KEY (userbibud_id)
+);
 
-create table billcate(
-					 bicate_id int not null auto_increment,
-                     bicate_name VARCHAR(60) not null,
-                     bicate_num int,
-                     primary key (bicate_id));
+CREATE TABLE userbudget (
+    userbud_id INT NOT NULL AUTO_INCREMENT,
+    userbud_user_id INT NOT NULL,
+    userbud_bicate_id INT NOT NULL,
+    userbud_tipbud_id INT NOT NULL,
+    PRIMARY KEY (userbud_id)
+);
 
-create table challengeruser(
-						  challuser_id int not null auto_increment,
-                          challuser_user_id int not null,
-                          challuser_chall_id int not null,
-                          primary key (challuser_id));
+CREATE TABLE billcate (
+    bicate_id INT NOT NULL AUTO_INCREMENT,
+    bicate_name VARCHAR(60) NOT NULL,
+    bicate_num INT,
+    PRIMARY KEY (bicate_id)
+);
 
-create table challenger(
-						chall_id int not null auto_increment,
-                        chall_name VARCHAR(30) not null,
-                        primary key(chall_id));
+CREATE TABLE challengeruser (
+    challuser_id INT NOT NULL AUTO_INCREMENT,
+    challuser_user_id INT NOT NULL,
+    challuser_chall_id INT NOT NULL,
+    PRIMARY KEY (challuser_id)
+);
 
-create table usercommunitybudget(
-								usercommbud_id int not null auto_increment,
-                                usercommbud_usercomm_id int not null,
-                                usercommbud_commbud_id int not null,
-                                primary key(usercommbud_id));
-create table tipobudget(
-						tipbud_id int not null auto_increment,
-                        tipbud_name VARCHAR(30) not null,
-                        primary  key (tipbud_id));
+CREATE TABLE challenger (
+    chall_id INT NOT NULL AUTO_INCREMENT,
+    chall_name VARCHAR(30) NOT NULL,
+    PRIMARY KEY (chall_id)
+);
 
-alter table usercommunity
-add constraint usercommunity_fk_userapp
-foreign key(usercomm_user_id) references userapp(user_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+CREATE TABLE usercommunitybudget (
+    usercommbud_id INT NOT NULL AUTO_INCREMENT,
+    usercommbud_usercomm_id INT NOT NULL,
+    usercommbud_commbud_id INT NOT NULL,
+    PRIMARY KEY (usercommbud_id)
+);
 
-alter table usercommunity
-add constraint usercommunity_fk_community
-foreign key(usercomm_comm_id) references community(comm_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+CREATE TABLE tipobudget (
+    tipbud_id INT NOT NULL AUTO_INCREMENT,
+    tipbud_name VARCHAR(30) NOT NULL,
+    PRIMARY KEY (tipbud_id)
+);
 
-alter table communitybudget
-add constraint communitybudget_fk_community
-foreign key (commbud_comm_id) references community(comm_id) 
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE usercommunity
+    ADD CONSTRAINT usercommunity_fk_userapp
+    FOREIGN KEY (usercomm_user_id) REFERENCES userapp(user_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table communitybudget
-add constraint communitybudget_fk_billcate
-foreign key(commbud_bicate_id) references billcate(bicate_id) 
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE usercommunity
+    ADD CONSTRAINT usercommunity_fk_community
+    FOREIGN KEY (usercomm_comm_id) REFERENCES community(comm_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table communitybudget
-add constraint communitybudget_fk_tipobudget
-foreign key (commbud_tipbud_id) references tipobudget(tipbud_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE communitybudget
+    ADD CONSTRAINT communitybudget_fk_community
+    FOREIGN KEY (commbud_comm_id) REFERENCES community(comm_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table communitybillbudget
-add constraint communitybillbudget_fk_communitybudget
-foreign key (commbibud_commbud_id) references communitybudget(commbud_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE communitybudget
+    ADD CONSTRAINT communitybudget_fk_billcate
+    FOREIGN KEY (commbud_bicate_id) REFERENCES billcate(bicate_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table communitybillbudget
-add constraint communitybillbudget_fk_bill
-foreign key (commbibud_bi_id) references bill(bi_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE communitybudget
+    ADD CONSTRAINT communitybudget_fk_tipobudget
+    FOREIGN KEY (commbud_tipbud_id) REFERENCES tipobudget(tipbud_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table userbillbudget
-add constraint userbillbudget_fk_bill
-foreign key (userbibud_bi_id) references bill(bi_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE communitybillbudget
+    ADD CONSTRAINT communitybillbudget_fk_communitybudget
+    FOREIGN KEY (commbibud_commbud_id) REFERENCES communitybudget(commbud_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table userbillbudget
-add constraint userbillbudget_fk_userapp
-foreign key (userbibud_user_id) references userapp(user_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE communitybillbudget
+    ADD CONSTRAINT communitybillbudget_fk_bill
+    FOREIGN KEY (commbibud_bi_id) REFERENCES bill(bi_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table userbillbudget
-add constraint userbillbudget_fk_tipobudget
-foreign key (userbibud_tipbud_id) references tipobudget(tipbud_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE userbillbudget
+    ADD CONSTRAINT userbillbudget_fk_bill
+    FOREIGN KEY (userbibud_bi_id) REFERENCES bill(bi_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table challengeruser
-add constraint challengeruser_fk_userapp
-foreign key(challuser_user_id) references userapp(user_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE userbillbudget
+    ADD CONSTRAINT userbillbudget_fk_userapp
+    FOREIGN KEY (userbibud_user_id) REFERENCES userapp(user_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table challengeruser
-add constraint challengeruser_fk_challenger
-foreign key (challuser_chall_id) references challenger(chall_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE userbillbudget
+    ADD CONSTRAINT userbillbudget_fk_tipobudget
+    FOREIGN KEY (userbibud_tipbud_id) REFERENCES tipobudget(tipbud_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table usercommunitybudget
-add constraint usercommunitybudget_fk_usercommunity
-foreign key(usercommbud_usercomm_id) references usercommunity(usercomm_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE challengeruser
+    ADD CONSTRAINT challengeruser_fk_userapp
+    FOREIGN KEY (challuser_user_id) REFERENCES userapp(user_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table usercommunitybudget
-add constraint usercommunitybudget_fk_communitybudget
-foreign key (usercommbud_commbud_id) references communitybudget(commbud_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE challengeruser
+    ADD CONSTRAINT challengeruser_fk_challenger
+    FOREIGN KEY (challuser_chall_id) REFERENCES challenger(chall_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table userbudget
-add constraint userbudget_fk_userapp
-foreign key(userbud_user_id) references userapp(user_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE usercommunitybudget
+    ADD CONSTRAINT usercommunitybudget_fk_usercommunity
+    FOREIGN KEY (usercommbud_usercomm_id) REFERENCES usercommunity(usercomm_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table userbudget
-add constraint userbudget_fk_billcate
-foreign key(userbud_bicate_id) references billcate(bicate_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE usercommunitybudget
+    ADD CONSTRAINT usercommunitybudget_fk_communitybudget
+    FOREIGN KEY (usercommbud_commbud_id) REFERENCES communitybudget(commbud_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table userbudget
-add constraint userbudget_fk_tipobudget
-foreign key (userbud_tipbud_id) references tipobudget(tipbud_id)
-ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE userbudget
+    ADD CONSTRAINT userbudget_fk_userapp
+    FOREIGN KEY (userbud_user_id) REFERENCES userapp(user_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+ALTER TABLE userbudget
+    ADD CONSTRAINT userbudget_fk_billcate
+    FOREIGN KEY (userbud_bicate_id) REFERENCES billcate(bicate_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+ALTER TABLE userbudget
+    ADD CONSTRAINT userbudget_fk_tipobudget
+    FOREIGN KEY (userbud_tipbud_id) REFERENCES tipobudget(tipbud_id)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ## Dicionário - BudgetBuddy
 
