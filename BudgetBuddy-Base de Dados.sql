@@ -3,27 +3,28 @@ create table userapp(
                     user_name VARCHAR(60) not null,
                     user_email VARCHAR(30)not null,
                     user_password VARCHAR(30) not null,
-		    primary key (user_id));
+                    primary key (user_id));
 
 create table community(
-	            comm_id int not null auto_increment,
+     		    comm_id int not null auto_increment,
                     comm_name VARCHAR(30) not null,
                     primary key(comm_id));
 
-create table usercommunity(
-			usercomm_id int not null auto_increment,
+create table usercommunity(	
+	                usercomm_id int not null auto_increment,
                         usercomm_user_id int not null,
                         usercomm_comm_id int not null,
                         primary key(usercomm_id));
 
 create table communitybudget(
-			    commbud_id int not null auto_increment,
+	          	    commbud_id int not null auto_increment,
                             commbud_comm_id int not null,
                             commbud_bicate_id int not null,
+                            commbud_tipbud_id int not null,
                             primary key(commbud_id));
 
 create table communitybillbudget(
-				commbibud_id int not null auto_increment,
+			        commbibud_id int not null auto_increment,
                                 commbibud_commbud_id int not null,
                                 commbibud_bi_id int not null,
                                 primary key(commbibud_id));
@@ -31,6 +32,7 @@ create table communitybillbudget(
 create table bill(
 		bi_id int not null auto_increment,
                 bi_name VARCHAR(30) not null,
+                bi_num int not null,
                 primary key (bi_id));
 
 create table userbillbudget(
@@ -42,11 +44,14 @@ create table userbillbudget(
 create table userbudget(
 			userbud_id int not null auto_increment,
                         userbud_user_id int not null,
+                        userbud_bicate_id int not null,
+                        userbud_tipbud_id int not null,
                         primary key (userbud_id));
 
 create table billcate(
 		     bicate_id int not null auto_increment,
-                     bicate_name VARCHAR(60),
+                     bicate_name VARCHAR(60) not null,
+                     bicate_num int not null,
                      primary key (bicate_id));
 
 create table challengeruser(
@@ -57,7 +62,7 @@ create table challengeruser(
 
 create table challenger(
 			chall_id int not null auto_increment,
-                        chall_name VARCHAR(30),
+                        chall_name VARCHAR(30) not null,
                         primary key(chall_id));
 
 create table usercommunitybudget(
@@ -65,12 +70,10 @@ create table usercommunitybudget(
                                 usercommbud_usercomm_id int not null,
                                 usercommbud_commbud_id int not null,
                                 primary key(usercommbud_id));
-
-create table userbudcategories(
-				userbudcate_id int not null auto_increment,
-                                userbudcate_bicate_id int not null,
-                                userbudcate_userbud_id int not null,
-                                primary key(userbudcate_id));
+create table tipobudget(
+			tipbud_id int not null auto_increment,
+                        tipbud_name VARCHAR(30) not null,
+                        primary  key (tipbud_id));
 
 alter table usercommunity
 add constraint usercommunity_fk_userapp
@@ -90,6 +93,11 @@ ON DELETE NO ACTION ON UPDATE NO ACTION;
 alter table communitybudget
 add constraint communitybudget_fk_billcate
 foreign key(commbud_bicate_id) references billcate(bicate_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table communitybudget
+add constraint communitybudget_fk_tipobudget
+foreign key (commbud_tipbud_id) references tipobudget(tipbud_id)
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 alter table communitybillbudget
@@ -132,14 +140,17 @@ add constraint usercommunitybudget_fk_communitybudget
 foreign key (usercommbud_commbud_id) references communitybudget(commbud_id)
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table userbudcategories
-add constraint userbudcategories_fk_billcate
-foreign key (userbudcate_bicate_id) references billcate(bicate_id)
+alter table userbudget
+add constraint userbudget_fk_userapp
+foreign key(userbud_user_id) references userapp(user_id)
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter table userbudcategories
-add constraint userbudcategories_fk_userbudget
-foreign key (userbudcate_userbud_id) references userbudget(userbud_id)
+alter table userbudget
+add constraint userbudget_fk_billcate
+foreign key(userbud_bicate_id) references billcate(bicate_id)
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-
+alter table userbudget
+add constraint userbudget_fk_tipobudget
+foreign key (userbud_tipbud_id) references tipobudget(tipbud_id)
+ON DELETE NO ACTION ON UPDATE NO ACTION;
