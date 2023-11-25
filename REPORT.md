@@ -1,3 +1,143 @@
+
+## Dicionário - BudgetBuddy
+
+### Tabela userapp
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| user_id          | INT        | Not null, auto_increment |
+| user_name        | VARCHAR(60) | Not null              |
+| user_email       | VARCHAR(30) | Not null              |
+| user_password    | VARCHAR(30) | Not null              |
+
+### Tabela community
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| comm_id          | INT        | Not null, auto_increment |
+| comm_name        | VARCHAR(30) | Not null              |
+
+### Tabela usercommunity
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| usercomm_id      | INT        | Not null, auto_increment |
+| usercomm_user_id |            | Not null              |
+| usercomm_comm_id |            | Not null              |
+
+### Tabela communitybudget
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| commbud_id       | INT        | Not null, auto_increment |
+| commbud_comm_id  |            | Not null              |
+| commbud_bicate_id|            | Not null              |
+| commbud_tipbud_id|            | Not null              |
+
+### Tabela communitybillbudget
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| commbibud_id     | INT        | Not null, auto_increment |
+| commbibud_commbud_id |       | Not null              |
+| commbibud_bi_id  |            | Not null              |
+
+### Tabela bill
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| bi_id            | INT        | Not null, auto_increment |
+| bi_name          | VARCHAR(30) | Not null              |
+| bi_num           | INT        |                       |
+
+### Tabela userbillbudget
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| userbibud_id     | INT        | Not null, auto_increment |
+| userbibud_bi_id  |            | Not null              |
+| userbibud_user_id|            | Not null              |
+| userbibud_tipbud_id|           | Not null              |
+
+### Tabela userbudget
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| userbud_id       | INT        | Not null, auto_increment |
+| userbud_user_id  |            | Not null              |
+| userbud_bicate_id|            | Not null              |
+| userbud_tipbud_id|            | Not null              |
+
+### Tabela billcate
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| bicate_id        | INT        | Not null, auto_increment |
+| bicate_name      | VARCHAR(60) | Not null              |
+| Bicate_num       | INT        |                       |
+
+### Tabela challengeruser
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| challuser_id     | INT        | Not null, auto_increment |
+| challuser_user_id|            | Not null              |
+| challuser_chall_id|            | Not null              |
+
+### Tabela challenger
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| chall_id         | INT        | Not null, auto_increment |
+| chall_name       | VARCHAR(30) | Not null              |
+
+### Tabela usercommunitybudget
+
+| Coluna           | Tipo       | Restrições            |
+|------------------|------------|-----------------------|
+| usercommbud_id   | INT        | Not null, auto_increment |
+| usercommbud_usercomm_id|       | Not null              |
+| usercommbud_commbud_id|        | Not null              |
+
+
+### Restrições e Relacionamentos
+
+#### Tabela "usercommunity"
+- **usercomm_user_id:** Chave que referencia `userapp` (`user_id`).
+- **usercomm_comm_id:** Chave que referencia `community` (`comm_id`).
+
+#### Tabela "communitybudget"
+- **commbud_comm_id:** Chave que referencia `community` (`comm_id`).
+- **commbud_bicate_id:** Chave que referencia `billcate` (`bicate_id`).
+- **commbud_tipbud_id:** Chave que referencia `tipobudget` (`tipbud_id`).
+
+#### Tabela "communitybillbudget"
+- **commbibud_commbud_id:** Chave que referencia `community` (`commbud_id`).
+- **commbibud_bi_id:** Chave que referencia `bill` (`bi_id`).
+
+#### Tabela "userbillbudget"
+- **userbibud_user_id:** Chave que referencia `userapp` (`user_id`).
+- **userbibud_bi_id:** Chave que referencia `bill` (`bi_id`).
+- **userbibud_tipbud_id:** Chave que referencia `tipobudget` (`tipbud_id`).
+
+#### Tabela "userbudget"
+- **userbud_user_id:** Chave que referencia `userapp` (`user_id`).
+- **userbud_bicate_id:** Chave que referencia `billcate` (`bicate_id`).
+- **userbud_tipbud_id:** Chave que referencia `tipobudget` (`tipbud_id`).
+
+#### Tabela "challengeruser"
+- **challuser_user_id:** Chave que referencia `userapp` (`user_id`).
+- **challuser_chall_id:** Chave que referencia `challenger` (`chall_id`).
+
+#### Tabela "usercommunitybudget"
+- **usercommbud_usercomm_id:** Chave que referencia `usercommunity` (`usercomm_id`).
+- **usercommbud_commbud_id:** Chave que referencia `communitybudget` (`commbud_id`).
+
+
+![Imagem WhatsApp 2023-11-25 às 15 30 36_75d3a072](https://github.com/Projeto-Mobile/BudgetBuddy/assets/115008459/a8ae6064-2df1-4696-85cc-e9cfcec39e37)
+
+
+
 ```sql
 CREATE TABLE userapp (
     user_id INT NOT NULL AUTO_INCREMENT,
@@ -176,140 +316,4 @@ ALTER TABLE userbudget
     FOREIGN KEY (userbud_tipbud_id) REFERENCES tipobudget(tipbud_id)
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-## Dicionário - BudgetBuddy
-
-### Tabela userapp
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| user_id          | INT        | Not null, auto_increment |
-| user_name        | VARCHAR(60) | Not null              |
-| user_email       | VARCHAR(30) | Not null              |
-| user_password    | VARCHAR(30) | Not null              |
-
-### Tabela community
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| comm_id          | INT        | Not null, auto_increment |
-| comm_name        | VARCHAR(30) | Not null              |
-
-### Tabela usercommunity
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| usercomm_id      | INT        | Not null, auto_increment |
-| usercomm_user_id |            | Not null              |
-| usercomm_comm_id |            | Not null              |
-
-### Tabela communitybudget
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| commbud_id       | INT        | Not null, auto_increment |
-| commbud_comm_id  |            | Not null              |
-| commbud_bicate_id|            | Not null              |
-| commbud_tipbud_id|            | Not null              |
-
-### Tabela communitybillbudget
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| commbibud_id     | INT        | Not null, auto_increment |
-| commbibud_commbud_id |       | Not null              |
-| commbibud_bi_id  |            | Not null              |
-
-### Tabela bill
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| bi_id            | INT        | Not null, auto_increment |
-| bi_name          | VARCHAR(30) | Not null              |
-| bi_num           | INT        |                       |
-
-### Tabela userbillbudget
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| userbibud_id     | INT        | Not null, auto_increment |
-| userbibud_bi_id  |            | Not null              |
-| userbibud_user_id|            | Not null              |
-| userbibud_tipbud_id|           | Not null              |
-
-### Tabela userbudget
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| userbud_id       | INT        | Not null, auto_increment |
-| userbud_user_id  |            | Not null              |
-| userbud_bicate_id|            | Not null              |
-| userbud_tipbud_id|            | Not null              |
-
-### Tabela billcate
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| bicate_id        | INT        | Not null, auto_increment |
-| bicate_name      | VARCHAR(60) | Not null              |
-| Bicate_num       | INT        |                       |
-
-### Tabela challengeruser
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| challuser_id     | INT        | Not null, auto_increment |
-| challuser_user_id|            | Not null              |
-| challuser_chall_id|            | Not null              |
-
-### Tabela challenger
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| chall_id         | INT        | Not null, auto_increment |
-| chall_name       | VARCHAR(30) | Not null              |
-
-### Tabela usercommunitybudget
-
-| Coluna           | Tipo       | Restrições            |
-|------------------|------------|-----------------------|
-| usercommbud_id   | INT        | Not null, auto_increment |
-| usercommbud_usercomm_id|       | Not null              |
-| usercommbud_commbud_id|        | Not null              |
-
-
-### Restrições e Relacionamentos
-
-#### Tabela "usercommunity"
-- **usercomm_user_id:** Chave que referencia `userapp` (`user_id`).
-- **usercomm_comm_id:** Chave que referencia `community` (`comm_id`).
-
-#### Tabela "communitybudget"
-- **commbud_comm_id:** Chave que referencia `community` (`comm_id`).
-- **commbud_bicate_id:** Chave que referencia `billcate` (`bicate_id`).
-- **commbud_tipbud_id:** Chave que referencia `tipobudget` (`tipbud_id`).
-
-#### Tabela "communitybillbudget"
-- **commbibud_commbud_id:** Chave que referencia `community` (`commbud_id`).
-- **commbibud_bi_id:** Chave que referencia `bill` (`bi_id`).
-
-#### Tabela "userbillbudget"
-- **userbibud_user_id:** Chave que referencia `userapp` (`user_id`).
-- **userbibud_bi_id:** Chave que referencia `bill` (`bi_id`).
-- **userbibud_tipbud_id:** Chave que referencia `tipobudget` (`tipbud_id`).
-
-#### Tabela "userbudget"
-- **userbud_user_id:** Chave que referencia `userapp` (`user_id`).
-- **userbud_bicate_id:** Chave que referencia `billcate` (`bicate_id`).
-- **userbud_tipbud_id:** Chave que referencia `tipobudget` (`tipbud_id`).
-
-#### Tabela "challengeruser"
-- **challuser_user_id:** Chave que referencia `userapp` (`user_id`).
-- **challuser_chall_id:** Chave que referencia `challenger` (`chall_id`).
-
-#### Tabela "usercommunitybudget"
-- **usercommbud_usercomm_id:** Chave que referencia `usercommunity` (`usercomm_id`).
-- **usercommbud_commbud_id:** Chave que referencia `communitybudget` (`commbud_id`).
-
-
-![Imagem WhatsApp 2023-11-25 às 15 30 36_75d3a072](https://github.com/Projeto-Mobile/BudgetBuddy/assets/115008459/a8ae6064-2df1-4696-85cc-e9cfcec39e37)
 
