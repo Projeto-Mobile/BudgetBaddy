@@ -1,4 +1,4 @@
-
+```sql
 CREATE TABLE userapp (
     user_id INT NOT NULL AUTO_INCREMENT,
     user_name VARCHAR(60) NOT NULL,
