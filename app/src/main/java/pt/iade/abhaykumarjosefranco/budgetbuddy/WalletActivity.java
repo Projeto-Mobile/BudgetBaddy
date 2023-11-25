@@ -6,9 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class WalletActivity extends AppCompatActivity {
 
-    private Button oldreceipt_button;
+    private Button oldreceipt_button,picture_button;
+
+    private BottomNavigationView bottomNavigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,12 +21,43 @@ public class WalletActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wallet);
 
         oldreceipt_button = findViewById(R.id.oldreceipt_button);
+        picture_button = findViewById(R.id.picture_button);
         oldreceipt_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(WalletActivity.this, oldreceipt.class);
                 startActivity(intent);
             }
+        });
+
+        picture_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WalletActivity.this, oldreceipt.class);
+                startActivity(intent);
+            }
+        });
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.wallet);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), OverviewActivity.class));
+                finish();
+                return true;
+            } else if (item.getItemId() == R.id.wallet) {
+                return true;
+            } else if (item.getItemId() == R.id.add) {
+                startActivity(new Intent(getApplicationContext(), Category.class));
+                finish();
+                return true;
+            } else if (item.getItemId() == R.id.profile) {
+                startActivity(new Intent(getApplicationContext(), Profile.class));
+                finish();
+                return true;
+            }
+            return false;
         });
     }
 }

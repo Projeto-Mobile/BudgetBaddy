@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Old receipts"
+        android:text="@string/old_receipts"
         android:textColor="@color/lblue"
         android:textSize="30sp"
         android:textStyle="bold"

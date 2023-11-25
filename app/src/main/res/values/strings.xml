@@ -3,4 +3,100 @@
     <string name="navigation_bar">Bottom Navigation</string>
 
 
+    <string name="chosen_categories">Chosen categories</string>
+    <string name="record">Record</string>
+    <string name="button_old_receipts">Old Receipts</string>
+    <string name="button_take_picture">Take picture of the receipt.</string>
+
+
+    <string name="total_due">Total Due</string>
+    <string name="set_count_bills">Set a count for Bills and essential spendings</string>
+    <string name="button_water_bill">Water Bill</string>
+    <string name="button_electricity">Electricity</string>
+    <string name="button_health">Health</string>
+    <string name="button_education">Education</string>
+    <string name="button_child_care">Child Care</string>
+    <string name="button_mortgage">Mortgage</string>
+    <string name="button_insurance">Insurance</string>
+    <string name="button_loan">Loan</string>
+    <string name="button_taxes">Taxes</string>
+    <string name="button_others">Others</string>
+
+
+    <string name="sign_up">Sign Up</string>
+    <string name="name_hint">Name</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="already_user">Already a user? Log in.</string>
+
+    <string name="name_hint_profile">Name</string>
+    <string name="email_hint_profile">Email</string>
+    <string name="password_hint_profile">Password</string>
+    <string name="community_button_text">Community</string>
+    <string name="log_out_button_text">Log Out</string>
+    <string name="delete_account_button_text">Delete Account</string>
+
+    <string name="overview">Overview</string>
+    <string name="total_expenses">Total Expenses</string>
+    <string name="total_due_overview">Total Due</string>
+    <string name="stat">Stat</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="all">All</string>
+    <string name="total_saving">Total Saving</string>
+
+    <string name="old_receipts">Old receipts</string>
+
+
+    <string name="login_text">Log in</string>
+    <string name="name_hint_login">Name</string>
+    <string name="email_hint_login">Email</string>
+    <string name="password_hint_login">Password</string>
+    <string name="login_button_text">Log in</string>
+    <string name="not_registered_text">Not registered yet? Sign up.</string>
+
+
+    <string name="challenge_hint">Name the Challenge.</string>
+    <string name="start_button_text">Start</string>
+    <string name="countdown_message">Let the countdown begin!</string>
+    <string name="challenge_description">Challenge yourself to a mini adventure!</string>
+    <string name="new_challenge">Begin a new challenge!!</string>
+    <string name="minutes_label">Minutes</string>
+    <string name="days_label">Days</string>
+    <string name="hours_label">Hours</string>
+    <string name="challenges_title">Challenges</string>
+
+
+    <string name="total_savings">Total Savings</string>
+    <string name="no_savings_yet">No savings yet.</string>
+    <string name="take_on_challenges">Take on fun challenges to boost your saving journey!</string>
+    <string name="create_challenges">Create new challenges!!</string>
+
+
+    <string name="categories">Categories</string>
+    <string name="select_categories">Select categories</string>
+    <string name="shopping">Shopping</string>
+    <string name="subscription">Subscription</string>
+    <string name="travel">Travel</string>
+    <string name="leisure">Leisure</string>
+    <string name="dining_out">Dining Out</string>
+    <string name="personal_care">Personal Care</string>
+    <string name="special_occasions">Special Occasions</string>
+    <string name="transportation">Transportation</string>
+    <string name="work_expenses">Work Expenses</string>
+    <string name="others">Others</string>
+    <string name="bottom_menu_home">Home</string>
+    <string name="bottom_menu_categories">Categories</string>
+    <string name="bottom_menu_profile">Profile</string>
+    <string name="bottom_menu_add">Add</string>
+
+    <string name="set_budget">Set a Budget</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="enter_budget">Enter the budget.</string>
+    <string name="done">Done</string>
+
+
 </resources>

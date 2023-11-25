@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TotalDue"
-    android:background="@color/dblue">
+    android:background="@color/dblue"
+    >
 
     <TextView
         android:id="@+id/totaldue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Due"
+        android:layout_width="132dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="120dp"
+        android:text="@string/total_due"
         android:textColor="@color/lblue"
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -23,90 +26,133 @@
         android:id="@+id/countbills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Set a count for Bills and essential spendings"
+        android:layout_marginTop="64dp"
+        android:text="@string/set_count_bills"
         android:textColor="@color/lblue"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totaldue" />
-
-    <Button
-        android:id="@+id/waterbill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Water Bill"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countbills" />
-
-    <Button
-        android:id="@+id/electricity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Electricity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waterbill" />
-
-    <Button
-        android:id="@+id/health"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Health"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/electricity" />
-
-    <Button
-        android:id="@+id/education"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Education"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/health" />
-
-    <Button
-        android:id="@+id/childcare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Child Care"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/education" />
-
-    <Button
-        android:id="@+id/mortgage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mortgage"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waterbill" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totaldue"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/insurance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Insurance"
+    <TableLayout
+        android:id="@+id/tableLayout3"
+        android:layout_width="305dp"
+        android:layout_height="237dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/electricity" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/loan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Loan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/health" />
+        <TableRow
+            android:layout_width="268dp"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/taxes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Taxes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/education" />
+            <Button
+                android:id="@+id/waterbill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="@string/button_water_bill" />
 
-    <Button
-        android:id="@+id/cellphone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cell Phone"
+            <Button
+                android:id="@+id/eletricity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="@string/button_electricity" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_health" />
+
+            <Button
+                android:id="@+id/education"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_education" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/childcare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_child_care" />
+
+            <Button
+                android:id="@+id/mortgage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_mortgage" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/insurance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_insurance" />
+
+            <Button
+                android:id="@+id/loan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_loan" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="343dp"
+            android:layout_height="82dp">
+
+            <Button
+                android:id="@+id/taxes"
+                android:layout_width="125dp"
+                android:layout_height="62dp"
+                android:text="@string/button_taxes" />
+
+            <Button
+                android:id="@+id/others"
+                android:layout_width="132dp"
+                android:layout_height="61dp"
+                android:text="@string/button_others" />
+        </TableRow>
+    </TableLayout>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="384dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/bottom_background"
+        app:itemIconTint="@android:color/tab_indicator_text"
+        app:itemTextColor="@color/lblue"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/childcare" />
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
