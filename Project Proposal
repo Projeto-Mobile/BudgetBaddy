@@ -57,7 +57,7 @@ Another usage of the app as an expense tracker is that after user is registered,
 
 # SECOND PART OF THE APPLICATION (main screen)
 
-- Create the main page
+- Create the main page(overview)
 - Create categories
 - Create budgets within the categories
 - Create communities
