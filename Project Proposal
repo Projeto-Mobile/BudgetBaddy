@@ -34,7 +34,7 @@ These applications offer various features for budgeting, cost tracking, and gain
 
 By adhering to the architecture of this project, we aim to create Budget Buddy, a valuable app for individuals seeking efficient cost monitoring and money management on their mobile devices.
 
-
+ 
 #Core 
 ## Core Project Use Case
 A key use case for our project involves a user registering in the app with their name, email, and a password. After successful registration and the user will encounter a '+' icon. Clicking on this icon will enable them to select from a range of categories the user wish to use for implementing their respective budgets. Once the categories are chosen, the user will proceed to create and manage budgets for each category, whether they are on a weekly, monthly, or annual basis.
