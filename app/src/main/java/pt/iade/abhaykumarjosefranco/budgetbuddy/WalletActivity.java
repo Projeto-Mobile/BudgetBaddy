@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.provider.MediaStore;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class WalletActivity extends AppCompatActivity {
@@ -22,21 +22,9 @@ public class WalletActivity extends AppCompatActivity {
 
         oldreceipt_button = findViewById(R.id.oldreceipt_button);
         picture_button = findViewById(R.id.picture_button);
-        oldreceipt_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(WalletActivity.this, oldreceipt.class);
-                startActivity(intent);
-            }
-        });
 
-        picture_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(WalletActivity.this, oldreceipt.class);
-                startActivity(intent);
-            }
-        });
+
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.wallet);

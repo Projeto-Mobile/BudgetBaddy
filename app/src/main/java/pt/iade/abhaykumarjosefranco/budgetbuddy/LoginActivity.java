@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
-    private EditText loginName, loginEmail, loginPassword;
+    private EditText  loginEmail, loginPassword;
     private TextView loginRedirectText;
     private Button loginButton;
 
@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
         auth = FirebaseAuth.getInstance();
-        loginName = findViewById(R.id.login_name);
         loginEmail = findViewById(R.id.login_email);
         loginPassword = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.login_button);
@@ -41,13 +40,10 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String name = loginName.getText().toString();
                 String email = loginEmail.getText().toString();
                 String pass = loginPassword.getText().toString();
 
-                if (name.isEmpty() /* || !Patterns.EMAIL_ADDRESS.matcher(email).matches() */ ) {
-                    loginName.setError("Username cannot be empty.");
-                } else if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     loginEmail.setError("Invalid or empty email");
                 } else if (pass.isEmpty()) {
                     loginPassword.setError("Password cannot be empty.");
@@ -76,17 +72,3 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 }
-
-/*
- * TO CHANGE THE ACTIVITY
- * 
- * private void setupComponents() {
- * loginButton = (Button)findViewById(R.id.login_button);
- * loginButton.setOnClickListener(new View.OnClickListener() {
- * public void onClick(View v) {
- * Log.d(Button , "User tapped the change" );
- * }
- * });
- * }
- * 
- */

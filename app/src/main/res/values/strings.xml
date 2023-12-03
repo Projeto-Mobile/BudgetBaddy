@@ -3,7 +3,7 @@
     <string name="navigation_bar">Bottom Navigation</string>
 
 
-    <string name="chosen_categories">Chosen categories</string>
+    <string name="archeive_text">Wallet</string>
     <string name="record">Record</string>
     <string name="button_old_receipts">Old Receipts</string>
     <string name="button_take_picture">Take picture of the receipt.</string>
@@ -27,6 +27,7 @@
     <string name="name_hint">Name</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
+    <string name="about_hint">About</string>
     <string name="sign_up_button">Sign Up</string>
     <string name="already_user">Already a user? Log in.</string>
 
@@ -66,6 +67,7 @@
     <string name="days_label">Days</string>
     <string name="hours_label">Hours</string>
     <string name="challenges_title">Challenges</string>
+    <string name="countdown_text">Countdown</string>
 
 
     <string name="total_savings">Total Savings</string>
@@ -97,6 +99,14 @@
     <string name="year">Year</string>
     <string name="enter_budget">Enter the budget.</string>
     <string name="done">Done</string>
+
+    <string name="community">Communities</string>
+    <string name="add_community_button">Add Community</string>
+    <string name="existing_community_text">Existing Communities</string>
+
+
+    <string name="mybudget">My budget</string>
+
 
 
 </resources>
