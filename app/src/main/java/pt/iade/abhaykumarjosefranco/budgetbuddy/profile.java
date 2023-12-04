@@ -5,16 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Profile extends Activity {
 
     private FirebaseAuth auth;
     private BottomNavigationView bottomNavigationView;
     private Button log_out_button,delete_account_button;
+
+    private EditText nameEditText;
+    private EditText emailEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,5 +83,22 @@ public class Profile extends Activity {
                 }
             }
         });
+
+
+        nameEditText = findViewById(R.id.signup_name);
+
+        emailEditText = findViewById(R.id.signup_email);
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser != null) {
+            // The user that is signed in
+            String name = currentUser.getDisplayName();
+            String email = currentUser.getEmail();
+
+            // Set the retrieved data to the EditText
+            nameEditText.setText(name);
+            emailEditText.setText(email);
+        }
     }
 }

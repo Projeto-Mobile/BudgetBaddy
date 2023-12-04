@@ -10,21 +10,35 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 
 
 public class Category extends AppCompatActivity {
+
+    protected BudgetItem item;
 
     private BottomNavigationView bottomNavigationView;
 
     private Spinner periodSpinner;
     private EditText budgetEditText;
 
+    protected int listPosition;
+
     private Button dinningout_button,travel_button,subscription_button,shopping_button,leisure_button,personalcare_button,specialoccassions_button,transportation_button,workexpenses_button,others_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+
+        item = new BudgetItem(1,"" ,"" ,0);
+
+        // Get the item passed from the previous activity.
+        Intent intent = getIntent();
+        listPosition = intent.getIntExtra("position", -1);
+        item = (BudgetItem) intent.getSerializableExtra("item");
 
 
         periodSpinner = findViewById(R.id.spinner);
@@ -79,7 +93,7 @@ public class Category extends AppCompatActivity {
             }
         });
 
-        specialoccassions_button = findViewById(R.id.specialoccassions_button);
+        specialoccassions_button=findViewById(R.id.specialoccassions_button);
         specialoccassions_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,18 +146,36 @@ public class Category extends AppCompatActivity {
             }
             return false;
         });
+
+        private void openBudgetCategories(String category) {
+            // Get the selected period and budget value
+            String selectedPeriod = periodSpinner.getSelectedItem().toString();
+            String budgetValue = budgetEditText.getText().toString();
+
+            // Pass the data to ViewBudget
+            Intent intent = new Intent(Category.this, ViewBudget.class);
+            intent.putExtra("CATEGORY_NAME", category);
+            intent.putExtra("SELECTED_PERIOD", selectedPeriod);
+            intent.putExtra("BUDGET_VALUE", budgetValue);
+            startActivity(intent);
+        }
     }
 
-    private void openBudgetCategories(String category) {
-        // Get the selected period and budget value
-        String selectedPeriod = periodSpinner.getSelectedItem().toString();
-        String budgetValue = budgetEditText.getText().toString();
-
-        // Pass the data to ViewBudget
-        Intent intent = new Intent(Category.this, ViewBudget.class);
-        intent.putExtra("CATEGORY_NAME", category);
-        intent.putExtra("SELECTED_PERIOD", selectedPeriod);
-        intent.putExtra("BUDGET_VALUE", budgetValue);
-        startActivity(intent);
-    }
 }
+
+
+/* private void openBudgetCategories(String category) {
+        Intent intent = getIntent();
+        String categoryName = intent.getStringExtra("CATEGORY_NAME");
+        String selectedPeriod = intent.getStringExtra("SELECTED_PERIOD");
+        String budgetValue = intent.getStringExtra("BUDGET_VALUE");
+
+        // Assume you have TextView widgets with the following IDs in your activity_view_budget.xml layout
+        Spinner periodSpinner = findViewById(R.id.spinner);
+        EditText budgetEditText = findViewById(R.id.budget_cate_num2);
+
+        // Set text in TextViews
+        budgetEditText.setText(budgetValue);
+
+
+    }*/
