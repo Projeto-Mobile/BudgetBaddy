@@ -7,128 +7,182 @@
     android:background="@color/dblue"
     tools:context=".Category">
 
+
+    <TextView
+        android:id="@+id/set_budget_categorie_view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/set_budget"
+        android:textColor="@color/lblue"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/budget_cate_num2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="536dp"
+        android:ems="10"
+        android:hint="@string/enter_budget"
+        android:inputType="number"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="262dp"
+        android:layout_height="54dp"
+        android:entries="@array/periods"
+        app:layout_constraintBottom_toTopOf="@+id/budget_cate_num2"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.842" />
+
+
     <TextView
         android:id="@+id/categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Categories"
+        android:layout_marginTop="272dp"
+        android:text="@string/categories"
         android:textColor="@color/lblue"
-        android:textSize="30sp"
+        android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/selectcategories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Select categories"
-        android:textColor="@color/lblue"
+    <TableLayout
+        android:layout_width="374dp"
+        android:layout_height="391dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:divider="@drawable/table_divider"
+        android:showDividers="middle"
+        android:stretchColumns="0,1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categories"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintVertical_bias="1.0">
 
-    <Button
-        android:id="@+id/dinningout_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dining Out"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/selectcategories" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/travel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Travel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/dinningout_button" />
+            <Button
+                android:id="@+id/shopping_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/shopping" />
 
-    <Button
-        android:id="@+id/subscription_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Subscription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/travel_button" />
+            <Button
+                android:id="@+id/subscription_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/subscription" />
+        </TableRow>
 
-    <Button
-        android:id="@+id/shopping_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Shopping"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/subscription_button" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/leisure_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Leisure"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/shopping_button" />
+            <Button
+                android:id="@+id/travel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/travel" />
 
-    <Button
-        android:id="@+id/personcare_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Personal Care"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/leisure_button" />
+            <Button
+                android:id="@+id/leisure_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/leisure" />
+        </TableRow>
 
-    <Button
-        android:id="@+id/specialoccasions_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Special Occasions"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/personcare_button" />
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/transportation_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Transportation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/specialoccasions_button" />
+            <Button
+                android:id="@+id/dinningout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dining_out" />
 
-    <Button
-        android:id="@+id/workexpenses_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Work Expenses"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/transportation_button" />
+            <Button
+                android:id="@+id/personalcare_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/personal_care" />
+        </TableRow>
 
-    <Button
-        android:id="@+id/others_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Others"
-        app:layout_constraintStart_toStartOf="parent"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/specialoccassions_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/special_occasions" />
+
+            <Button
+                android:id="@+id/transportation_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/transportation" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/workexpenses_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/work_expenses" />
+
+            <Button
+                android:id="@+id/others_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/others" />
+
+        </TableRow>
+    </TableLayout>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="384dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/bottom_background"
+        app:backgroundTint="@color/dblue"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@color/lblue"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@+id/workexpenses_button" />
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

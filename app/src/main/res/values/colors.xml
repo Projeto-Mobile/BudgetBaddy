@@ -8,5 +8,11 @@
     <color name="dblue">#00141F</color>
     <color name="skyblue">#C1B6A4</color>
     <color name="drakred">#FF0000</color>
+    <color name="grey">#6B6E70</color>
+    <color name="lightgrey">#A4A4A4</color>
+    <color name="back">#FFF5F5F5</color>
+    <color name="brightblue">#1A43BF</color>
+    <color name="mywhite">#FEFEFA</color>
+
 
 </resources>

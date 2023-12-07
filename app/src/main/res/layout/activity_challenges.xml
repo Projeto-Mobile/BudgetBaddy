@@ -4,18 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lblue"
-    tools:context=".challenges">
+    android:background="@color/dblue"
+    tools:context=".ChallengesActivity">
+
+
+    <TextView
+        android:id="@+id/totalsaving_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:text="@string/total_savings"
+        android:textColor="@color/pblue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/create_challenges_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <TextView
+        android:id="@+id/takeon_Text"
+        android:layout_width="340dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:text="@string/take_on_challenges"
+        android:textAlignment="center"
+        android:textColor="@color/pblue"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/create_challenges_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.888" />
 
     <Button
         android:id="@+id/create_challenges_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="256dp"
-        android:text="Create new challenges!!"
+        android:text="@string/create_challenges"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="384dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/bottom_background"
+        app:backgroundTint="@color/dblue"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@color/lblue"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

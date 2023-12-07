@@ -30,23 +30,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Log in"
+                android:text="@string/login_text"
                 android:textColor="@color/lblue"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/login_name"
-                android:background="@drawable/custom_edittext"
-                android:layout_marginTop="40dp"
-                android:padding="8dp"
-                android:hint="Name"
-                android:textColorHint="@color/pblue"
-                android:drawableLeft="@drawable/baseline_person_24"
-                android:drawablePadding="8dp"
-                android:textColor="@color/lblue"/>
+
 
             <EditText
                 android:layout_width="match_parent"
@@ -55,7 +44,7 @@
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
-                android:hint="Email"
+                android:hint="@string/email_hint_login"
                 android:textColorHint="@color/pblue"
                 android:drawableLeft="@drawable/baseline_email_24"
                 android:drawablePadding="8dp"
@@ -68,7 +57,7 @@
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
-                android:hint="Password"
+                android:hint="@string/password_hint_login"
                 android:textColorHint="@color/pblue"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
@@ -77,19 +66,18 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Log in"
+                android:text="@string/login_button_text"
                 android:id="@+id/login_button"
                 android:textSize="20dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/lblue"
-                android:textColor="@color/blue"
-                android:cornerRadius="20dp"/>
+                android:backgroundTint="@color/blue"
+                android:textColor="@color/lblue"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/loginRedirectText"
-                android:text="Not registered yet? Sign up."
+                android:text="@string/not_registered_text"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:layout_marginTop="10dp"

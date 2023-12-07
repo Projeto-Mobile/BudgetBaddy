@@ -9,129 +9,91 @@
 
     <EditText
         android:id="@+id/edit_name_challenge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
+        android:layout_width="227dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="208dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name the Challenge."
+        android:text="@string/challenge_hint"
         android:textColor="@color/blue"
-        app:layout_constraintBottom_toTopOf="@+id/textClock"
+        app:layout_constraintBottom_toTopOf="@+id/start_challenge_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintVertical_bias="0.128" />
 
     <Button
         android:id="@+id/start_challenge_button"
-        android:layout_width="107dp"
-        android:layout_height="45dp"
+        android:layout_width="108dp"
+        android:layout_height="57dp"
         android:layout_marginBottom="288dp"
-        android:text="Start"
+        android:text="@string/start_button_text"
+        android:textSize="20dp"
         android:textStyle="bold"
-        android:textSize="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hours_view"
+        app:layout_constraintTop_toBottomOf="@+id/sentence_challenge_view2"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/sentence_challenge_view3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="236dp"
-        android:text="Let the countdown begin!"
+        android:text="@string/countdown_message"
         android:textColor="@color/lblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643" />
 
     <TextView
         android:id="@+id/sentence_challenge_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
-        android:text="Challenge yourself to a mini adventure!"
-        android:textStyle="bold"
-        android:textSize="18dp"
+        android:text="@string/challenge_description"
         android:textColor="@color/lblue"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sentence_challenge_view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <TextView
         android:id="@+id/sentence_challenge_view2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="152dp"
-        android:text="Begin a new challenge!!"
+        android:text="@string/new_challenge"
         android:textColor="@color/lblue"
+        app:layout_constraintBottom_toTopOf="@+id/sentence_challenge_view3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/minutes_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="372dp"
-        android:text="Minutes"
-        android:textColor="@color/lblue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.786"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/days_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="372dp"
-        android:text="Days"
-        android:textColor="@color/lblue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/hours_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="372dp"
-        android:text="Hours"
-        android:textColor="@color/lblue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/challengeView"
         android:layout_width="124dp"
         android:layout_height="24dp"
         android:layout_marginTop="48dp"
-        android:text="Challenges"
+        android:text="@string/challenges_title"
         android:textColor="@color/lblue"
         android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sentence_challenge_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextClock
-        android:id="@+id/textClock"
-        android:layout_width="213dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="372dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.176" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -139,7 +101,8 @@
         android:layout_height="57dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/bottom_background"
-        app:itemIconTint="@android:color/tab_indicator_text"
+        app:backgroundTint="@color/dblue"
+        app:itemIconTint="@android:color/white"
         app:itemTextColor="@color/lblue"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
