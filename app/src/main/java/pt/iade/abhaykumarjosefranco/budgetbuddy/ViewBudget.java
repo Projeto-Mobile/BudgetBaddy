@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 
 public class ViewBudget extends AppCompatActivity {
 
@@ -23,5 +26,11 @@ public class ViewBudget extends AppCompatActivity {
         Log.d("ViewBudget", "Budget Value: " + budgetValue);
 
         // Now you can use the retrieved values as needed in your ViewBudget activity
+
+        TextView signupNameTextView = findViewById(R.id.signupNameTextview);
+
+        String nameFromSignup = "signup_name";
+
+        signupNameTextView.setText("Hi " + nameFromSignup);
     }
 }

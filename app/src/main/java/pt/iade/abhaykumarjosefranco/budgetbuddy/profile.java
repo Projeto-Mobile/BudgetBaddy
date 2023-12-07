@@ -84,6 +84,16 @@ public class Profile extends Activity {
             }
         });
 
+        EditText aboutEditText = findViewById(R.id.signup_about);
+
+        aboutEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, About.class);
+                startActivity(intent);
+            }
+        });
+
 
         nameEditText = findViewById(R.id.signup_name);
 

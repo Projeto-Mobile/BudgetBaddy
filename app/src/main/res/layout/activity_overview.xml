@@ -4,27 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dblue">
+    android:background="@color/mywhite">
+
 
     <TextView
         android:id="@+id/overview_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/overview"
-        android:textSize="20sp"
-        android:textColor="@color/lblue"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="48dp"
-        />
+        android:text="@string/overview"
+        android:textColor="@color/dblue"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/totalexpense_button"
-        android:layout_width="149dp"
-        android:layout_height="58dp"
+        android:layout_width="153dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="96dp"
+        android:background="@drawable/img"
         android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
+        android:drawableTint="@color/white"
         android:text="@string/total_expenses"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.129"
@@ -34,13 +38,14 @@
     <Button
         android:id="@+id/total_due_button"
         android:layout_width="148dp"
-        android:layout_height="59dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/img_1"
         android:drawableLeft="@drawable/baseline_arrow_outward_24"
         android:text="@string/total_due"
-        app:layout_constraintBottom_toTopOf="@+id/all_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.783"
+        app:layout_constraintHorizontal_bias="0.815"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/overview_view"
         app:layout_constraintVertical_bias="0.006" />
@@ -49,65 +54,84 @@
         android:id="@+id/stat_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/stat"
-        android:textSize="17sp"
-        android:textColor="@color/lblue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
         android:layout_marginBottom="440dp"
-        />
+        android:text="@string/stat"
+        android:textColor="@color/dblue"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/weekly_button"
+    <TextView
+        android:id="@+id/signupNameTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/weekly"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_edittext"
+        android:backgroundTint="@color/white"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/dblue"
+        android:hint="@string/name_hint_profile"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        android:layout_marginBottom="364dp"
-        />
-
-    <Button
-        android:id="@+id/monthly_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/monthly"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        android:layout_marginBottom="364dp"
-        />
-
-    <Button
-        android:id="@+id/all_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/all"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
-        android:layout_marginBottom="364dp"
-        />
-
+        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintStart_toEndOf="@+id/overview_view"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/total_saving_button"
         android:layout_width="150dp"
-        android:layout_height="55dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/img_1"
         android:drawableLeft="@drawable/baseline_add_24"
+        android:drawableTint="@color/white"
         android:text="@string/total_saving"
-        app:layout_constraintBottom_toTopOf="@+id/weekly_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.831"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalexpense_button"
-        app:layout_constraintVertical_bias="0.254" />
+        app:layout_constraintTop_toBottomOf="@+id/total_due_button" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="376dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp"
+        android:background="@drawable/img_3">
+
+        <Button
+            android:id="@+id/weekly_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/weekly" />
+
+        <Button
+            android:id="@+id/monthly_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/monthly" />
+
+        <Button
+            android:id="@+id/yearly_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/yearly" />
+    </LinearLayout>
+
+
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -115,7 +139,8 @@
         android:layout_height="57dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/bottom_background"
-        app:itemIconTint="@android:color/tab_indicator_text"
+        app:backgroundTint="@color/dblue"
+        app:itemIconTint="@color/white"
         app:itemTextColor="@color/lblue"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"

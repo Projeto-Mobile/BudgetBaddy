@@ -27,7 +27,7 @@
     <string name="name_hint">Name</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
-    <string name="about_hint">About</string>
+    <string name="about_hint">About us</string>
     <string name="sign_up_button">Sign Up</string>
     <string name="already_user">Already a user? Log in.</string>
 
@@ -41,10 +41,10 @@
     <string name="overview">Overview</string>
     <string name="total_expenses">Total Expenses</string>
     <string name="total_due_overview">Total Due</string>
-    <string name="stat">Stat</string>
+    <string name="stat">Stats</string>
     <string name="weekly">Weekly</string>
     <string name="monthly">Monthly</string>
-    <string name="all">All</string>
+    <string name="yearly">Yearly</string>
     <string name="total_saving">Total Saving</string>
 
     <string name="old_receipts">Old receipts</string>
@@ -107,6 +107,16 @@
 
     <string name="mybudget">My budget</string>
 
+
+    <string name="about_description">An intuitive mobile app designed to empower users in managing personal finances effortlessly. Track daily, weekly, and monthly spending, categorize expenses, set budgets, and gain valuable insights through user-friendly tools for effective financial control.</string>
+    <string name="developer_info">Developed by Abhay Kumar and José Franco, Computer Science undergraduates in their second year at IADE. For inquiries and assistance, kindly reach out to us.</string>
+    <string name="myemail">abhaylagah01@gmail.com</string>
+    <string name="version">2024.0.0.1</string>
+    <string name="jemail">josepedromartinspfranco@gmail.com</string>
+
+    <string name="category_hint">Name of the category here.</string>
+    <string name="period_hint">Desired period</string>
+    <string name="value_hint">Budget Value</string>
 
 
 </resources>

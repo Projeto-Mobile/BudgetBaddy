@@ -12,6 +12,11 @@ public class BudgetItem implements Serializable {
     private String period;
     private int budgetValue;
 
+
+    //TODO : Associate user ID, budget ID, type budget ID
+
+
+
     public BudgetItem() {
         this(0, "", "", 0);
     }
@@ -23,13 +28,15 @@ public class BudgetItem implements Serializable {
         this.budgetValue = budgetValue;
     }
 
-    public static BudgetItem GetById(int id) {
-        // TODO: Fetch the item from the web server using its id and populate the object.
+    /*public static BudgetItem GetById(int id) {
+        // TODO: Fetch the item using its id and populate the object.
         return new BudgetItem(id, "", "", 0);
-    }
+    }*/
 
     public static ArrayList<BudgetItem> List() {
         ArrayList<BudgetItem> items = new ArrayList<BudgetItem>();
+
+        items.add(new BudgetItem(1,"","",0));
 
 
         return items;
@@ -41,12 +48,9 @@ public class BudgetItem implements Serializable {
         return new BudgetItem(newId, category, period, budgetValue);
 
     }
-
     private static synchronized int generateUniqueId() {
         return idCounter++;
     }
-
-
 
     public void save() {
         // TODO: Send the object's data to our web server and update the database there.
@@ -60,7 +64,23 @@ public class BudgetItem implements Serializable {
         }
     }
 
+    /**
+     * Gets the object from the web server by its ID in the database.
+     *
+     * @param id ID of the item in the database.
+     *
+     * @return Object with data from our web server.
+     */
+    //TODO : ????????????
+    public static BudgetItem GetById(int id) {
+        // TODO: Fetch the item from the web server using its id and populate the object.
+
+        return new BudgetItem(id,"","Choose the duration",0);
+    }
+
+
     public int getId() {
+
         return id;
     }
 

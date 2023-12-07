@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 public class ViewTotaldueBudget extends AppCompatActivity {
 
@@ -23,5 +24,11 @@ public class ViewTotaldueBudget extends AppCompatActivity {
         Log.d("ViewTotaldueBudget", "Budget Value: " + budgetValue);
 
         // Now you can use the retrieved values as needed in your ViewTotaldueBudget activity
+
+        TextView signupNameTextView = findViewById(R.id.signupNameTextview);
+
+        String nameFromSignup = "signup_name";
+
+        signupNameTextView.setText("Hi " + nameFromSignup);
     }
 }

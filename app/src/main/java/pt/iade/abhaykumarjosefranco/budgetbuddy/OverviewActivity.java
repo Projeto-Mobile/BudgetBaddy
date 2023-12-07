@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import androidx.annotation.NonNull;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -14,6 +15,8 @@ public class OverviewActivity extends AppCompatActivity {
 
     private Button totalexpense_button, totaldue_button, totalsaving_button;
     private BottomNavigationView bottomNavigationView;
+
+    private TextView signupNameTextView;
 
 
     @Override
@@ -47,6 +50,11 @@ public class OverviewActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        TextView signupNameTextView = findViewById(R.id.signupNameTextview);
+        String nameFromSignup = "signup_name";
+        signupNameTextView.setText("Hi " + nameFromSignup);
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.home);
