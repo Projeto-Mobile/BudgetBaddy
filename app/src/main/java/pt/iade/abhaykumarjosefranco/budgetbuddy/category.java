@@ -23,7 +23,7 @@ public class Category extends AppCompatActivity {
     private Spinner periodSpinner;
     private EditText budgetEditText;
     protected int listPosition;
-    private Button dinningout_button,travel_button,subscription_button,shopping_button,leisure_button,personalcare_button,specialoccassions_button,transportation_button,workexpenses_button,others_button;
+    private Button dinningout_button, travel_button, subscription_button, shopping_button, leisure_button, personalcare_button, specialoccassions_button, transportation_button, workexpenses_button, others_button;
 
 
     @Override
@@ -31,7 +31,7 @@ public class Category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        item = new BudgetItem(1,"" ,"" ,0);
+        item = new BudgetItem(1, "", "", 0);
 
         // Get the item passed from the previous activity.
         Intent intent = getIntent();
@@ -39,15 +39,11 @@ public class Category extends AppCompatActivity {
         item = (BudgetItem) intent.getSerializableExtra("item");
 
 
-
-
-
-
         dinningout_button = findViewById(R.id.dinningout_button);
         dinningout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Dining Out");
+                setBudget(dinningout_button, 1);
             }
         });
 
@@ -56,7 +52,7 @@ public class Category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                openBudgetCategories("Travel");
+                setBudget(travel_button, 2);
             }
         });
 
@@ -65,7 +61,7 @@ public class Category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                openBudgetCategories("Subscription");
+                setBudget(subscription_button, 3);
             }
         });
 
@@ -74,7 +70,7 @@ public class Category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                openBudgetCategories("Shopping");
+                setBudget(shopping_button, 4);
             }
         });
 
@@ -83,7 +79,7 @@ public class Category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                openBudgetCategories("Leisure");
+                setBudget(leisure_button, 5);
             }
         });
 
@@ -92,16 +88,16 @@ public class Category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                openBudgetCategories("Personal Care");
+                setBudget(personalcare_button, 6);
             }
         });
 
-        specialoccassions_button=findViewById(R.id.specialoccassions_button);
+        specialoccassions_button = findViewById(R.id.specialoccassions_button);
         specialoccassions_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                openBudgetCategories("Special Occasions");
+                setBudget(specialoccassions_button, 7);
             }
         });
 
@@ -110,7 +106,7 @@ public class Category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                openBudgetCategories("Transportation");
+                setBudget(transportation_button, 8);
             }
         });
 
@@ -119,7 +115,7 @@ public class Category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                openBudgetCategories("Work Expenses");
+                setBudget(workexpenses_button, 9);
             }
         });
 
@@ -127,7 +123,7 @@ public class Category extends AppCompatActivity {
         others_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setBudget(others_button, -1);
+                setBudget(others_button, 10);
             }
         });
 
@@ -154,43 +150,43 @@ public class Category extends AppCompatActivity {
             return false;
         });
 
-        }
-
-        private void setupComponents() { //TODO: make category a parameter.
-
-            // Get components into properties.
-            periodSpinner = findViewById(R.id.spinner);
-            budgetEditText = findViewById(R.id.budget_cate_num2);
-
-            // Populate the widgets with data from our object.
-            populateView();
-        }
-
-        /**
-         * Updates the contents of the components in the activity according to the object associated
-         * with this class.
-         */
-        protected void populateView() {
-            budgetEditText.setText(item.getBudgetValue());
-
-            String[] periods = getResources().getStringArray(R.array.periods);
-            for (int i = 0; i < periods.length; i++) {
-                if (periods[i].equals(item.getPeriod()))
-                    periodSpinner.setSelection(i);
-            }
-        }
-
-        /**
-         * Updates the data in the associated object with the information from the UI components.
-         */
-        protected void setBudget(Button button, int idType) {
-            item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
-            item.setCategory(button.getText().toString());
-            item.setPeriod(periodSpinner.getSelectedItem().toString());
-            // TODO: set type id of item.
-        }
-
-
     }
 
+    private void setupComponents() { //TODO: make category a parameter.
+
+        // Get components into properties.
+        periodSpinner = findViewById(R.id.spinner);
+        budgetEditText = findViewById(R.id.budget_cate_num2);
+
+        // Populate the widgets with data from our object.
+        populateView();
+    }
+
+    /**
+     * Updates the contents of the components in the activity according to the object associated
+     * with this class.
+     */
+    protected void populateView() {
+        budgetEditText.setText(item.getBudgetValue());
+
+        String[] periods = getResources().getStringArray(R.array.periods);
+        for (int i = 0; i < periods.length; i++) {
+            if (periods[i].equals(item.getPeriod()))
+                periodSpinner.setSelection(i);
+        }
+    }
+
+    /**
+     * Updates the data in the associated object with the information from the UI components.
+     */
+    protected void setBudget(Button button, int idType) {
+        item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
+        item.setCategory(button.getText().toString());
+        item.setPeriod(periodSpinner.getSelectedItem().toString());
+        // TODO: set type id of item.
+    }
+
+
 }
+
+

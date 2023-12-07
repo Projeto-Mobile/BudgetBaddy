@@ -78,9 +78,7 @@ public class BudgetItem implements Serializable {
         return new BudgetItem(id,"","Choose the duration",0);
     }
 
-
     public int getId() {
-
         return id;
     }
 
