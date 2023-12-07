@@ -127,8 +127,7 @@ public class Category extends AppCompatActivity {
         others_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                openBudgetCategories("Others");
+                setBudget(others_button, -1);
             }
         });
 
@@ -155,16 +154,6 @@ public class Category extends AppCompatActivity {
             return false;
         });
 
-        protected void onCreate(Bundle savedInstanceState) { //TODO: ASK IF THIS IS IMPORTANT
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_category);
-
-            // Get the item passed from the previous activity.
-            Intent intent1 = getIntent();
-            listPosition = intent1.getIntExtra("position", -1);
-            item = (BudgetItem) intent1.getSerializableExtra("item");
-
-            setupComponents();
         }
 
         private void setupComponents() { //TODO: make category a parameter.
@@ -183,58 +172,24 @@ public class Category extends AppCompatActivity {
          */
         protected void populateView() {
             budgetEditText.setText(item.getBudgetValue());
-            periodSpinner.setText(item.getNotes());
+
+            String[] periods = getResources().getStringArray(R.array.periods);
+            for (int i = 0; i < periods.length; i++) {
+                if (periods[i].equals(item.getPeriod()))
+                    periodSpinner.setSelection(i);
+            }
         }
 
         /**
          * Updates the data in the associated object with the information from the UI components.
          */
-        protected void commitView() {
-            item.setBudgetValue(budgetEditText.getText().toString());
-            item.setTitle(titleEdit.getText().toString());
-            item.setNotes(notesEdit.getText().toString());
+        protected void setBudget(Button button, int idType) {
+            item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
+            item.setCategory(button.getText().toString());
+            item.setPeriod(periodSpinner.getSelectedItem().toString());
+            // TODO: set type id of item.
         }
 
-        /**
-         * Event handler when menu items are selected.
-         *
-         * @param item Menu item that was selected.
-         *
-         * @return True if we handled the event, False if Android should take care of it.
-         */
-        @Override
-        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-            if (item.getItemId() == R.id.action_save_item) {
-                // ActionBar "Save" button.
-                commitView();
-                this.item.save();
-
-                // Setup the data to be sent back to the previous activity.
-                Intent returnIntent = new Intent();
-                returnIntent.putExtra("position", this.listPosition);
-                returnIntent.putExtra("item", this.item);
-                setResult(AppCompatActivity.RESULT_OK, returnIntent);
-
-                finish();
-                return true;
-            }
-
-            return super.onOptionsItemSelected(item);
-        }
-
-
-        private void openBudgetCategories(String category) {
-            // Get the selected period and budget value
-            String selectedPeriod = periodSpinner.getSelectedItem().toString();
-            String budgetValue = budgetEditText.getText().toString();
-
-            // Pass the data to ViewBudget
-            Intent intent = new Intent(Category.this, ViewBudget.class);
-            intent.putExtra("CATEGORY_NAME", category);
-            intent.putExtra("SELECTED_PERIOD", selectedPeriod);
-            intent.putExtra("BUDGET_VALUE", budgetValue);
-            startActivity(intent);
-        }
 
     }
 
