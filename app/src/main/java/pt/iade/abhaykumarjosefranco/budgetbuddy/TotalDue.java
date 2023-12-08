@@ -11,10 +11,17 @@ import android.widget.Spinner;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BillItem;
+
 public class TotalDue extends AppCompatActivity {
 
     private Spinner periodSpinner;
     private EditText budgetEditText;
+
+    protected BillItem item;
+    private BottomNavigationView bottomNavigationView;
+
+    protected int listPosition;
 
     private Button waterbill, electricity, health, education, childcare, mortgage, insurance, loan, taxes, others;
 
@@ -23,6 +30,13 @@ public class TotalDue extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_total_due);
 
+        item = new BillItem(1, "", "", 0);
+
+        // Get the item passed from the previous activity.
+        Intent intent = getIntent();
+        listPosition = intent.getIntExtra("position", -1);
+        item = (BillItem) intent.getSerializableExtra("item");
+
         periodSpinner = findViewById(R.id.spinner);
         budgetEditText = findViewById(R.id.budget_cate_num);
 
@@ -30,7 +44,7 @@ public class TotalDue extends AppCompatActivity {
         waterbill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Water Bill");
+                setBill(waterbill,1);
             }
         });
 
@@ -38,7 +52,7 @@ public class TotalDue extends AppCompatActivity {
         electricity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Electricity");
+                setBill(electricity,2);
             }
         });
 
@@ -46,7 +60,7 @@ public class TotalDue extends AppCompatActivity {
         health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Health");
+                setBill(health,3);
             }
         });
 
@@ -54,7 +68,7 @@ public class TotalDue extends AppCompatActivity {
         education.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Education");
+                setBill(education,4);
             }
         });
 
@@ -62,7 +76,7 @@ public class TotalDue extends AppCompatActivity {
         childcare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Child Care");
+                setBill(childcare,5);
             }
         });
 
@@ -70,7 +84,7 @@ public class TotalDue extends AppCompatActivity {
         mortgage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Mortgage");
+                setBill(mortgage,6);
             }
         });
 
@@ -78,7 +92,7 @@ public class TotalDue extends AppCompatActivity {
         insurance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Insurance");
+                setBill(insurance,7);
             }
         });
 
@@ -86,7 +100,7 @@ public class TotalDue extends AppCompatActivity {
         loan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Loan");
+                setBill(loan, 8);
             }
         });
 
@@ -94,7 +108,7 @@ public class TotalDue extends AppCompatActivity {
         taxes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Taxes");
+                setBill(taxes, 9);
             }
         });
 
@@ -102,21 +116,37 @@ public class TotalDue extends AppCompatActivity {
         others.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBudgetCategories("Others");
+                setBill(others, 10);
             }
         });
     }
 
-    private void openBudgetCategories(String category) {
-        // Get the selected period and budget value
-        String selectedPeriod = periodSpinner.getSelectedItem().toString();
-        String budgetValue = budgetEditText.getText().toString();
+    /**
+     * Updates the contents of the components in the activity according to the object associated
+     * with this class.
+     */
+    protected void populateView() {
+        budgetEditText.setText(item.getBillValue());
 
-        // Pass data to the next activity
-        Intent intent = new Intent(TotalDue.this, ViewTotaldueBudget.class);
-        intent.putExtra("CATEGORY_NAME", category);
-        intent.putExtra("SELECTED_PERIOD", selectedPeriod);
-        intent.putExtra("BUDGET_VALUE", budgetValue);
-        startActivity(intent);
+        String[] periods = getResources().getStringArray(R.array.periods);
+        for (int i = 0; i < periods.length; i++) {
+            if (periods[i].equals(item.getPeriod()))
+                periodSpinner.setSelection(i);
+        }
     }
+
+    /**
+     * Updates the data in the associated object with the information from the UI components.
+     */
+    protected void setBill(Button button, int idType) {
+        item.setBillValue(Integer.parseInt(budgetEditText.getText().toString()));
+        item.setBill(button.getText().toString());
+        item.setPeriod(periodSpinner.getSelectedItem().toString());
+
+        populateView();
+
+        // TODO: set type id of item.
+    }
+
+
 }
