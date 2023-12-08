@@ -6,38 +6,42 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.provider.MediaStore;
+import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class WalletActivity extends AppCompatActivity {
 
-    private Button oldReceiptButton, pictureButton;
+    private Button oldreceipt_button, picture_button;
+
+    private ImageView ImageView01;
+
     private BottomNavigationView bottomNavigationView;
-    protected static final int PERMISSION_REQUEST_CODE = 22;
-    protected static final int CAMERA_PIC_REQUEST = 23;
+
+    protected final static int PERMISSION_REQUEST_CODE = 22;
+    protected final static int CAMERA_PIC_REQUEST = 23;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
 
-        oldReceiptButton = findViewById(R.id.oldreceipt_button);
-        pictureButton = findViewById(R.id.picture_button);
-        pictureButton.setOnClickListener(new View.OnClickListener() {
+        oldreceipt_button = findViewById(R.id.oldreceipt_button);
+        picture_button = findViewById(R.id.picture_button);
+        picture_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
             }
         });
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.wallet);
@@ -61,9 +65,9 @@ public class WalletActivity extends AppCompatActivity {
             return false;
         });
 
-        requestCameraAccess();
+       // requestCameraAccess();
     }
-
+/*
     protected void requestCameraAccess() {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -76,13 +80,10 @@ public class WalletActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAMERA_PIC_REQUEST && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            if (extras != null) {
-                Bitmap image = (Bitmap) extras.get("data");
-                ImageView imageView = findViewById(R.id.ImageView01);
-                imageView.setImageBitmap(image);
-            }
+        if (requestCode == CAMERA_PIC_REQUEST) {
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            ImageView imageview = (ImageView) findViewById(R.id.ImageView01); //sets imageview as the bitmap
+            imageview.setImageBitmap(image);
         }
-    }
+    }*/
 }

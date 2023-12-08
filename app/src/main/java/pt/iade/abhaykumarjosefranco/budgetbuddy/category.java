@@ -10,10 +10,6 @@ import android.widget.Spinner;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
-import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.BudgetItemRowAdapter;
-
-
-// make row_list as templates for challenges, category, bills.
 
 
 public class Category extends AppCompatActivity {
@@ -38,6 +34,9 @@ public class Category extends AppCompatActivity {
         listPosition = intent.getIntExtra("position", -1);
         item = (BudgetItem) intent.getSerializableExtra("item");
 
+        periodSpinner = findViewById(R.id.spinner);
+        budgetEditText = findViewById(R.id.budget_cate_num2);
+
 
         dinningout_button = findViewById(R.id.dinningout_button);
         dinningout_button.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +50,6 @@ public class Category extends AppCompatActivity {
         travel_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 setBudget(travel_button, 2);
             }
         });
@@ -60,7 +58,6 @@ public class Category extends AppCompatActivity {
         subscription_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 setBudget(subscription_button, 3);
             }
         });
@@ -69,7 +66,6 @@ public class Category extends AppCompatActivity {
         shopping_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 setBudget(shopping_button, 4);
             }
         });
@@ -78,7 +74,6 @@ public class Category extends AppCompatActivity {
         leisure_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 setBudget(leisure_button, 5);
             }
         });
@@ -87,7 +82,6 @@ public class Category extends AppCompatActivity {
         personalcare_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 setBudget(personalcare_button, 6);
             }
         });
@@ -96,7 +90,6 @@ public class Category extends AppCompatActivity {
         specialoccassions_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 setBudget(specialoccassions_button, 7);
             }
         });
@@ -105,7 +98,6 @@ public class Category extends AppCompatActivity {
         transportation_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 setBudget(transportation_button, 8);
             }
         });
@@ -114,7 +106,6 @@ public class Category extends AppCompatActivity {
         workexpenses_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 setBudget(workexpenses_button, 9);
             }
         });
@@ -152,16 +143,6 @@ public class Category extends AppCompatActivity {
 
     }
 
-    private void setupComponents() { //TODO: make category a parameter.
-
-        // Get components into properties.
-        periodSpinner = findViewById(R.id.spinner);
-        budgetEditText = findViewById(R.id.budget_cate_num2);
-
-        // Populate the widgets with data from our object.
-        populateView();
-    }
-
     /**
      * Updates the contents of the components in the activity according to the object associated
      * with this class.
@@ -183,6 +164,9 @@ public class Category extends AppCompatActivity {
         item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
         item.setCategory(button.getText().toString());
         item.setPeriod(periodSpinner.getSelectedItem().toString());
+
+        populateView();
+
         // TODO: set type id of item.
     }
 

@@ -118,5 +118,7 @@
     <string name="period_hint">Desired period</string>
     <string name="value_hint">Budget Value</string>
 
+    <string name="bill_hint">Name of the bill here.</string>
+
 
 </resources>

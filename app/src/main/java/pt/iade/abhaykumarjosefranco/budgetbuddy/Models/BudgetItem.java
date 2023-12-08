@@ -71,7 +71,6 @@ public class BudgetItem implements Serializable {
      *
      * @return Object with data from our web server.
      */
-    //TODO : ????????????
     public static BudgetItem GetById(int id) {
         // TODO: Fetch the item from the web server using its id and populate the object.
 

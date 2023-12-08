@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dblue"
+    android:background="@color/mywhite"
     >
 
 
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="412dp"
         android:text="@string/set_count_bills"
-        android:textColor="@color/lblue"
+        android:textColor="@color/dblue"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,15 +120,15 @@
 
             <Button
                 android:id="@+id/taxes"
-                android:layout_width="125dp"
-                android:layout_height="62dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:text="@string/button_taxes" />
 
             <Button
                 android:id="@+id/others"
-                android:layout_width="132dp"
-                android:layout_height="61dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:text="@string/button_others" />
         </TableRow>
@@ -141,7 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"
         android:text="@string/set_budget"
-        android:textColor="@color/lblue"
+        android:textColor="@color/dblue"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/countbills"

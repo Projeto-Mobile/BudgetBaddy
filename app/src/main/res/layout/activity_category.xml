@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dblue"
+    android:background="@color/mywhite"
     tools:context=".Category">
 
 
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="@string/set_budget"
-        android:textColor="@color/lblue"
+        android:textColor="@color/dblue"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,8 +29,9 @@
         android:layout_marginBottom="536dp"
         android:ems="10"
         android:hint="@string/enter_budget"
+        android:textColorHint="@color/lightgrey"
         android:inputType="number"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -54,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="272dp"
         android:text="@string/categories"
-        android:textColor="@color/lblue"
+        android:textColor="@color/dblue"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
