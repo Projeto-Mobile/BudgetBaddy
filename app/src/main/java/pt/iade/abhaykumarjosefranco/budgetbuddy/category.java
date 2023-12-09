@@ -161,6 +161,8 @@ public class Category extends AppCompatActivity {
      * Updates the data in the associated object with the information from the UI components.
      */
     protected void setBudget(Button button, int idType) {
+
+
         item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
         item.setCategory(button.getText().toString());
         item.setPeriod(periodSpinner.getSelectedItem().toString());

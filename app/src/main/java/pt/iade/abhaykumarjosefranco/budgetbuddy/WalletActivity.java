@@ -65,9 +65,9 @@ public class WalletActivity extends AppCompatActivity {
             return false;
         });
 
-       // requestCameraAccess();
+       requestCameraAccess();
     }
-/*
+
     protected void requestCameraAccess() {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -85,5 +85,5 @@ public class WalletActivity extends AppCompatActivity {
             ImageView imageview = (ImageView) findViewById(R.id.ImageView01); //sets imageview as the bitmap
             imageview.setImageBitmap(image);
         }
-    }*/
+    }
 }
