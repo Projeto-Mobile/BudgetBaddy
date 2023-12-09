@@ -19,6 +19,15 @@ public class OverviewActivity extends AppCompatActivity {
     private TextView signupNameTextView;
 
 
+    //TODO : show the name of  highest time to the lowest for the challenges , average time for the challenges . and also show the value for each challenge.
+
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +43,7 @@ public class OverviewActivity extends AppCompatActivity {
         });
 
         totaldue_button = findViewById(R.id.total_due_button);
+
         totaldue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
