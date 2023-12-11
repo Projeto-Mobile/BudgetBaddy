@@ -77,7 +77,7 @@ public class WalletActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_PIC_REQUEST) {
@@ -85,5 +85,5 @@ public class WalletActivity extends AppCompatActivity {
             ImageView imageview = (ImageView) findViewById(R.id.ImageView01); //sets imageview as the bitmap
             imageview.setImageBitmap(image);
         }
-    }
+    }*/
 }

@@ -27,7 +27,7 @@ public class ViewBudget extends AppCompatActivity {
 
         itemsList = BudgetItem.List();
 
-        setupComponents();
+        setBudget();
 
     }
 
@@ -67,7 +67,7 @@ public class ViewBudget extends AppCompatActivity {
     /**
      * Sets up the components and event handlers in the activity.
      */
-    private void setupComponents() {
+    private void setBudget() {
 
         // Set up row adapter with our items list.
         itemRowAdapter = new BudgetItemRowAdapter(this, itemsList);
