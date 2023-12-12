@@ -68,6 +68,8 @@
     <string name="hours_label">Hours</string>
     <string name="challenges_title">Challenges</string>
     <string name="countdown_text">Countdown</string>
+    <string name="challenge_time_hint">Countdown Time</string>
+
 
 
     <string name="total_savings">Total Savings</string>

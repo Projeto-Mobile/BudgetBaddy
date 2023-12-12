@@ -16,7 +16,9 @@ import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.BudgetItemRowAdapter;
 public class ViewBudget extends AppCompatActivity {
 
     private static final int EDITOR_ACTIVITY_RETURN_ID = 1;
+    protected int listPosition;
 
+    protected BudgetItem item;
     protected RecyclerView itemsListView;
     protected BudgetItemRowAdapter itemRowAdapter;
     protected ArrayList<BudgetItem> itemsList;
@@ -25,10 +27,14 @@ public class ViewBudget extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_budget);
 
-        itemsList = BudgetItem.List();
 
-        setBudget();
+        item = new BudgetItem(1, "", "", 0);
 
+        // Get the item passed from the previous activity.
+        Intent intent = getIntent();
+        listPosition = intent.getIntExtra("position", -1);
+        item = (BudgetItem) intent.getSerializableExtra("item");
+        
     }
 
     /**

@@ -22,6 +22,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.128" />
 
+    <TextView
+        android:id="@+id/countdownTextView"
+        android:layout_width="194dp"
+        android:layout_height="41dp"
+        android:gravity="center"
+        android:hint="@string/challenge_time_hint"
+        android:textColorHint="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/start_challenge_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_name_challenge"
+        app:layout_constraintVertical_bias="0.304" />
+
     <Button
         android:id="@+id/start_challenge_button"
         android:layout_width="108dp"

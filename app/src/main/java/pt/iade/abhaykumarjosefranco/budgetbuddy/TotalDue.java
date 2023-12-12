@@ -44,7 +44,7 @@ public class TotalDue extends AppCompatActivity {
         waterbill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setBill(waterbill,1);
+                setBill(waterbill,    1);
             }
         });
 
