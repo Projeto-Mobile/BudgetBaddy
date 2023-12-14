@@ -63,9 +63,6 @@
     <string name="countdown_message">Let the countdown begin!</string>
     <string name="challenge_description">Challenge yourself to a mini adventure!</string>
     <string name="new_challenge">Begin a new challenge!!</string>
-    <string name="minutes_label">Minutes</string>
-    <string name="days_label">Days</string>
-    <string name="hours_label">Hours</string>
     <string name="challenges_title">Challenges</string>
     <string name="countdown_text">Countdown</string>
     <string name="challenge_time_hint">Countdown Time</string>

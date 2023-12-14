@@ -12,61 +12,60 @@
         android:id="@+id/set_budget_categorie_view2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginBottom="188dp"
         android:text="@string/set_budget"
         android:textColor="@color/dblue"
         android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/budget_cate_num2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="536dp"
+        android:layout_marginBottom="60dp"
         android:ems="10"
         android:hint="@string/enter_budget"
-        android:textColorHint="@color/lightgrey"
         android:inputType="number"
+        android:textColorHint="@color/lightgrey"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="262dp"
         android:layout_height="54dp"
-        android:entries="@array/periods"
-        app:layout_constraintBottom_toTopOf="@+id/budget_cate_num2"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="120dp"
         android:background="@color/blue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842" />
-
+        android:entries="@array/periods"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="272dp"
+        android:layout_marginTop="40dp"
         android:text="@string/categories"
         android:textColor="@color/dblue"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
-        android:layout_width="374dp"
-        android:layout_height="391dp"
+        android:id="@+id/tableLayout"
+        android:layout_width="368dp"
+        android:layout_height="297dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
@@ -75,10 +74,10 @@
         android:stretchColumns="0,1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categories"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.105">
 
         <TableRow
             android:layout_width="match_parent"
@@ -88,13 +87,15 @@
                 android:id="@+id/shopping_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/shopping" />
+                android:text="@string/shopping"
+                android:layout_marginEnd="4dp"/>
 
             <Button
                 android:id="@+id/subscription_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/subscription" />
+                android:text="@string/subscription"
+                android:layout_marginStart="4dp"/>
         </TableRow>
 
         <TableRow
@@ -105,13 +106,15 @@
                 android:id="@+id/travel_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/travel" />
+                android:text="@string/travel"
+                android:layout_marginEnd="4dp"/>
 
             <Button
                 android:id="@+id/leisure_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/leisure" />
+                android:text="@string/leisure"
+                android:layout_marginStart="4dp"/>
         </TableRow>
 
         <TableRow
@@ -122,13 +125,15 @@
                 android:id="@+id/dinningout_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dining_out" />
+                android:text="@string/dining_out"
+                android:layout_marginEnd="4dp"/>
 
             <Button
                 android:id="@+id/personalcare_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/personal_care" />
+                android:text="@string/personal_care"
+                android:layout_marginStart="4dp"/>
         </TableRow>
 
         <TableRow
@@ -139,13 +144,15 @@
                 android:id="@+id/specialoccassions_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/special_occasions" />
+                android:text="@string/special_occasions"
+                android:layout_marginEnd="4dp"/>
 
             <Button
                 android:id="@+id/transportation_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/transportation" />
+                android:text="@string/transportation"
+                android:layout_marginStart="4dp"/>
         </TableRow>
 
         <TableRow
@@ -156,17 +163,18 @@
                 android:id="@+id/workexpenses_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/work_expenses" />
+                android:text="@string/work_expenses"
+                android:layout_marginEnd="4dp"/>
 
             <Button
                 android:id="@+id/others_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/others" />
+                android:text="@string/others"
+                android:layout_marginStart="4dp"/>
 
         </TableRow>
     </TableLayout>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -176,7 +184,6 @@
         android:background="@drawable/bottom_background"
         app:backgroundTint="@color/dblue"
         app:itemIconTint="@android:color/white"
-        app:itemTextColor="@color/lblue"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

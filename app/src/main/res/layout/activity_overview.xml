@@ -24,14 +24,14 @@
         android:id="@+id/totalexpense_button"
         android:layout_width="153dp"
         android:layout_height="140dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="92dp"
         android:background="@drawable/img"
         android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
         android:drawableTint="@color/white"
         android:text="@string/total_expenses"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,8 +47,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.815"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/overview_view"
-        app:layout_constraintVertical_bias="0.006" />
+        app:layout_constraintTop_toBottomOf="@+id/overview_view" />
+
+    <Button
+        android:id="@+id/total_saving_button"
+        android:layout_width="150dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/img_1"
+        android:drawableLeft="@drawable/baseline_add_24"
+        android:drawableTint="@color/white"
+        android:text="@string/total_saving"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.831"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_due_button" />
 
     <TextView
         android:id="@+id/stat_view"
@@ -83,35 +96,26 @@
         app:layout_constraintStart_toEndOf="@+id/overview_view"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/total_saving_button"
-        android:layout_width="150dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/img_1"
-        android:drawableLeft="@drawable/baseline_add_24"
-        android:drawableTint="@color/white"
-        android:text="@string/total_saving"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.831"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/total_due_button" />
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="376dp"
+        android:background="@drawable/img_3"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp"
-        android:background="@drawable/img_3">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/weekly_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/weekly" />
 
         <Button
@@ -119,13 +123,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/monthly" />
 
         <Button
             android:id="@+id/yearly_button"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="6dp"
             android:text="@string/yearly" />
     </LinearLayout>
 

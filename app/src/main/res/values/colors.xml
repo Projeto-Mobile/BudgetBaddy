@@ -15,4 +15,21 @@
     <color name="mywhite">#FEFEFA</color>
 
 
+
+    <color name="shopping">#FEFEFA</color>
+    <color name="subscription">#FEFEFA</color>
+    <color name="travel">#709078</color>
+    <color name="leisure">#FEFEFA</color>
+    <color name="dinningout">#FEFEFA</color>
+    <color name="personalcare">#FEFEFA</color>
+    <color name="specialoccasion">#FEFEFA</color>
+    <color name="transportation">#FEFEFA</color>
+    <color name="workexpenses">#FEFEFA</color>
+    <color name="others">#FEFEFA</color>
+
+
+
+
+
+
 </resources>

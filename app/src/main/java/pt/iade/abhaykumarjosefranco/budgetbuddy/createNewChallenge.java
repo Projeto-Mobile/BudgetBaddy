@@ -30,7 +30,7 @@ public class createNewChallenge extends AppCompatActivity {
 
                 // make the input time dynamic
 
-                new CountDownTimer(50000, 1000) {
+                new CountDownTimer(50000, 1000) { //50 seconds
                     public void onTick(long millisUntilFinished) {
 
                         NumberFormat f = new DecimalFormat("00");
