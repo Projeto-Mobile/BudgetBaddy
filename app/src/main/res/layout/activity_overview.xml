@@ -26,7 +26,7 @@
         android:layout_height="140dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="92dp"
-        android:background="@drawable/img"
+        android:background="@drawable/darkbluebox"
         android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
         android:drawableTint="@color/white"
         android:text="@string/total_expenses"
@@ -97,14 +97,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="376dp"
         android:background="@drawable/img_3"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -113,28 +113,34 @@
             android:id="@+id/weekly_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="6dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/weekly" />
+            android:layout_weight="1"
+            android:backgroundTint="@color/mywhite"
+            android:text="@string/weekly"
+            android:textColor="@color/dblue" />
 
         <Button
             android:id="@+id/monthly_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/monthly" />
+            android:layout_weight="1"
+            android:backgroundTint="@color/mywhite"
+            android:text="@string/monthly"
+            android:textColor="@color/dblue" />
 
         <Button
             android:id="@+id/yearly_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="6dp"
-            android:text="@string/yearly" />
+            android:layout_weight="1"
+            android:backgroundTint="@color/mywhite"
+            android:text="@string/yearly"
+            android:textColor="@color/dblue" />
     </LinearLayout>
 
 
