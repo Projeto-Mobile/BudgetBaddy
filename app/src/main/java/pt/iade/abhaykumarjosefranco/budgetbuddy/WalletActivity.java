@@ -10,16 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import android.provider.MediaStore;
-import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class WalletActivity extends AppCompatActivity {
 
     private Button oldreceipt_button, picture_button;
-
-    private ImageView ImageView01;
 
     private BottomNavigationView bottomNavigationView;
 
@@ -82,8 +78,7 @@ public class WalletActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_PIC_REQUEST) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
-            ImageView imageview = (ImageView) findViewById(R.id.ImageView01); //sets imageview as the bitmap
-            imageview.setImageBitmap(image);
+            // TODO: Send image to web server.
         }
     }
 }

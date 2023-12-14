@@ -16,9 +16,7 @@ import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.BudgetItemRowAdapter;
 public class ViewBudget extends AppCompatActivity {
 
     private static final int EDITOR_ACTIVITY_RETURN_ID = 1;
-    protected int listPosition;
 
-    protected BudgetItem item;
     protected RecyclerView itemsListView;
     protected BudgetItemRowAdapter itemRowAdapter;
     protected ArrayList<BudgetItem> itemsList;
@@ -28,13 +26,12 @@ public class ViewBudget extends AppCompatActivity {
         setContentView(R.layout.activity_view_budget);
 
 
-        item = new BudgetItem(1, "", "", 0);
+        itemsList = BudgetItem.budgetItems;
 
         // Get the item passed from the previous activity.
         Intent intent = getIntent();
-        listPosition = intent.getIntExtra("position", -1);
-        item = (BudgetItem) intent.getSerializableExtra("item");
-        
+        setupComponents();
+
     }
 
     /**
@@ -73,13 +70,14 @@ public class ViewBudget extends AppCompatActivity {
     /**
      * Sets up the components and event handlers in the activity.
      */
-    private void setBudget() {
+    private void setupComponents() {
 
         // Set up row adapter with our items list.
         itemRowAdapter = new BudgetItemRowAdapter(this, itemsList);
         itemRowAdapter.setOnClickListener(new BudgetItemRowAdapter.ItemClickListener() {
 
             public void onItemClick(View view, int position) {
+
                 // Place our clicked item object in the intent to send to the other activity.
                 Intent intent = new Intent(ViewBudget.this, Category.class);
                 intent.putExtra("position", position);

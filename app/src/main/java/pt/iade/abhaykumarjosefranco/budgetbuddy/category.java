@@ -9,16 +9,18 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 
 
 public class Category extends AppCompatActivity {
-
-    protected BudgetItem item;
     private BottomNavigationView bottomNavigationView;
     private Spinner periodSpinner;
     private EditText budgetEditText;
-    protected int listPosition;
+
+    protected ArrayList<BudgetItem> itemsList;
+
     private Button dinningout_button, travel_button, subscription_button, shopping_button, leisure_button, personalcare_button, specialoccassions_button, transportation_button, workexpenses_button, others_button;
 
 
@@ -27,12 +29,7 @@ public class Category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        item = new BudgetItem(1, "", "", 0);
-
-        // Get the item passed from the previous activity.
-        Intent intent = getIntent();
-        listPosition = intent.getIntExtra("position", -1);
-        item = (BudgetItem) intent.getSerializableExtra("item");
+        itemsList = BudgetItem.List();
 
         periodSpinner = findViewById(R.id.spinner);
         budgetEditText = findViewById(R.id.budget_cate_num2);
@@ -148,13 +145,17 @@ public class Category extends AppCompatActivity {
      * with this class.
      */
     protected void populateView() {
-        budgetEditText.setText(item.getBudgetValue());
+
+        // TODO: Get item from list and use it:
+        /*
+        budgetEditText.setText(String.valueOf(item.getBudgetValue()));
 
         String[] periods = getResources().getStringArray(R.array.periods);
         for (int i = 0; i < periods.length; i++) {
             if (periods[i].equals(item.getPeriod()))
                 periodSpinner.setSelection(i);
         }
+        */
     }
 
     /**
@@ -163,12 +164,25 @@ public class Category extends AppCompatActivity {
     protected void setBudget(Button button, int idType) {
 
 
-        item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
-        item.setCategory(button.getText().toString());
-        item.setPeriod(periodSpinner.getSelectedItem().toString());
 
-        populateView();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Category.this, ViewBudget.class);
 
+                BudgetItem item = new BudgetItem(-1, "", "", 0);
+                item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
+                item.setCategory(button.getText().toString());
+                item.setPeriod(periodSpinner.getSelectedItem().toString());
+                item.save();
+                BudgetItem.budgetItems.add(item);
+
+                populateView();
+                startActivity(intent);
+            }
+        });
+
+        //toast.makeset
         // TODO: set type id of item.
     }
 

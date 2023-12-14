@@ -12,6 +12,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BillItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.BillItemRowAdapter;
 
 public class ViewTotaldueBudget extends AppCompatActivity {
@@ -22,6 +23,8 @@ public class ViewTotaldueBudget extends AppCompatActivity {
     protected BillItemRowAdapter itemRowAdapter;
     protected ArrayList<BillItem> itemsList;
 
+    protected BillItem item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +32,11 @@ public class ViewTotaldueBudget extends AppCompatActivity {
 
         itemsList = BillItem.List();
 
-        setupComponents();
+        // Get the item passed from the previous activity.
+        Intent intent = getIntent();
+        int listPosition = intent.getIntExtra("position", -1);
+        item = (BillItem) intent.getSerializableExtra("item");
+
     }
 
     /**
@@ -68,12 +75,14 @@ public class ViewTotaldueBudget extends AppCompatActivity {
     /**
      * Sets up the components and event handlers in the activity.
      */
-    private void setupComponents() {
+    private void setBill() {
         // Set up row adapter with our items list.
         itemRowAdapter = new BillItemRowAdapter(this, itemsList);
         itemRowAdapter.setOnClickListener(new BillItemRowAdapter.ItemClickListener() {
 
             public void onItemClick(View view, int position) {
+
+
                 // Place our clicked item object in the intent to send to the other activity.
                 Intent intent = new Intent(ViewTotaldueBudget.this, TotalDue.class);
                 intent.putExtra("position", position);

@@ -143,21 +143,19 @@
         android:id="@+id/set_budget_category_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="72dp"
         android:text="@string/set_budget"
         android:textColor="@color/dblue"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/budget_cate_num"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/budget_cate_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="528dp"
+        android:layout_marginTop="460dp"
         android:ems="10"
         android:hint="@string/enter_budget"
         android:inputType="number"
@@ -166,6 +164,31 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/archeive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
+        android:text="@string/archeive"
+        android:textColor="@color/dblue"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/archeive_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="@string/button_bills"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -189,7 +212,7 @@
         android:id="@+id/spinner"
         android:layout_width="262dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginBottom="192dp"
         android:background="@color/blue"
         android:entries="@array/periods"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"

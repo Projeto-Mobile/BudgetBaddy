@@ -12,10 +12,8 @@ public class BudgetItem implements Serializable {
     private String period;
     private int budgetValue;
 
-
-    //TODO : Associate user ID, budget ID, type budget ID
-
-
+    // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
+    public static ArrayList<BudgetItem> budgetItems;
 
     public BudgetItem() {
         this(0, "", "", 0);
@@ -26,6 +24,10 @@ public class BudgetItem implements Serializable {
         this.category = category;
         this.period = period;
         this.budgetValue = budgetValue;
+
+        if (budgetItems == null) {
+            budgetItems = new ArrayList<BudgetItem>();
+        }
     }
 
     /*public static BudgetItem GetById(int id) {
@@ -34,12 +36,7 @@ public class BudgetItem implements Serializable {
     }*/
 
     public static ArrayList<BudgetItem> List() {
-        ArrayList<BudgetItem> items = new ArrayList<BudgetItem>();
-
-        items.add(new BudgetItem(1,"","",0));
-
-
-        return items;
+        return budgetItems;
     }
 
     public static BudgetItem createNewBudgetItem(String category, String period, int budgetValue) {
@@ -59,6 +56,7 @@ public class BudgetItem implements Serializable {
 
             // Simulate doing an insert and getting an ID back from the web server.
             id = new Random().nextInt(1000) + 1;
+            budgetItems.add(this);
         } else {
             // This is an update to an existing object and must use UPDATE in the database.
         }

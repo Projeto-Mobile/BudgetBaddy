@@ -60,7 +60,7 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
 
         holder.namecategory.setText(item.getCategory());
         holder.nameperiod.setText(item.getPeriod());
-        holder.thevalue.setText(item.getBudgetValue());
+        holder.thevalue.setText(String.valueOf(item.getBudgetValue()));
     }
 
     /**

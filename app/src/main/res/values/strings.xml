@@ -42,9 +42,11 @@
     <string name="total_expenses">Total Expenses</string>
     <string name="total_due_overview">Total Due</string>
     <string name="stat">Stats</string>
+    <string name="archeive">Archeive</string>
     <string name="weekly">Weekly</string>
     <string name="monthly">Monthly</string>
     <string name="yearly">Yearly</string>
+    <string name="button_bills">Bills</string>
     <string name="total_saving">Total Saving</string>
 
     <string name="old_receipts">Old receipts</string>

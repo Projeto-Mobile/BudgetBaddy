@@ -32,11 +32,6 @@ public class TotalDue extends AppCompatActivity {
 
         item = new BillItem(1, "", "", 0);
 
-        // Get the item passed from the previous activity.
-        Intent intent = getIntent();
-        listPosition = intent.getIntExtra("position", -1);
-        item = (BillItem) intent.getSerializableExtra("item");
-
         periodSpinner = findViewById(R.id.spinner);
         budgetEditText = findViewById(R.id.budget_cate_num);
 
@@ -126,6 +121,7 @@ public class TotalDue extends AppCompatActivity {
      * with this class.
      */
     protected void populateView() {
+
         budgetEditText.setText(item.getBillValue());
 
         String[] periods = getResources().getStringArray(R.array.periods);
@@ -139,13 +135,20 @@ public class TotalDue extends AppCompatActivity {
      * Updates the data in the associated object with the information from the UI components.
      */
     protected void setBill(Button button, int idType) {
-        item.setBillValue(Integer.parseInt(budgetEditText.getText().toString()));
-        item.setBill(button.getText().toString());
-        item.setPeriod(periodSpinner.getSelectedItem().toString());
 
-        populateView();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TotalDue.this, ViewTotaldueBudget.class));
 
-        // TODO: set type id of item.
+                item.setBillValue(Integer.parseInt(budgetEditText.getText().toString()));
+                item.setBill(button.getText().toString());
+                item.setPeriod(periodSpinner.getSelectedItem().toString());
+
+                populateView();
+            }
+        });
+
     }
 
 

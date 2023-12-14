@@ -12,10 +12,6 @@ public class Community extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
 
-        TextView signupNameTextView = findViewById(R.id.signupNameTextview);
 
-        String nameFromSignup = "signup_name";
-
-        signupNameTextView.setText("Hi " + nameFromSignup);
     }
 }
