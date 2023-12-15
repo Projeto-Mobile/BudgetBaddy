@@ -30,12 +30,12 @@ public class ViewTotaldueBudget extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_totaldue_budget);
 
-        itemsList = BillItem.List();
+
+        itemsList = BillItem.billItems;
 
         // Get the item passed from the previous activity.
         Intent intent = getIntent();
-        int listPosition = intent.getIntExtra("position", -1);
-        item = (BillItem) intent.getSerializableExtra("item");
+        setupComponents();
 
     }
 
@@ -75,7 +75,7 @@ public class ViewTotaldueBudget extends AppCompatActivity {
     /**
      * Sets up the components and event handlers in the activity.
      */
-    private void setBill() {
+    private void setupComponents() {
         // Set up row adapter with our items list.
         itemRowAdapter = new BillItemRowAdapter(this, itemsList);
         itemRowAdapter.setOnClickListener(new BillItemRowAdapter.ItemClickListener() {

@@ -163,8 +163,6 @@ public class Category extends AppCompatActivity {
      */
     protected void setBudget(Button button, int idType) {
 
-
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

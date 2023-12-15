@@ -11,17 +11,20 @@ import android.widget.Spinner;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BillItem;
 
 public class TotalDue extends AppCompatActivity {
 
     private Spinner periodSpinner;
-    private EditText budgetEditText;
+    private EditText billEditText;
 
     protected BillItem item;
+
     private BottomNavigationView bottomNavigationView;
 
-    protected int listPosition;
+    protected ArrayList<BillItem> itemsList;
 
     private Button waterbill, electricity, health, education, childcare, mortgage, insurance, loan, taxes, others;
 
@@ -30,10 +33,12 @@ public class TotalDue extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_total_due);
 
-        item = new BillItem(1, "", "", 0);
-
         periodSpinner = findViewById(R.id.spinner);
-        budgetEditText = findViewById(R.id.budget_cate_num);
+        billEditText = findViewById(R.id.budget_cate_num);
+
+        itemsList = BillItem.List();
+
+
 
         waterbill = findViewById(R.id.waterbill);
         waterbill.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +119,33 @@ public class TotalDue extends AppCompatActivity {
                 setBill(others, 10);
             }
         });
+
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.add);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), OverviewActivity.class));
+                finish();
+                return true;
+            } else if (item.getItemId() == R.id.wallet) {
+                startActivity(new Intent(getApplicationContext(), WalletActivity.class));
+                finish();
+                return true;
+            } else if (item.getItemId() == R.id.add) {
+                return true;
+            } else if (item.getItemId() == R.id.profile) {
+                startActivity(new Intent(getApplicationContext(), Profile.class));
+                finish();
+                return true;
+            }
+            return false;
+        });
+
     }
+
+
 
     /**
      * Updates the contents of the components in the activity according to the object associated
@@ -122,13 +153,13 @@ public class TotalDue extends AppCompatActivity {
      */
     protected void populateView() {
 
-        budgetEditText.setText(item.getBillValue());
+        /*budgetEditText.setText(item.getBillValue());
 
         String[] periods = getResources().getStringArray(R.array.periods);
         for (int i = 0; i < periods.length; i++) {
             if (periods[i].equals(item.getPeriod()))
                 periodSpinner.setSelection(i);
-        }
+        }*/
     }
 
     /**
@@ -139,17 +170,22 @@ public class TotalDue extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TotalDue.this, ViewTotaldueBudget.class));
+                Intent intent = new Intent(TotalDue.this, ViewTotaldueBudget.class);
 
-                item.setBillValue(Integer.parseInt(budgetEditText.getText().toString()));
+
+                BillItem item = new BillItem(-1, "", "", 0);
+
+                item.setBillValue(Integer.parseInt(billEditText.getText().toString()));
                 item.setBill(button.getText().toString());
                 item.setPeriod(periodSpinner.getSelectedItem().toString());
+                item.save();
+                BillItem.billItems.add(item);
 
                 populateView();
+                startActivity(intent);
+
             }
         });
 
     }
-
-
 }

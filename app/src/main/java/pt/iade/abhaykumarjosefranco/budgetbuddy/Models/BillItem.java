@@ -12,7 +12,7 @@ public class BillItem implements Serializable {
     private String bill;
     private String period;
     private int billValue;
-
+    public static ArrayList<BillItem> billItems;
 
     //TODO : Associate user ID, budget ID, type budget ID
 
@@ -27,20 +27,20 @@ public class BillItem implements Serializable {
         this.bill = bill;
         this.period = period;
         this.billValue = billValue;
+
+        if (billItems == null) {
+            billItems = new ArrayList<BillItem>();
+        }
     }
+
 
     /*public static BudgetItem GetById(int id) {
         // TODO: Fetch the item using its id and populate the object.
         return new BudgetItem(id, "", "", 0);
     }*/
-
     public static ArrayList<BillItem> List() {
-        ArrayList<BillItem> items = new ArrayList<BillItem>();
 
-        items.add(new BillItem(1,"","",0));
-
-
-        return items;
+        return billItems;
     }
 
     public static BillItem createNewBudgetItem(String bill, String period, int billValue) {
@@ -60,6 +60,7 @@ public class BillItem implements Serializable {
 
             // Simulate doing an insert and getting an ID back from the web server.
             id = new Random().nextInt(1000) + 1;
+            billItems.add(this);
         } else {
             // This is an update to an existing object and must use UPDATE in the database.
         }
