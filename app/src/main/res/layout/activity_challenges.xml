@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dblue"
+    android:background="@color/mywhite"
     tools:context=".ChallengesActivity">
 
 
@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:padding="8dp"
         android:text="@string/total_savings"
-        android:textColor="@color/pblue"
+        android:textColor="@color/dblue"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/create_challenges_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,22 +24,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.15" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/challengeRV"
+        android:layout_width="381dp"
+        android:layout_height="407dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.844" />
+
     <TextView
         android:id="@+id/takeon_Text"
-        android:layout_width="340dp"
-        android:layout_height="72dp"
+        android:layout_width="375dp"
+        android:layout_height="52dp"
         android:layout_gravity="center"
         android:padding="8dp"
         android:text="@string/take_on_challenges"
         android:textAlignment="center"
-        android:textColor="@color/pblue"
-        android:textSize="18sp"
+        android:textColor="@color/dblue"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/create_challenges_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/create_challenges_button"
@@ -47,11 +57,13 @@
         android:layout_height="wrap_content"
         android:text="@string/create_challenges"
         android:textSize="18sp"
+        android:backgroundTint="@color/dblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

@@ -23,8 +23,6 @@ public class ViewTotaldueBudget extends AppCompatActivity {
     protected BillItemRowAdapter itemRowAdapter;
     protected ArrayList<BillItem> itemsList;
 
-    protected BillItem item;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

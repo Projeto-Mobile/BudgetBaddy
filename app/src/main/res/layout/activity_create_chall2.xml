@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/dblue"
+    android:background="@color/mywhite"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,8 +14,8 @@
         android:layout_marginTop="208dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/challenge_hint"
-        android:textColor="@color/blue"
+        android:hint="@string/challenge_hint"
+        android:textColorHint="@color/lightgrey"
         app:layout_constraintBottom_toTopOf="@+id/start_challenge_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,13 +28,13 @@
         android:layout_height="41dp"
         android:gravity="center"
         android:hint="@string/challenge_time_hint"
-        android:textColorHint="@color/blue"
+        android:textColorHint="@color/lightgrey"
         app:layout_constraintBottom_toTopOf="@+id/start_challenge_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_name_challenge"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/start_challenge_button"
@@ -44,25 +44,25 @@
         android:text="@string/start_button_text"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:backgroundTint="@color/brightblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sentence_challenge_view2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.869" />
 
     <TextView
         android:id="@+id/sentence_challenge_view3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/countdown_message"
-        android:textColor="@color/lblue"
+        android:textColor="@color/dblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.643" />
+        app:layout_constraintVertical_bias="0.622" />
 
     <TextView
         android:id="@+id/sentence_challenge_view"
@@ -70,28 +70,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
         android:text="@string/challenge_description"
-        android:textColor="@color/lblue"
+        android:textColor="@color/dblue"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/sentence_challenge_view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
 
-    <TextView
-        android:id="@+id/sentence_challenge_view2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
-        android:text="@string/new_challenge"
-        android:textColor="@color/lblue"
-        app:layout_constraintBottom_toTopOf="@+id/sentence_challenge_view3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/challengeView"
@@ -99,7 +86,7 @@
         android:layout_height="24dp"
         android:layout_marginTop="48dp"
         android:text="@string/challenges_title"
-        android:textColor="@color/lblue"
+        android:textColor="@color/dblue"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/sentence_challenge_view"
