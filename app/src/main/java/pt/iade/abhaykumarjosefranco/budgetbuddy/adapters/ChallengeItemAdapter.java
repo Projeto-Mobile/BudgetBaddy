@@ -47,9 +47,9 @@ public class ChallengeItemAdapter extends RecyclerView.Adapter<ChallengeItemAdap
      * @return Instantiated row layout.
      */
     @Override
-    public ChallengeItemAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.row_budget_item, parent, false);
-        return new ChallengeItemAdapter().ViewHolder(view);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = inflater.inflate(R.layout.row_challenge_item, parent, false);
+        return new ViewHolder(view);
     }
 
     /**
@@ -60,8 +60,7 @@ public class ChallengeItemAdapter extends RecyclerView.Adapter<ChallengeItemAdap
      * @param position The position of the item within the adapter's data set.
      */
     //TODO: ID ?????
-    @Override
-    public void onBindViewHolder(BudgetItemRowAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ChallengeItemAdapter.ViewHolder holder, int position) {
         ChallengeItem item = items.get(position);
 
         holder.namechallenge.setText(item.getChallenge());
