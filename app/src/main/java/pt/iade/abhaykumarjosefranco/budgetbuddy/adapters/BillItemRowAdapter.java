@@ -61,7 +61,8 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
 
         holder.namebill.setText(item.getBill());
         holder.nameperiod.setText(item.getPeriod());
-        holder.values.setText(item.getBillValue());
+        holder.values.setText(String.valueOf(item.getBillValue()));
+
     }
 
     /**

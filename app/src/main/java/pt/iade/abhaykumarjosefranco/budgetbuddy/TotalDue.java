@@ -19,13 +19,8 @@ public class TotalDue extends AppCompatActivity {
 
     private Spinner periodSpinner;
     private EditText billEditText;
-
-    protected BillItem item;
-
     private BottomNavigationView bottomNavigationView;
-
     protected ArrayList<BillItem> itemsList;
-
     private Button waterbill, electricity, health, education, childcare, mortgage, insurance, loan, taxes, others;
 
     @Override
@@ -174,7 +169,6 @@ public class TotalDue extends AppCompatActivity {
 
 
                 BillItem item = new BillItem(-1, "", "", 0);
-
                 item.setBillValue(Integer.parseInt(billEditText.getText().toString()));
                 item.setBill(button.getText().toString());
                 item.setPeriod(periodSpinner.getSelectedItem().toString());

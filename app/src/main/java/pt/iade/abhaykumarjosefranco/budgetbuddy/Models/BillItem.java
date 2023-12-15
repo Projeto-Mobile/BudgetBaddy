@@ -39,7 +39,6 @@ public class BillItem implements Serializable {
         return new BudgetItem(id, "", "", 0);
     }*/
     public static ArrayList<BillItem> List() {
-
         return billItems;
     }
 

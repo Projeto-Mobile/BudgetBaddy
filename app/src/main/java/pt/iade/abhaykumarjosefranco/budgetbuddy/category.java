@@ -18,9 +18,7 @@ public class Category extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Spinner periodSpinner;
     private EditText budgetEditText;
-
     protected ArrayList<BudgetItem> itemsList;
-
     private Button dinningout_button, travel_button, subscription_button, shopping_button, leisure_button, personalcare_button, specialoccassions_button, transportation_button, workexpenses_button, others_button;
 
 
