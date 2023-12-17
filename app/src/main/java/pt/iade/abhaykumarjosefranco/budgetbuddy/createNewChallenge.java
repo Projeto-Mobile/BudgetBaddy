@@ -38,7 +38,17 @@ public class createNewChallenge extends AppCompatActivity {
                 Intent intent = new Intent(createNewChallenge.this, ChallengesActivity.class);
 
                 ChallengeItem item = new ChallengeItem(-1, "", "");
-                item.setPeriod(Integer.parseInt(textView.getText().toString()));
+
+
+
+                //item.setPeriod(Integer.parseInt(textView.getText().toString()));
+                item.setPeriod(textView.getText().toString());
+
+
+
+
+
+
                 item.setChallenge(challengeEditText.getText().toString());
                 item.save();
                 ChallengeItem.challengeItems.add(item);
