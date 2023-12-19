@@ -23,15 +23,15 @@ public class ChallengesActivity extends AppCompatActivity {
     protected ChallengeItemAdapter itemRowAdapter;
     protected ArrayList<ChallengeItem> itemsList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenges);
 
-        itemsList = ChallengeItem.challengeItems;
-
-        // Get the item passed from the previous activity.
         Intent intent = getIntent();
+        //itemsList = ChallengeItem.challengeItems;
+        itemsList = new ArrayList<>();
         setupComponents();
 
         create_challenges_button = findViewById(R.id.create_challenges_button);
@@ -44,13 +44,6 @@ public class ChallengesActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Gets the result back from another activity.
-     *
-     * @param requestCode Code sent with the {@link #startActivityForResult(Intent, int)}
-     * @param resultCode  Code that was returned from the other activity (usually a flag of success).
-     * @param data        Data sent back from the other activity in the form of an Intent.
-     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         // Must be called always and before everything.
@@ -77,12 +70,11 @@ public class ChallengesActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Sets up the components and event handlers in the activity.
-     */
     private void setupComponents() {
         // Set up row adapter with our items list.
         itemRowAdapter = new ChallengeItemAdapter(this, itemsList);
+
+        Intent intent = getIntent();
 
         itemRowAdapter.setOnClickListener(new ChallengeItemAdapter.ItemClickListener() {
 
@@ -97,7 +89,8 @@ public class ChallengesActivity extends AppCompatActivity {
             }
         });
 
-        // Set up the items recycler view.
+
+
         itemsListView = findViewById(R.id.challengeRV);
         itemsListView.setLayoutManager(new LinearLayoutManager(this));
         itemsListView.setAdapter(itemRowAdapter);

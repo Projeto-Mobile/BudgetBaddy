@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ChallengeItem implements Serializable {
-
-
     private static int idCounter = 0;
     private int id;
     private String challenge;
@@ -38,7 +36,7 @@ public class ChallengeItem implements Serializable {
         return challengeItems;
     }
 
-    public static ChallengeItem createNewBudgetItem(String challenge, String period) {
+    public static ChallengeItem createNewChallengeItem(String challenge, String period) {
         // This method creates a new BudgetItem with the provided values.
         int newId = generateUniqueId(); // You should implement this method to generate a unique ID.
         return new ChallengeItem(newId, challenge, period);
@@ -71,7 +69,7 @@ public class ChallengeItem implements Serializable {
     public static ChallengeItem GetById(int id) {
         // TODO: Fetch the item from the web server using its id and populate the object.
 
-        return new ChallengeItem(id,"","Choose the duration");
+        return new ChallengeItem(id,"","");
     }
 
     public int getId() {

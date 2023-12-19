@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.128" />
 
-    <TextView
+    <EditText
         android:id="@+id/countdownTextView"
         android:layout_width="194dp"
         android:layout_height="41dp"
@@ -51,18 +51,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.869" />
 
-    <TextView
-        android:id="@+id/sentence_challenge_view3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/countdown_message"
-        android:textColor="@color/dblue"
+
+    <Button
+        android:id="@+id/see_challenge"
+        android:layout_width="108dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="212dp"
+        android:backgroundTint="@color/dblue"
+        android:text="@string/start_button_text"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/sentence_challenge_view"

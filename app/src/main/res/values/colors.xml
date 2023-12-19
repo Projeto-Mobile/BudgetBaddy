@@ -16,16 +16,16 @@
 
 
 
-    <color name="shopping">#FEFEFA</color>
-    <color name="subscription">#FEFEFA</color>
+    <color name="shopping">#FCBF49</color>
+    <color name="subscription">#6587A1</color>
     <color name="travel">#709078</color>
-    <color name="leisure">#FEFEFA</color>
-    <color name="dinningout">#FEFEFA</color>
-    <color name="personalcare">#FEFEFA</color>
-    <color name="specialoccasion">#FEFEFA</color>
-    <color name="transportation">#FEFEFA</color>
-    <color name="workexpenses">#FEFEFA</color>
-    <color name="others">#FEFEFA</color>
+    <color name="leisure">#AAC4E7</color>
+    <color name="dinningout">#C0AB6A</color>
+    <color name="personalcare">#F38982</color>
+    <color name="specialoccasion">#9AACC0</color>
+    <color name="transportation">#D2D7DC</color>
+    <color name="workexpenses">#E6CEB7</color>
+    <color name="others">#D8C6A6</color>
 
 
 

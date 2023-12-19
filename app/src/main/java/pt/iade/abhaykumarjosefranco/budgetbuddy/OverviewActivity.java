@@ -54,7 +54,7 @@ public class OverviewActivity extends AppCompatActivity {
         totalsaving_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OverviewActivity.this, ViewTotaldueBudget.class);
+                Intent intent = new Intent(OverviewActivity.this, ChallengesActivity.class);
                 startActivity(intent);
             }
         });

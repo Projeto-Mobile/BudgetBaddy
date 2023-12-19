@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-categories name="categories">
+        <item>Shopping</item>
+        <item>Subscription</item>
+        <item>Travel</item>
+        <item>Leisure</item>
+        <item>Dinning out</item>
+        <item>Personal Care</item>
+        <item>Special occasion</item>
+        <item>Transportation</item>
+        <item>Work expenses</item>
+        <item>Other</item>
+    </string-categories>
+
+</resources>

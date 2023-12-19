@@ -104,6 +104,9 @@
     <string name="community">Communities</string>
     <string name="add_community_button">Add Community</string>
     <string name="existing_community_text">Existing Communities</string>
+    <string name="user1">User</string>
+    <string name="amount1">Amount</string>
+
 
 
     <string name="mybudget">My budget</string>
