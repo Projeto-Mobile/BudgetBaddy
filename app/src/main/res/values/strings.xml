@@ -70,7 +70,6 @@
     <string name="challenge_time_hint">Countdown Time</string>
 
 
-
     <string name="total_savings">Total Savings</string>
     <string name="no_savings_yet">No savings yet.</string>
     <string name="take_on_challenges">Take on fun challenges to boost your saving journey!</string>
@@ -106,6 +105,19 @@
     <string name="existing_community_text">Existing Communities</string>
     <string name="user1">User</string>
     <string name="amount1">Amount</string>
+
+
+
+
+
+
+
+
+
+    <string name="create_button">Create community</string>
+
+
+
 
 
 

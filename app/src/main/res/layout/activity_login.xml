@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/custom_edittext"
-            android:backgroundTint="@color/dblue"
+            android:backgroundTint="@color/travel"
             android:orientation="vertical"
             android:padding="23dp">
 

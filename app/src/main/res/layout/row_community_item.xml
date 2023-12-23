@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,14 +19,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteY="8dp">
 
-        <Spinner
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbarSize="50dp"
-            android:spinnerMode="dialog"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="8dp"
+            android:text="Categories" />
 
-        
+
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,19 +37,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteY="8dp">
 
-           <EditText
+           <TextView
                android:id="@+id/user1"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:textSize="20sp"
                android:layout_weight="1"
                tools:text="@string/user1" />
 
-           <EditText
+           <TextView
                android:id="@+id/amount1"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:textSize="20sp"
                android:layout_weight="1"
                tools:text="@string/amount1" />
 
@@ -67,20 +64,18 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteY="8dp">
 
-            <EditText
+            <TextView
                 android:id="@+id/user2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_weight="1"
                 tools:text="@string/user1" />
 
-            <EditText
+            <TextView
                 android:id="@+id/amount2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
                 tools:text="@string/amount1" />
 
         </LinearLayout>
@@ -95,20 +90,18 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteY="8dp">
 
-            <EditText
+            <TextView
                 android:id="@+id/user3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_weight="1"
                 tools:text="@string/user1" />
 
-            <EditText
+            <TextView
                 android:id="@+id/amount3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
                 tools:text="@string/amount1" />
 
         </LinearLayout>
@@ -123,20 +116,18 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteY="8dp">
 
-            <EditText
+            <TextView
                 android:id="@+id/user4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_weight="1"
                 tools:text="@string/user1" />
 
-            <EditText
+            <TextView
                 android:id="@+id/amount4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
                 tools:text="@string/amount1" />
 
         </LinearLayout>
@@ -151,20 +142,18 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteY="8dp">
 
-            <EditText
+            <TextView
                 android:id="@+id/user5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_weight="1"
                 tools:text="@string/user1" />
 
-            <EditText
+            <TextView
                 android:id="@+id/amount5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
                 tools:text="@string/amount1" />
 
         </LinearLayout>
