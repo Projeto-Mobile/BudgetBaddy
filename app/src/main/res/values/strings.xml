@@ -100,9 +100,9 @@
     <string name="enter_budget">Enter the budget.</string>
     <string name="done">Done</string>
 
-    <string name="community">Communities</string>
+    <string name="community">Community</string>
     <string name="add_community_button">Add Community</string>
-    <string name="existing_community_text">Existing Communities</string>
+    <string name="existing_community_text">My Communities</string>
     <string name="user1">User</string>
     <string name="amount1">Amount</string>
 
@@ -115,6 +115,8 @@
 
 
     <string name="create_button">Create community</string>
+    <string name="community_description">Easy collaboration and budgeting.</string>
+
 
 
 

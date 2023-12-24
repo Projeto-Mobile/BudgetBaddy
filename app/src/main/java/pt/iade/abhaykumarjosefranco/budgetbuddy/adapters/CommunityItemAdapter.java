@@ -75,20 +75,20 @@ public class CommunityItemAdapter extends RecyclerView.Adapter<CommunityItemAdap
             super(itemView);
 
             // Get the components in the view.
-            name1 = itemView.findViewById(R.id.user1);
-            budget1 = itemView.findViewById(R.id.amount1);
+            name1 = itemView.findViewById(R.id.user_1);
+            budget1 = itemView.findViewById(R.id.amount_1);
 
-            name2 = itemView.findViewById(R.id.user2);
-            budget2 = itemView.findViewById(R.id.amount2);
+            name2 = itemView.findViewById(R.id.user_2);
+            budget2 = itemView.findViewById(R.id.amount_2);
 
-            name3 = itemView.findViewById(R.id.user3);
-            budget3 = itemView.findViewById(R.id.amount3);
+            name3 = itemView.findViewById(R.id.user_3);
+            budget3 = itemView.findViewById(R.id.amount_3);
 
-            name4 = itemView.findViewById(R.id.user4);
-            budget4 = itemView.findViewById(R.id.amount4);
+            name4 = itemView.findViewById(R.id.user_4);
+            budget4 = itemView.findViewById(R.id.amount_4);
 
-            name5 = itemView.findViewById(R.id.user5);
-            budget5 = itemView.findViewById(R.id.amount5);
+            name5 = itemView.findViewById(R.id.user_5);
+            budget5 = itemView.findViewById(R.id.amount_5);
             // Set what happens when the view gets clicked.
             itemView.setOnClickListener(this);
         }

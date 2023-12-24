@@ -16,7 +16,7 @@ public class Profile extends Activity {
 
     private FirebaseAuth auth;
     private BottomNavigationView bottomNavigationView;
-    private Button log_out_button,delete_account_button;
+    private Button log_out_button,delete_account_button, community_button;
 
     private EditText nameEditText;
     private EditText emailEditText;
@@ -94,6 +94,14 @@ public class Profile extends Activity {
             }
         });
 
+        community_button = findViewById(R.id.community_button);
+        community_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, Community.class);
+                startActivity(intent);
+            }
+        });
 
         nameEditText = findViewById(R.id.signup_name);
 

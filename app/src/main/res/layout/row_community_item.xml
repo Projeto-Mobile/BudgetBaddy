@@ -38,14 +38,14 @@
         tools:layout_editor_absoluteY="8dp">
 
            <TextView
-               android:id="@+id/user1"
+               android:id="@+id/user_1"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_weight="1"
                tools:text="@string/user1" />
 
            <TextView
-               android:id="@+id/amount1"
+               android:id="@+id/amount_1"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_weight="1"
@@ -65,14 +65,14 @@
             tools:layout_editor_absoluteY="8dp">
 
             <TextView
-                android:id="@+id/user2"
+                android:id="@+id/user_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 tools:text="@string/user1" />
 
             <TextView
-                android:id="@+id/amount2"
+                android:id="@+id/amount_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -91,14 +91,14 @@
             tools:layout_editor_absoluteY="8dp">
 
             <TextView
-                android:id="@+id/user3"
+                android:id="@+id/user_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 tools:text="@string/user1" />
 
             <TextView
-                android:id="@+id/amount3"
+                android:id="@+id/amount_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -117,14 +117,14 @@
             tools:layout_editor_absoluteY="8dp">
 
             <TextView
-                android:id="@+id/user4"
+                android:id="@+id/user_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 tools:text="@string/user1" />
 
             <TextView
-                android:id="@+id/amount4"
+                android:id="@+id/amount_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -143,14 +143,14 @@
             tools:layout_editor_absoluteY="8dp">
 
             <TextView
-                android:id="@+id/user5"
+                android:id="@+id/user_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 tools:text="@string/user1" />
 
             <TextView
-                android:id="@+id/amount5"
+                android:id="@+id/amount_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

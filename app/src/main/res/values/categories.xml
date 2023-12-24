@@ -2,7 +2,7 @@
 
 <resources>
 
-    <string-categories name="categories">
+    <string-array name="categories">
         <item>Shopping</item>
         <item>Subscription</item>
         <item>Travel</item>
@@ -12,7 +12,16 @@
         <item>Special occasion</item>
         <item>Transportation</item>
         <item>Work expenses</item>
+        <item>Water Bill</item>
+        <item>Electricity</item>
+        <item>Health</item>
+        <item>Education</item>
+        <item>Child care</item>
+        <item>Mortgage</item>
+        <item>Insurance</item>
+        <item>Loan</item>
+        <item>Tax</item>
         <item>Other</item>
-    </string-categories>
+    </string-array>
 
 </resources>

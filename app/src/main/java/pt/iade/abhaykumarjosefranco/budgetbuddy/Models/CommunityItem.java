@@ -19,11 +19,14 @@ public class CommunityItem implements Serializable {
     private String user4;
     private int amount4;
 
-    public CommunityItem(){
-        this(0, "", 0,"",0,"",0,"",0,"",0);
-    }
-    public CommunityItem(int id, String user1, int amount1,String user2, int amount2,String user3, int amount3,String user4, int amount4,String user5, int amount5){
+    private String name;
+
+    //public CommunityItem(){
+       // this(0, "", "", 0,"",0,"",0,"",0,"",0);
+   // }
+    public CommunityItem(int id, String name, String user1, int amount1,String user2, int amount2,String user3, int amount3,String user4, int amount4,String user5, int amount5){
         this.id = id;
+        this.name = name;
         this.user1 = user1;
         this.amount1 = amount1;
         this.user2 = user2;
@@ -35,14 +38,14 @@ public class CommunityItem implements Serializable {
         this.user5 = user5;
         this.amount5 = amount5;
     }
-    public static ArrayList<ChallengeItem> List(){
-        ArrayList<ChallengeItem> items = new ArrayList<ChallengeItem>();
+    public static ArrayList<CommunityItem> List(){
+        ArrayList<CommunityItem> items = new ArrayList<CommunityItem>();
 
         return items;
     }
 
     public static CommunityItem GetById(int id){
-        return new CommunityItem(id,"user1",0,"user2",0,"user3",0,"user4",0,"user5",0);
+        return new CommunityItem(id,"name", "user1",0,"user2",0,"user3",0,"user4",0,"user5",0);
     }
     public void save(){
         if (id == 0){
@@ -54,6 +57,14 @@ public class CommunityItem implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUser1() {
