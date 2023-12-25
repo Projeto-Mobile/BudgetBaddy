@@ -2,6 +2,7 @@ package pt.iade.abhaykumarjosefranco.budgetbuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,10 +43,11 @@ public class create_community extends AppCompatActivity {
         type = (Spinner) findViewById(R.id.commiunity_spinner);
         button = (Button) findViewById(R.id.community_button);
 
-        button = findViewById(R.id.community_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(create_community.this, Community.class);
+                startActivity(intent);
                 populateView();
             }
         });
