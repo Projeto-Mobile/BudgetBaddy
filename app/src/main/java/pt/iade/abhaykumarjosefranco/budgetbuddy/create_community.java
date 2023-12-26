@@ -69,7 +69,7 @@ public class create_community extends AppCompatActivity {
 
     protected void populateView(){
 
-        //item.setName(optionSpinner.getSelectedItem().toString());
+        item.setName(optionSpinner.getSelectedItem().toString());
 
 
         //name.setText(item.getName());

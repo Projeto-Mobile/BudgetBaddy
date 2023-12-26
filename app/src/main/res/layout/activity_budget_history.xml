@@ -4,23 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewTotaldueBudget"
-    android:background="@color/white">
+    tools:context=".BudgetHistory">
+
 
     <TextView
-        android:id="@+id/ViewBudget"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mybills"
+        android:layout_width="233dp"
+        android:layout_height="51dp"
+        android:gravity="center"
+        android:text="@string/inactivebudget"
         android:textColor="@color/dblue"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintVertical_bias="0.641" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -34,21 +33,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/viewb"
+            android:id="@+id/viewbBudgethistory"
             android:layout_width="381dp"
             android:layout_height="524dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.466"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.844" />
 
+
     </androidx.cardview.widget.CardView>
-
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

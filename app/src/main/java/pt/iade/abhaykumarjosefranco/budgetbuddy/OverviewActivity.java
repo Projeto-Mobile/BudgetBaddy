@@ -13,7 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class OverviewActivity extends AppCompatActivity {
 
-    private Button totalexpense_button, totaldue_button, totalsaving_button;
+    private Button totalexpense_button, totaldue_button, totalsaving_button,budget_button, bill_button;
     private BottomNavigationView bottomNavigationView;
 
 
@@ -55,6 +55,26 @@ public class OverviewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(OverviewActivity.this, ChallengesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        budget_button = findViewById(R.id.budgethistory_button);
+        budget_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OverviewActivity.this, BudgetHistory.class);
+                startActivity(intent);
+            }
+        });
+
+
+        bill_button = findViewById(R.id.billhistory_button);
+        bill_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OverviewActivity.this, BillHistory.class);
                 startActivity(intent);
             }
         });

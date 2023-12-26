@@ -41,7 +41,7 @@
     <string name="overview">Overview</string>
     <string name="total_expenses">Total Expenses</string>
     <string name="total_due_overview">Total Due</string>
-    <string name="stat">Stats</string>
+    <string name="stat">My stats</string>
     <string name="archeive">Archeive</string>
     <string name="weekly">Weekly</string>
     <string name="monthly">Monthly</string>
@@ -107,23 +107,25 @@
     <string name="amount1">Amount</string>
 
 
+    <string name="mybills">My Bills</string>
+    <string name="inactivebudget">Budget history</string>
+    <string name="inactivebill">Bill history</string>
 
 
-
-
-
-
-
+    <string name="income">Enter your income</string>
+    <string name="Income">Income :</string>
     <string name="create_button">Create community</string>
     <string name="community_description">Easy collaboration and budgeting.</string>
 
 
-
-
-
-
-
     <string name="mybudget">My budget</string>
+
+
+    <string name="investment">My investments</string>
+    <string name="spending">My spendings</string>
+    <string name="funds">Emergency Funds</string>
+    <string name="value">Enter the value</string>
+
 
 
     <string name="about_description">An intuitive mobile app designed to empower users in managing personal finances effortlessly. Track daily, weekly, and monthly spending, categorize expenses, set budgets, and gain valuable insights through user-friendly tools for effective financial control.</string>
