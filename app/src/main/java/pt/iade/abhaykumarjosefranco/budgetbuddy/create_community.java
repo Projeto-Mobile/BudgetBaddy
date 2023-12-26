@@ -10,27 +10,28 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.CommunityItem;
 
 public class create_community extends AppCompatActivity {
 
-    protected TextView username1;
-    protected TextView value1;
-    protected TextView username2;
-    protected TextView value2;
-    protected TextView username3;
-    protected TextView value3;
-    protected TextView username4;
-    protected TextView value4;
-    protected TextView username5;
-    protected TextView value5;
-    protected Spinner type;
+    protected EditText username1;
+    protected EditText value1;
+    protected EditText username2;
+    protected EditText value2;
+    protected EditText username3;
+    protected EditText value3;
+    protected EditText username4;
+    protected EditText value4;
+    protected EditText username5;
+    protected EditText value5;
 
     protected CommunityItem item;
     protected int listPosition;
 
     protected Button button;
 
+    private EditText name;
     private Spinner optionSpinner;
 
     @Override
@@ -38,9 +39,20 @@ public class create_community extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_community);
 
-        setupComponents();
+        optionSpinner = findViewById(R.id.commiunity_spinner);
 
-        type = (Spinner) findViewById(R.id.commiunity_spinner);
+
+        username1 = (EditText) findViewById(R.id.use1);
+        username2 = (EditText) findViewById(R.id.use2);
+        username3 = (EditText) findViewById(R.id.use3);
+        username4 = (EditText) findViewById(R.id.use4);
+        username5 = (EditText) findViewById(R.id.use5);
+        value1 = (EditText) findViewById(R.id.amoun1);
+        value2 = (EditText) findViewById(R.id.amoun2);
+        value3 = (EditText) findViewById(R.id.amoun3);
+        value4 = (EditText) findViewById(R.id.amoun4);
+        value5 = (EditText) findViewById(R.id.amoun5);
+
         button = (Button) findViewById(R.id.community_button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -53,23 +65,15 @@ public class create_community extends AppCompatActivity {
         });
     }
 
-    private void setupComponents(){
-
-        username1 = (TextView) findViewById(R.id.use1);
-        username2 = (TextView) findViewById(R.id.use2);
-        username3 = (TextView) findViewById(R.id.use3);
-        username4 = (TextView) findViewById(R.id.use4);
-        username5 = (TextView) findViewById(R.id.use5);
-        value1 = (TextView) findViewById(R.id.amoun1);
-        value2 = (TextView) findViewById(R.id.amoun2);
-        value3 = (TextView) findViewById(R.id.amoun3);
-        value4 = (TextView) findViewById(R.id.amoun4);
-        value5 = (TextView) findViewById(R.id.amoun5);
-
-    }
 
 
     protected void populateView(){
+
+        //item.setName(optionSpinner.getSelectedItem().toString());
+
+
+        name.setText(item.getName());
+
         username1.setText(item.getUser1());
         username2.setText(item.getUser2());
         username3.setText(item.getUser3());
@@ -81,15 +85,19 @@ public class create_community extends AppCompatActivity {
         value4.setText(item.getAmount4());
         value5.setText(item.getAmount5());
 
-        item.setName(optionSpinner.getSelectedItem().toString());
-
-
         commitView();
+
     }
 
 
 
     protected void commitView(){
+
+        Intent intent = new Intent(create_community.this, Community.class);
+        CommunityItem item = new CommunityItem(-1, "", "", 0, "", 0, "", 0, "", 0, "", 0);
+
+        item.setName(optionSpinner.getSelectedItem().toString());
+
         item.setUser1(username1.getText().toString());
         item.setUser2(username2.getText().toString());
         item.setUser3(username3.getText().toString());
@@ -101,7 +109,9 @@ public class create_community extends AppCompatActivity {
         item.setAmount4(Integer.parseInt(value4.getText().toString()));
         item.setAmount5(Integer.parseInt(value5.getText().toString()));
 
-        item.setName(optionSpinner.getSelectedItem().toString());
+
+        item.save();
+        startActivity(intent);
     }
 
 

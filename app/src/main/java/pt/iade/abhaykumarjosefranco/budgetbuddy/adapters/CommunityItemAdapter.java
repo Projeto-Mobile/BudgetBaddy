@@ -39,6 +39,7 @@ public class CommunityItemAdapter extends RecyclerView.Adapter<CommunityItemAdap
     public void onBindViewHolder(ViewHolder holder, int position) {
         CommunityItem item = items.get(position);
 
+        holder.name.setText(item.getName());
         holder.name1.setText(item.getUser1());
         holder.budget1.setText(String.valueOf(item.getAmount1()));
         holder.name2.setText(item.getUser2());
@@ -70,11 +71,15 @@ public class CommunityItemAdapter extends RecyclerView.Adapter<CommunityItemAdap
 
         public TextView name5;
         public TextView budget5;
+        public  TextView name;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             // Get the components in the view.
+
+            name = itemView.findViewById(R.id.chosencategory);
+
             name1 = itemView.findViewById(R.id.user_1);
             budget1 = itemView.findViewById(R.id.amount_1);
 

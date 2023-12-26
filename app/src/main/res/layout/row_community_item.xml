@@ -20,10 +20,12 @@
         tools:layout_editor_absoluteY="8dp">
 
         <TextView
+            android:id="@+id/chosencategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Categories" />
+            tools:text="@string/category_hint"
+            android:textStyle="bold"/>
 
 
         <LinearLayout

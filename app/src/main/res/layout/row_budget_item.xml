@@ -26,6 +26,8 @@
             android:textStyle="bold"
             tools:text="@string/category_hint" />
 
+
+
         <TextView
             android:id="@+id/namedperiod"
             android:layout_width="match_parent"

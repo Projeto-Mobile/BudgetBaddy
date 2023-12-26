@@ -30,6 +30,7 @@ public class createNewChallenge extends AppCompatActivity {
 
         itemsList = ChallengeItem.List();
 
+
         start_challenge_button = findViewById(R.id.start_challenge_button);
         edittext_time=findViewById(R.id.countdownTextView);
         challengeEditText = findViewById(R.id.edit_name_challenge);
@@ -52,6 +53,7 @@ public class createNewChallenge extends AppCompatActivity {
                 // TODO: set type id of item.
             }
         });*/
+
 
         start_challenge_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,16 +107,15 @@ public class createNewChallenge extends AppCompatActivity {
 
     protected void populateView() {
 
-        // TODO: Get item from list and use it:
-        /*
-        budgetEditText.setText(String.valueOf(item.getBudgetValue()));
 
-        String[] periods = getResources().getStringArray(R.array.periods);
-        for (int i = 0; i < periods.length; i++) {
-            if (periods[i].equals(item.getPeriod()))
-                periodSpinner.setSelection(i);
-        }
-        */
+        ChallengeItem item = new ChallengeItem(-1, "", "00:00:00");
+
+        item.setPeriod(edittext_time.getText().toString());
+        item.setChallenge(challengeEditText.getText().toString());
+
+
+        // TODO: Get item from list and use it:
+
     }
 }
 

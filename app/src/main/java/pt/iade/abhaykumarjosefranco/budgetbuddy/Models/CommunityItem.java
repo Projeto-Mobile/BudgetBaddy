@@ -18,7 +18,6 @@ public class CommunityItem implements Serializable {
     private int amount3;
     private String user4;
     private int amount4;
-
     private String name;
 
     //public CommunityItem(){
@@ -41,6 +40,7 @@ public class CommunityItem implements Serializable {
     public static ArrayList<CommunityItem> List(){
         ArrayList<CommunityItem> items = new ArrayList<CommunityItem>();
 
+        items.add(new CommunityItem(1, "Vacation", "a", 10, "b", 20, "c", 30, "d", 40, "e", 50));
         return items;
     }
 
@@ -50,6 +50,7 @@ public class CommunityItem implements Serializable {
     public void save(){
         if (id == 0){
             id = new Random().nextInt(1000) + 1;
+            List().add(this);
         }else{
 
         }

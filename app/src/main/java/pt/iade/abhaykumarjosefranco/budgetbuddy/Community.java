@@ -31,10 +31,10 @@ public class Community extends AppCompatActivity {
         setContentView(R.layout.activity_community);
 
 
-        Intent intent = getIntent();
-        itemsList = new ArrayList<>();
+        //Intent intent = getIntent();
+        //itemsList = new ArrayList<>();
 
-        //itemsList = CommunityItem.List();
+        itemsList = CommunityItem.List();
 
         setupComponents();
 
