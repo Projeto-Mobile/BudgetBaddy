@@ -57,6 +57,8 @@ public class CommunityItemAdapter extends RecyclerView.Adapter<CommunityItemAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        public  TextView name;
         public TextView name1;
         public TextView budget1;
 
@@ -71,7 +73,7 @@ public class CommunityItemAdapter extends RecyclerView.Adapter<CommunityItemAdap
 
         public TextView name5;
         public TextView budget5;
-        public  TextView name;
+
 
         public ViewHolder(View itemView) {
             super(itemView);

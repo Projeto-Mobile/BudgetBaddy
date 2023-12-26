@@ -18,14 +18,14 @@ public class CommunityItem implements Serializable {
     private int amount3;
     private String user4;
     private int amount4;
-    private String name;
+    private String name_community;
 
     //public CommunityItem(){
        // this(0, "", "", 0,"",0,"",0,"",0,"",0);
    // }
-    public CommunityItem(int id, String name, String user1, int amount1,String user2, int amount2,String user3, int amount3,String user4, int amount4,String user5, int amount5){
+    public CommunityItem(int id, String name_community, String user1, int amount1,String user2, int amount2,String user3, int amount3,String user4, int amount4,String user5, int amount5){
         this.id = id;
-        this.name = name;
+        this.name_community = name_community;
         this.user1 = user1;
         this.amount1 = amount1;
         this.user2 = user2;
@@ -61,11 +61,11 @@ public class CommunityItem implements Serializable {
     }
 
     public String getName() {
-        return name;
+        return name_community;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String name_community) {
+        this.name_community = name_community;
     }
 
     public String getUser1() {

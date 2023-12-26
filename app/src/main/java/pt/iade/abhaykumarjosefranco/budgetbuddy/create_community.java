@@ -31,7 +31,7 @@ public class create_community extends AppCompatActivity {
 
     protected Button button;
 
-    private EditText name;
+    //private EditText name;
     private Spinner optionSpinner;
 
     @Override
@@ -72,7 +72,7 @@ public class create_community extends AppCompatActivity {
         //item.setName(optionSpinner.getSelectedItem().toString());
 
 
-        name.setText(item.getName());
+        //name.setText(item.getName());
 
         username1.setText(item.getUser1());
         username2.setText(item.getUser2());
