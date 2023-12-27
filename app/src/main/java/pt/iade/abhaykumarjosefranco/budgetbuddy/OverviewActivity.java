@@ -13,17 +13,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class OverviewActivity extends AppCompatActivity {
 
-    private Button totalexpense_button, totaldue_button, totalsaving_button,budget_button, bill_button;
+    private Button totalexpense_button, totaldue_button, totalsaving_button,budget_button, bill_button,spending_button,create_button;
     private BottomNavigationView bottomNavigationView;
 
-
-
-
     //TODO : show the name of  highest time to the lowest for the challenges , average time for the challenges . and also show the value for each challenge.
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +72,23 @@ public class OverviewActivity extends AppCompatActivity {
             }
         });
 
+        spending_button = findViewById(R.id.spending_button);
+        spending_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OverviewActivity.this, Viewspendings.class);
+                startActivity(intent);
+            }
+        });
+
+        create_button = findViewById(R.id.create_spending_button);
+        create_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OverviewActivity.this, Spendings.class);
+                startActivity(intent);
+            }
+        });
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.home);

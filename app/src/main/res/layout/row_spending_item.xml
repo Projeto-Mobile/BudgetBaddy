@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/namedcategory"
+            android:id="@+id/spenditure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -28,13 +28,13 @@
             tools:text="@string/spending" />
 
         <TextView
-            android:id="@+id/namedperiod"
+            android:id="@+id/valuespent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="@string/spent_hint" />
 
         <TextView
-            android:id="@+id/givenvalue"
+            android:id="@+id/datespenditure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="@string/date" />

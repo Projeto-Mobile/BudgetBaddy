@@ -46,13 +46,6 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
         return new ViewHolder(view);
     }
 
-    /**
-     * Binds the data from each item in the list to a row in the list.
-     *
-     * @param holder The ViewHolder which should be updated to represent the contents of the
-     *        item at the given position in the data set.
-     * @param position The position of the item within the adapter's data set.
-     */
     //TODO: ID ?????
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
@@ -63,11 +56,6 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
         holder.thevalue.setText(String.valueOf(item.getBudgetValue()));
     }
 
-    /**
-     * The RecyclerView needs to know the size of our list, this just provides that.
-     *
-     * @return Size of our data.
-     */
     @Override
     public int getItemCount() {
         return items.size();
@@ -90,7 +78,7 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
             super(itemView);
 
             // Get the components in the view.
-            namecategory = itemView.findViewById(R.id.namedcategory);
+            namecategory = itemView.findViewById(R.id.spanditure);
             nameperiod = itemView.findViewById(R.id.namedperiod);
             thevalue = itemView.findViewById(R.id.givenvalue);
 
