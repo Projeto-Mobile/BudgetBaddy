@@ -8,9 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-
-import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.CommunityItem;
 
 public class create_community extends AppCompatActivity {
@@ -30,8 +27,6 @@ public class create_community extends AppCompatActivity {
     protected int listPosition;
 
     protected Button button;
-
-    //private EditText name;
     private Spinner optionSpinner;
 
     @Override
@@ -88,8 +83,6 @@ public class create_community extends AppCompatActivity {
         commitView();
 
     }
-
-
 
     protected void commitView(){
 

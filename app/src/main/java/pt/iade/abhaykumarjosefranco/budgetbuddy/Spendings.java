@@ -57,9 +57,9 @@ public class Spendings extends AppCompatActivity {
             return false;
         });
 
-        Button doneButton = findViewById(R.id.done_spending_button);
+        Button done_Button = findViewById(R.id.done_spending_button);
 
-        doneButton.setOnClickListener(new View.OnClickListener() {
+        done_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 commitView();

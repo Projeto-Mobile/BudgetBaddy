@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private FirebaseAuth auth;
+    //private FirebaseAuth auth;
     private EditText  loginEmail, loginPassword;
     private TextView loginRedirectText;
     private Button loginButton;
@@ -30,13 +30,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        auth = FirebaseAuth.getInstance();
+        //auth = FirebaseAuth.getInstance();
         loginEmail = findViewById(R.id.login_email);
         loginPassword = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.login_button);
         loginRedirectText = findViewById(R.id.loginRedirectText);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        /*loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (pass.isEmpty()) {
                     loginPassword.setError("Password cannot be empty.");
                 } else {
-                    auth.signInWithEmailAndPassword(email, pass)
+                   auth.signInWithEmailAndPassword(email, pass)
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                             });
                 }
             }
-        });
+        });*/
 
         loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,5 +70,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        loginButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                 Intent intent = (new Intent(LoginActivity.this, OverviewActivity.class));
+                startActivity(intent);
+            }
+        });
     }
 }

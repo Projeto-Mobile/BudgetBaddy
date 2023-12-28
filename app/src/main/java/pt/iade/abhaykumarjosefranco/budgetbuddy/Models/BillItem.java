@@ -1,12 +1,16 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
+
 public class BillItem implements Serializable {
-
-
     private static int idCounter = 0;
     private int id;
     private String bill;
@@ -15,8 +19,6 @@ public class BillItem implements Serializable {
     public static ArrayList<BillItem> billItems;
 
     //TODO : Associate user ID, budget ID, type budget ID
-
-
 
     public BillItem() {
         this(0, "", "", 0);
@@ -34,17 +36,13 @@ public class BillItem implements Serializable {
     }
 
 
-    /*public static BudgetItem GetById(int id) {
-        // TODO: Fetch the item using its id and populate the object.
-        return new BudgetItem(id, "", "", 0);
-    }*/
+
     public static ArrayList<BillItem> List() {
         return billItems;
     }
 
     public static BillItem createNewBudgetItem(String bill, String period, int billValue) {
-        // This method creates a new BudgetItem with the provided values.
-        int newId = generateUniqueId(); // You should implement this method to generate a unique ID.
+        int newId = generateUniqueId();
         return new BillItem(newId, bill, period, billValue);
 
     }
@@ -53,30 +51,35 @@ public class BillItem implements Serializable {
     }
 
     public void save() {
-        // TODO: Send the object's data to our web server and update the database there.
         if (id == 0) {
-            // This is a brand new object and must be an INSERT in the database.
-
-            // Simulate doing an insert and getting an ID back from the web server.
             id = new Random().nextInt(1000) + 1;
             billItems.add(this);
         } else {
-            // This is an update to an existing object and must use UPDATE in the database.
         }
     }
 
-    /**
-     * Gets the object from the web server by its ID in the database.
-     *
-     * @param id ID of the item in the database.
-     *
-     * @return Object with data from our web server.
-     */
-    //TODO : ????????????
     public static BillItem GetById(int id) {
-        // TODO: Fetch the item from the web server using its id and populate the object.
-
         return new BillItem(id,"","Choose the duration",0);
+    }
+
+    public void addBill() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        WebRequest req = new WebRequest(new URL(
+                                WebRequest.LOCALHOST + "/api/bill/add"));
+                        String response = req.performPostRequest(BillItem.this);
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(null, "Web request failed: " + e.toString(),
+                            Toast.LENGTH_LONG).show();
+                    Log.e("BillItems", e.toString());
+                }
+            }
+        });
+        thread.start();
     }
 
     public int getId() {

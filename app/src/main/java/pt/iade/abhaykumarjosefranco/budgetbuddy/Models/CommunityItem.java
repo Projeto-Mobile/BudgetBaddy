@@ -1,8 +1,14 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
+
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 
 public class CommunityItem implements Serializable {
@@ -54,6 +60,26 @@ public class CommunityItem implements Serializable {
         }else{
 
         }
+    }
+
+    public void addCommunity() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        WebRequest req = new WebRequest(new URL(
+                                WebRequest.LOCALHOST + "/api/community/add"));
+                        String response = req.performPostRequest(CommunityItem.this);
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(null, "Web request failed: " + e.toString(),
+                            Toast.LENGTH_LONG).show();
+                    Log.e("CommunityItems", e.toString());
+                }
+            }
+        });
+        thread.start();
     }
 
     public int getId() {

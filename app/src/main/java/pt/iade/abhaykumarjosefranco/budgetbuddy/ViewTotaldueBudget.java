@@ -30,39 +30,24 @@ public class ViewTotaldueBudget extends AppCompatActivity {
 
 
         itemsList = BillItem.billItems;
-
-        // Get the item passed from the previous activity.
         Intent intent = getIntent();
         setupComponents();
 
     }
 
-    /**
-     * Gets the result back from another activity.
-     *
-     * @param requestCode Code sent with the {@link #startActivityForResult(Intent, int)}
-     * @param resultCode  Code that was returned from the other activity (usually a flag of success).
-     * @param data        Data sent back from the other activity in the form of an Intent.
-     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        // Must be called always and before everything.
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Check which activity returned to us.
         if (requestCode == EDITOR_ACTIVITY_RETURN_ID) {
-            // Check if the activity was successful.
             if (resultCode == AppCompatActivity.RESULT_OK) {
-                // Get extras returned to us.
                 int position = data.getIntExtra("position", -1);
                 BillItem updatedItem = (BillItem) data.getSerializableExtra("item");
 
                 if (position == -1) {
-                    // Add the item to the list it was created new.
                     itemsList.add(updatedItem);
                     itemRowAdapter.notifyItemInserted(itemsList.size() - 1);
                 } else {
-                    // Updates an existing item on the list.
                     itemsList.set(position, updatedItem);
                     itemRowAdapter.notifyItemChanged(position);
                 }
@@ -70,18 +55,12 @@ public class ViewTotaldueBudget extends AppCompatActivity {
         }
     }
 
-    /**
-     * Sets up the components and event handlers in the activity.
-     */
     private void setupComponents() {
-        // Set up row adapter with our items list.
         itemRowAdapter = new BillItemRowAdapter(this, itemsList);
         itemRowAdapter.setOnClickListener(new BillItemRowAdapter.ItemClickListener() {
 
             public void onItemClick(View view, int position) {
 
-
-                // Place our clicked item object in the intent to send to the other activity.
                 Intent intent = new Intent(ViewTotaldueBudget.this, TotalDue.class);
                 intent.putExtra("position", position);
                 intent.putExtra("item", itemsList.get(position));
@@ -90,7 +69,6 @@ public class ViewTotaldueBudget extends AppCompatActivity {
             }
         });
 
-        // Set up the items recycler view.
         itemsListView = findViewById(R.id.viewb);
         itemsListView.setLayoutManager(new LinearLayoutManager(this));
         itemsListView.setAdapter(itemRowAdapter);

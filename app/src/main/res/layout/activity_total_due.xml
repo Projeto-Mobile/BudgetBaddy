@@ -12,11 +12,11 @@
         android:id="@+id/countbills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="592dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/set_count_bills"
         android:textColor="@color/dblue"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -156,7 +156,7 @@
         android:id="@+id/budget_cate_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="456dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="@string/enter_budget"
         android:inputType="number"
@@ -164,7 +164,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <TextView
         android:id="@+id/archeive"
@@ -213,13 +213,13 @@
         android:id="@+id/spinner"
         android:layout_width="262dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginTop="64dp"
         android:background="@color/background"
         android:entries="@array/periods"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

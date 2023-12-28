@@ -1,8 +1,14 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
+
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 public class BudgetItem implements Serializable {
 
@@ -29,11 +35,6 @@ public class BudgetItem implements Serializable {
             budgetItems = new ArrayList<BudgetItem>();
         }
     }
-
-    /*public static BudgetItem GetById(int id) {
-        // TODO: Fetch the item using its id and populate the object.
-        return new BudgetItem(id, "", "", 0);
-    }*/
 
     public static ArrayList<BudgetItem> List() {
         return budgetItems;
@@ -62,17 +63,30 @@ public class BudgetItem implements Serializable {
         }
     }
 
-    /**
-     * Gets the object from the web server by its ID in the database.
-     *
-     * @param id ID of the item in the database.
-     *
-     * @return Object with data from our web server.
-     */
     public static BudgetItem GetById(int id) {
         // TODO: Fetch the item from the web server using its id and populate the object.
 
         return new BudgetItem(id,"","Choose the duration",0);
+    }
+
+    public void addBudget() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        WebRequest req = new WebRequest(new URL(
+                                WebRequest.LOCALHOST + "/api/budget/add"));
+                        String response = req.performPostRequest(BudgetItem.this);
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(null, "Web request failed: " + e.toString(),
+                            Toast.LENGTH_LONG).show();
+                    Log.e("BudgetItems", e.toString());
+                }
+            }
+        });
+        thread.start();
     }
 
     public int getId() {

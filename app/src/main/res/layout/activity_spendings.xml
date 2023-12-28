@@ -78,19 +78,19 @@
 
     <TextView
         android:id="@+id/challengeView"
-        android:layout_width="124dp"
-        android:layout_height="24dp"
+        android:layout_width="177dp"
+        android:layout_height="28dp"
         android:layout_marginTop="48dp"
         android:text="@string/spending"
+        android:textAlignment="center"
         android:textColor="@color/dblue"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/sentence_challenge_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382" />
+        app:layout_constraintVertical_bias="0.375" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

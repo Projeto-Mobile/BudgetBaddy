@@ -11,17 +11,11 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
-import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.CommunityItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.SpendingItem;
-import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.BudgetItemRowAdapter;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.SpendingItemRowAdapter;
 
 public class Viewspendings extends AppCompatActivity {
-
-
     private static final int EDITOR_ACTIVITY_RETURN_ID = 1;
-
     protected RecyclerView itemsListView;
     protected SpendingItemRowAdapter itemRowAdapter;
     protected ArrayList<SpendingItem> itemsList;
@@ -35,13 +29,14 @@ public class Viewspendings extends AppCompatActivity {
         setContentView(R.layout.activity_viewspendings);
 
 
-        itemsList = SpendingItem.List();
-
-
-        // Get the item passed from the previous activity.
+        /*itemsList = SpendingItem.List();
         Intent intent = getIntent();
         listPosition = intent.getIntExtra("position",-1);
         item = (SpendingItem) intent.getSerializableExtra("item");
+        setupComponents();*/
+
+        itemsList = SpendingItem.spendingItems;
+        Intent intent = getIntent();
         setupComponents();
 
     }

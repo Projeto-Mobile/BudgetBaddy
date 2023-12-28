@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -19,18 +21,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BudgetBuddy"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".Viewspendings"
             android:exported="false" />
         <activity
             android:name=".Spendings"
-            android:exported="false" />
-        <activity
-            android:name=".BillHistory"
-            android:exported="false" />
-        <activity
-            android:name=".BudgetHistory"
             android:exported="false" />
         <activity
             android:name=".create_community"

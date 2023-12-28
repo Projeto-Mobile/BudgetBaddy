@@ -21,7 +21,7 @@ public class TotalDue extends AppCompatActivity {
     private EditText billEditText;
     private BottomNavigationView bottomNavigationView;
     protected ArrayList<BillItem> itemsList;
-    private Button waterbill, electricity, health, education, childcare, mortgage, insurance, loan, taxes, others;
+    private Button waterbill, electricity, health, education, childcare, mortgage, insurance, loan, taxes, others,button_bill;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,15 @@ public class TotalDue extends AppCompatActivity {
         itemsList = BillItem.List();
 
 
+        button_bill = findViewById(R.id.archeive_button);
+        button_bill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(TotalDue.this, ViewTotaldueBudget.class);
+                startActivity(intent);
+            }
+        });
 
         waterbill = findViewById(R.id.waterbill);
         waterbill.setOnClickListener(new View.OnClickListener() {
@@ -141,11 +150,6 @@ public class TotalDue extends AppCompatActivity {
     }
 
 
-
-    /**
-     * Updates the contents of the components in the activity according to the object associated
-     * with this class.
-     */
     protected void populateView() {
 
         /*budgetEditText.setText(item.getBillValue());
@@ -157,9 +161,6 @@ public class TotalDue extends AppCompatActivity {
         }*/
     }
 
-    /**
-     * Updates the data in the associated object with the information from the UI components.
-     */
     protected void setBill(Button button, int idType) {
 
         button.setOnClickListener(new View.OnClickListener() {

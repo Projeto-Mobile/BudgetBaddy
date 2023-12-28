@@ -1,10 +1,16 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import java.io.Serializable;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 public class SpendingItem implements Serializable {
 
@@ -50,6 +56,26 @@ public class SpendingItem implements Serializable {
         }
     }
 
+    public void addSpending() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        WebRequest req = new WebRequest(new URL(
+                                WebRequest.LOCALHOST + "/api/spending/add"));
+                        String response = req.performPostRequest(SpendingItem.this);
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(null, "Web request failed: " + e.toString(),
+                            Toast.LENGTH_LONG).show();
+                    Log.e("SpendingItems", e.toString());
+                }
+            }
+        });
+        thread.start();
+    }
+
     public static SpendingItem GetById(int id) {
 
         return new SpendingItem(id,"",0,LocalDate.now());
@@ -82,4 +108,14 @@ public class SpendingItem implements Serializable {
     public void setDate(LocalDate spentDate) {
         this.spentDate = spentDate;
     }
+
+
+    public interface ListResponse {
+        public void response(ArrayList<SpendingItem> items);
+    }
+
+    public interface GetByIdResponse {
+        public void response(SpendingItem item);
+    }
+
 }
