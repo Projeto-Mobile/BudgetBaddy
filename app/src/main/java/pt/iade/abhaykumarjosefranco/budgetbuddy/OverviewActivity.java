@@ -13,7 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class OverviewActivity extends AppCompatActivity {
 
-    private Button totalexpense_button, totaldue_button, totalsaving_button,budget_button, bill_button,spending_button,create_button;
+    private Button totalexpense_button, totaldue_button, totalsaving_button,spending_button,create_button;
     private BottomNavigationView bottomNavigationView;
 
     //TODO : show the name of  highest time to the lowest for the challenges , average time for the challenges . and also show the value for each challenge.
@@ -53,24 +53,7 @@ public class OverviewActivity extends AppCompatActivity {
         });
 
 
-        budget_button = findViewById(R.id.budgethistory_button);
-        budget_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(OverviewActivity.this, BudgetHistory.class);
-                startActivity(intent);
-            }
-        });
 
-
-        bill_button = findViewById(R.id.billhistory_button);
-        bill_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(OverviewActivity.this, BillHistory.class);
-                startActivity(intent);
-            }
-        });
 
         spending_button = findViewById(R.id.spending_button);
         spending_button.setOnClickListener(new View.OnClickListener() {

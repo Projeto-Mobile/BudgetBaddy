@@ -78,9 +78,39 @@ public class SignUpActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = (new Intent(SignUpActivity.this, OverviewActivity.class));
-                startActivity(intent);
+                String name = signupName.getText().toString().trim();
+                String email = signupEmail.getText().toString().trim();
+                String pass = signupPassword.getText().toString().trim();
+
+                if (email.isEmpty() || pass.isEmpty() || name.isEmpty()) {
+                    if (name.isEmpty()) {
+                        signupEmail.setError("Username cannot be empty.");
+                    }
+                    if (email.isEmpty()) {
+                        signupEmail.setError("Email cannot be empty.");
+                    }
+                    if (pass.isEmpty()) {
+                        signupPassword.setError("Password cannot be empty.");
+                    }
+                } else {Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                    intent.putExtra("name", name);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", pass);
+
+                    startActivity(intent);
+
+                    finish();
+                }
             }
         });
+
+        loginRedirectText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+            }
+        });
+
+
     }
 }
