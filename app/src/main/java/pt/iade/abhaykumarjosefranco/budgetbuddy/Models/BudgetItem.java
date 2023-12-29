@@ -23,7 +23,7 @@ public class BudgetItem implements Serializable {
     private int budgetValue;
 
     // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
-    public static ArrayList<BudgetItem> budgetItems;
+   // public static ArrayList<BudgetItem> budgetItems;
 
     public BudgetItem() {
         this(0, "", "", 0);
@@ -35,14 +35,14 @@ public class BudgetItem implements Serializable {
         this.period = period;
         this.budgetValue = budgetValue;
 
-        if (budgetItems == null) {
+        /*if (budgetItems == null) {
             budgetItems = new ArrayList<BudgetItem>();
-        }
+        }*/
     }
 
-    public static ArrayList<BudgetItem> List() {
+    /*public static ArrayList<BudgetItem> List() {
         return budgetItems;
-    }
+    }*/
 
     public static BudgetItem createNewBudgetItem(String category, String period, int budgetValue) {
         // This method creates a new BudgetItem with the provided values.
@@ -54,6 +54,7 @@ public class BudgetItem implements Serializable {
         return idCounter++;
     }
 
+    /*
     public void save() {
         // TODO: Send the object's data to our web server and update the database there.
         if (id == 0) {
@@ -65,7 +66,7 @@ public class BudgetItem implements Serializable {
         } else {
             // This is an update to an existing object and must use UPDATE in the database.
         }
-    }
+    }*/
 
     public static BudgetItem GetById(int id) {
         // TODO: Fetch the item from the web server using its id and populate the object.

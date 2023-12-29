@@ -24,7 +24,7 @@ public class UserItem implements Serializable {
     private String email;
 
     // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
-    public static ArrayList<UserItem> userItems;
+    //public static ArrayList<UserItem> userItems;
 
     public UserItem() {
         this(0, "", "", "");
@@ -36,14 +36,12 @@ public class UserItem implements Serializable {
         this.email = email;
         this.password = password;
 
-        if (userItems == null) {
-            userItems = new ArrayList<UserItem>();
-        }
+
     }
 
-    public static ArrayList<UserItem> List() {
+    /*public static ArrayList<UserItem> List() {
         return userItems;
-    }
+    }*/
 
 
     public static void List(ListResponse response) {
@@ -91,6 +89,7 @@ public class UserItem implements Serializable {
         return idCounter++;
     }
 
+    /*
     public void save() {
         // TODO: Send the object's data to our web server and update the database there.
         if (id == 0) {
@@ -98,7 +97,7 @@ public class UserItem implements Serializable {
             userItems.add(this);
         } else {
         }
-    }
+    }*/
 
 
 

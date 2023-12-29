@@ -34,16 +34,16 @@ public class BillItem implements Serializable {
         this.period = period;
         this.billValue = billValue;
 
-        if (billItems == null) {
+       /* if (billItems == null) {
             billItems = new ArrayList<BillItem>();
-        }
+        }*/
     }
 
 
 
-    public static ArrayList<BillItem> List() {
+   /* public static ArrayList<BillItem> List() {
         return billItems;
-    }
+    }*/
 
     public static BillItem createNewBudgetItem(String bill, String period, int billValue) {
         int newId = generateUniqueId();
@@ -54,13 +54,14 @@ public class BillItem implements Serializable {
         return idCounter++;
     }
 
+    /*
     public void save() {
         if (id == 0) {
             id = new Random().nextInt(1000) + 1;
             billItems.add(this);
         } else {
         }
-    }
+    }*/
 
     public static BillItem GetById(int id) {
         return new BillItem(id,"","Choose the duration",0);

@@ -21,7 +21,7 @@ public class ChallengeItem implements Serializable {
     private String period;
 
     // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
-    public static ArrayList<ChallengeItem> challengeItems;
+   // public static ArrayList<ChallengeItem> challengeItems;
 
     public ChallengeItem() {
         this(0, "", "");
@@ -32,19 +32,19 @@ public class ChallengeItem implements Serializable {
         this.challenge = challenge;
         this.period = period;
 
-        if (challengeItems == null) {
+       /* if (challengeItems == null) {
             challengeItems = new ArrayList<ChallengeItem>();
-        }
+        }*/
     }
 
     /*public static BudgetItem GetById(int id) {
         // TODO: Fetch the item using its id and populate the object.
         return new BudgetItem(id, "", "", 0);
-    }*/
+    }
 
     public static ArrayList<ChallengeItem> List() {
         return challengeItems;
-    }
+    }*/
 
     public static ChallengeItem createNewChallengeItem(String challenge, String period) {
         int newId = generateUniqueId();
@@ -55,6 +55,7 @@ public class ChallengeItem implements Serializable {
         return idCounter++;
     }
 
+    /*
     public void save() {
         // TODO: Send the object's data to our web server and update the database there.
         if (id == 0) {
@@ -62,7 +63,7 @@ public class ChallengeItem implements Serializable {
             challengeItems.add(this);
         } else {
         }
-    }
+    }*/
 
     public static ChallengeItem GetById(int id) {
         // TODO: Fetch the item from the web server using its id and populate the object.

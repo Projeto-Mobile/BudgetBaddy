@@ -47,16 +47,17 @@ public class CommunityItem implements Serializable {
         this.user5 = user5;
         this.amount5 = amount5;
     }
-    public static ArrayList<CommunityItem> List(){
+    /*public static ArrayList<CommunityItem> List(){
         ArrayList<CommunityItem> items = new ArrayList<CommunityItem>();
 
         items.add(new CommunityItem(1, "Vacation", "a", 10, "b", 20, "c", 30, "d", 40, "e", 50));
         return items;
-    }
+    }*/
 
     public static CommunityItem GetById(int id){
         return new CommunityItem(id,"name", "user1",0,"user2",0,"user3",0,"user4",0,"user5",0);
     }
+    /*
     public void save(){
         if (id == 0){
             id = new Random().nextInt(1000) + 1;
@@ -64,7 +65,7 @@ public class CommunityItem implements Serializable {
         }else{
 
         }
-    }
+    }*/
 
     public void addCommunity() {
         Thread thread = new Thread(new Runnable() {
