@@ -3,6 +3,10 @@ package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -86,6 +90,42 @@ public class ChallengeItem implements Serializable {
         thread.start();
     }
 
+    public static void List(ChallengeItem.ListResponse response) {
+        ArrayList<ChallengeItem> items = new ArrayList<ChallengeItem>();
+
+        // Fetch a list of items from the web server and populate the list with them.
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    try {
+                        WebRequest req = new WebRequest(new URL(
+                                WebRequest.LOCALHOST + "/api/BudgetBuddy/challenges"));
+                        String resp = req.performGetRequest();
+
+                        // Get the array from the response.
+                        JsonArray arr = new Gson().fromJson(resp, JsonArray.class);
+                        ArrayList<ChallengeItem> items = new ArrayList<ChallengeItem>();
+                        for (JsonElement elem : arr) {
+                            items.add(new Gson().fromJson(elem, ChallengeItem.class));
+                        }
+
+                        response.response(items);
+                    } catch (Exception e) {
+                        Toast.makeText(null, "Web request failed: " + e.toString(),
+                                Toast.LENGTH_LONG).show();
+                        Log.e("Challenge", e.toString());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
+    }
+
     public int getId() {
         return id;
     }
@@ -104,6 +144,14 @@ public class ChallengeItem implements Serializable {
 
     public void setPeriod(String period) {
         this.period = period;
+    }
+
+    public interface ListResponse {
+        public void response(ArrayList<ChallengeItem> items);
+    }
+
+    public interface GetByIdResponse {
+        public void response(ChallengeItem item);
     }
 
 }

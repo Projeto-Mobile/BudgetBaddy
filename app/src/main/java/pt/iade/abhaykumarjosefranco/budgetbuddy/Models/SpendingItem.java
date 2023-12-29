@@ -3,6 +3,10 @@ package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+
 import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
@@ -10,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Spendings;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 public class SpendingItem implements Serializable {
@@ -74,6 +79,43 @@ public class SpendingItem implements Serializable {
             }
         });
         thread.start();
+    }
+
+
+    public static void List(SpendingItem.ListResponse response) {
+        ArrayList<SpendingItem> items = new ArrayList<SpendingItem>();
+
+        // Fetch a list of items from the web server and populate the list with them.
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    try {
+                        WebRequest req = new WebRequest(new URL(
+                                WebRequest.LOCALHOST + "/api/BudgetBuddy/spending"));
+                        String resp = req.performGetRequest();
+
+                        // Get the array from the response.
+                        JsonArray arr = new Gson().fromJson(resp, JsonArray.class);
+                        ArrayList<SpendingItem> items = new ArrayList<SpendingItem>();
+                        for (JsonElement elem : arr) {
+                            items.add(new Gson().fromJson(elem, SpendingItem.class));
+                        }
+
+                        response.response(items);
+                    } catch (Exception e) {
+                        Toast.makeText(null, "Web request failed: " + e.toString(),
+                                Toast.LENGTH_LONG).show();
+                        Log.e("SpendingItem", e.toString());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
     }
 
     public static SpendingItem GetById(int id) {

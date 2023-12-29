@@ -3,6 +3,10 @@ package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -80,6 +84,42 @@ public class CommunityItem implements Serializable {
             }
         });
         thread.start();
+    }
+
+    public static void List(CommunityItem.ListResponse response) {
+        ArrayList<CommunityItem> items = new ArrayList<CommunityItem>();
+
+        // Fetch a list of items from the web server and populate the list with them.
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    try {
+                        WebRequest req = new WebRequest(new URL(
+                                WebRequest.LOCALHOST + "/api/BudgetBuddy/community"));
+                        String resp = req.performGetRequest();
+
+                        // Get the array from the response.
+                        JsonArray arr = new Gson().fromJson(resp, JsonArray.class);
+                        ArrayList<CommunityItem> items = new ArrayList<CommunityItem>();
+                        for (JsonElement elem : arr) {
+                            items.add(new Gson().fromJson(elem, CommunityItem.class));
+                        }
+
+                        response.response(items);
+                    } catch (Exception e) {
+                        Toast.makeText(null, "Web request failed: " + e.toString(),
+                                Toast.LENGTH_LONG).show();
+                        Log.e("CommunityItem", e.toString());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
     }
 
     public int getId() {
@@ -174,5 +214,13 @@ public class CommunityItem implements Serializable {
 
     public void setAmount5(int amount5) {
         this.amount5 = amount5;
+    }
+
+    public interface ListResponse {
+        public void response(ArrayList<CommunityItem> items);
+    }
+
+    public interface GetByIdResponse {
+        public void response(CommunityItem item);
     }
 }
