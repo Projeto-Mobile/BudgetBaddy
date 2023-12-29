@@ -31,7 +31,12 @@ public class TotalDue extends AppCompatActivity {
         periodSpinner = findViewById(R.id.spinner);
         billEditText = findViewById(R.id.budget_cate_num);
 
-        itemsList = BillItem.List();
+        //itemsList = BillItem.List();
+        Intent intent = getIntent();
+        listPosition = intent.getIntExtra("position",-1);
+        item = (BillItem) intent.getSerializableExtra("item");
+
+        setBill();
 
 
         button_bill = findViewById(R.id.archeive_button);
@@ -173,7 +178,7 @@ public class TotalDue extends AppCompatActivity {
                 item.setBillValue(Integer.parseInt(billEditText.getText().toString()));
                 item.setBill(button.getText().toString());
                 item.setPeriod(periodSpinner.getSelectedItem().toString());
-                item.save();
+                item.save(BillItem.SaveResponse());
                 BillItem.billItems.add(item);
 
                 populateView();

@@ -63,9 +63,39 @@ public class BillItem implements Serializable {
         }
     }*/
 
-    public static BillItem GetById(int id) {
-        return new BillItem(id,"","Choose the duration",0);
+    public void save(SaveResponse response) {
+        // Send the object's data to our web server and update the database there.
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        // This is a brand new object and must be a INSERT in the database.
+                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/billsave"));
+                        String resp = req.performPostRequest(BillItem.this);
+
+                        // Get the new ID from the server's response.
+                        BillItem respItem = new Gson().fromJson(resp, BillItem.class);
+                        id = respItem.getId();
+                        response.response();
+                    } else {
+                        // This is an update to an existing object and must use UPDATE in the database.
+                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/billsave/" + id));
+                        req.performPostRequest(BillItem.this);
+
+                        response.response();
+                    }
+                } catch (Exception e) {
+                    Log.e("BillItem", e.toString());
+                }
+            }
+        });
+        thread.start();
     }
+
+    /*public static BillItem GetById(int id) {
+        return new BillItem(id,"","Choose the duration",0);
+    }*/
 
     public void addBill() {
         Thread thread = new Thread(new Runnable() {
@@ -123,6 +153,31 @@ public class BillItem implements Serializable {
 
     }
 
+    public static void GetById(int id, GetByIdResponse response) {
+        // Fetch the item from the web server using its id and populate the object.
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    try {
+                        WebRequest req = new WebRequest(new URL(
+                                WebRequest.LOCALHOST + "/api/bill/" + id));
+                        String resp = req.performGetRequest();
+
+                        response.response(new Gson().fromJson(resp, BillItem.class));
+                    } catch (Exception e) {
+                        Toast.makeText(null, "Web request failed: " + e.toString(),
+                                Toast.LENGTH_LONG).show();
+                        Log.e("BillItem", e.toString());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+    }
+
     public int getId() {
         return id;
     }
@@ -158,5 +213,10 @@ public class BillItem implements Serializable {
     public interface GetByIdResponse {
         public void response(BillItem item);
     }
+
+    public interface SaveResponse{
+        public void response();
+    }
+
 }
 

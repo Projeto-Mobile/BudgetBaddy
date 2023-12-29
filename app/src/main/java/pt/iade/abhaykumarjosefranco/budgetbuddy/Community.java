@@ -32,9 +32,9 @@ public class Community extends AppCompatActivity {
 
 
         //Intent intent = getIntent();
-        //itemsList = new ArrayList<>();
+        itemsList = new ArrayList<>();
 
-        itemsList = CommunityItem.List();
+        //itemsList = CommunityItem.List(); THIS WAS WORKING BECAUSE OF THIS .
 
         setupComponents();
 
