@@ -94,6 +94,36 @@ public class BudgetItem implements Serializable {
         thread.start();
     }
 
+    public void save(SaveResponse response) {
+        // Send the object's data to our web server and update the database there.
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        // This is a brand new object and must be a INSERT in the database.
+                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/budgetbuddysave"));
+                        String resp = req.performPostRequest(BudgetItem.this);
+
+                        // Get the new ID from the server's response.
+                        BudgetItem respItem = new Gson().fromJson(resp, BudgetItem.class);
+                        id = respItem.getId();
+                        response.response();
+                    } else {
+                        // This is an update to an existing object and must use UPDATE in the database.
+                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/budgetbuddysave/" + id));
+                        req.performPostRequest(BudgetItem.this);
+
+                        response.response();
+                    }
+                } catch (Exception e) {
+                    Log.e("BudgetItem", e.toString());
+                }
+            }
+        });
+        thread.start();
+    }
+
 
     public static void List(BudgetItem.ListResponse response) {
         ArrayList<BudgetItem> items = new ArrayList<BudgetItem>();
@@ -165,4 +195,9 @@ public class BudgetItem implements Serializable {
     public interface GetByIdResponse {
         public void response(BudgetItem item);
     }
+
+    public interface SaveResponse{
+        public void response();
+    }
+
 }

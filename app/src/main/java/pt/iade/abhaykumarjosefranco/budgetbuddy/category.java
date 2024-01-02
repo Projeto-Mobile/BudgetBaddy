@@ -19,6 +19,9 @@ public class Category extends AppCompatActivity {
     private Spinner periodSpinner;
     private EditText budgetEditText;
     protected ArrayList<BudgetItem> itemsList;
+
+    protected BudgetItem item;
+    protected int listPosition;
     private Button dinningout_button, travel_button, subscription_button, shopping_button, leisure_button, personalcare_button, specialoccassions_button, transportation_button, workexpenses_button, others_button;
 
 
@@ -27,7 +30,11 @@ public class Category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        itemsList = BudgetItem.List();
+        //itemsList = BudgetItem.List();
+
+        Intent intent = getIntent();
+        listPosition = intent.getIntExtra("position",-1);
+        item = (BudgetItem) intent.getSerializableExtra("item");
 
         periodSpinner = findViewById(R.id.spinner);
         budgetEditText = findViewById(R.id.budget_cate_num2);
@@ -170,8 +177,8 @@ public class Category extends AppCompatActivity {
                 item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
                 item.setCategory(button.getText().toString());
                 item.setPeriod(periodSpinner.getSelectedItem().toString());
-                item.save();
-                BudgetItem.budgetItems.add(item);
+                //item.save();
+                //BudgetItem.budgetItems.add(item);
 
                 populateView();
                 startActivity(intent);

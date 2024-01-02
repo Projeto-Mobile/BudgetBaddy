@@ -28,7 +28,7 @@ public class SpendingItem implements Serializable {
 
     private int spentValue;
 
-    //public static ArrayList<SpendingItem> spendingItems;
+    public static ArrayList<SpendingItem> spendingItems;
 
     public SpendingItem() {
         this(0, "", 0, LocalDate.now());
@@ -40,12 +40,12 @@ public class SpendingItem implements Serializable {
         this.spentValue = spentValue;
         this.spentDate = date;
 
-        /*if (spendingItems == null) {
+        if (spendingItems == null) {
             spendingItems = new ArrayList<SpendingItem>();
-        }*/
+        }
     }
 
-    /*public static ArrayList<SpendingItem> List() {
+    public static ArrayList<SpendingItem> List() {
         return spendingItems;
     }
 
@@ -59,7 +59,8 @@ public class SpendingItem implements Serializable {
         } else {
 
         }
-    }*/
+    }
+    /*
     public void addSpending() {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -115,7 +116,7 @@ public class SpendingItem implements Serializable {
         });
         thread.start();
 
-    }
+    }*/
 
     public static SpendingItem GetById(int id) {
 
