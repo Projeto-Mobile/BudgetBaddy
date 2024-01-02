@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BillItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 
 public class TotalDue extends AppCompatActivity {
 
@@ -21,6 +22,9 @@ public class TotalDue extends AppCompatActivity {
     private EditText billEditText;
     private BottomNavigationView bottomNavigationView;
     protected ArrayList<BillItem> itemsList;
+
+    protected BillItem item;
+    protected int listPosition;
     private Button waterbill, electricity, health, education, childcare, mortgage, insurance, loan, taxes, others,button_bill;
 
     @Override
@@ -33,9 +37,8 @@ public class TotalDue extends AppCompatActivity {
 
         //itemsList = BillItem.List();
         Intent intent = getIntent();
-        //listPosition = intent.getIntExtra("position",-1);
-        //item = (BillItem) intent.getSerializableExtra("item");
-
+        listPosition = intent.getIntExtra("position",-1);
+        item = (BillItem) intent.getSerializableExtra("item");
         //setBill();
 
 
@@ -179,7 +182,7 @@ public class TotalDue extends AppCompatActivity {
                 item.setBill(button.getText().toString());
                 item.setPeriod(periodSpinner.getSelectedItem().toString());
                 //item.save(BillItem.SaveResponse());
-                BillItem.billItems.add(item);
+                //BillItem.billItems.add(item);
 
                 populateView();
                 startActivity(intent);

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.ViewHolder>{
     private ArrayList<BillItem> items;
     private LayoutInflater inflater;
-    private BillItemRowAdapter.ItemClickListener clickListener;
+    private ItemClickListener clickListener;
 
 
     public BillItemRowAdapter(Context context, ArrayList<BillItem> items) {
@@ -23,18 +23,18 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
         clickListener = null;
     }
 
-    public void setOnClickListener(BillItemRowAdapter.ItemClickListener listener) {
+    public void setOnClickListener(ItemClickListener listener) {
         clickListener = listener;
     }
 
     @Override
-    public BillItemRowAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_bill_item, parent, false);
-        return new BillItemRowAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(BillItemRowAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         BillItem item = items.get(position);
 
         holder.namebill.setText(item.getBill());

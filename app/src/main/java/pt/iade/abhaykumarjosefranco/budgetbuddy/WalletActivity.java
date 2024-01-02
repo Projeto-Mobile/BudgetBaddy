@@ -16,9 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class WalletActivity extends AppCompatActivity {
 
     private Button oldreceipt_button, picture_button;
-
     private BottomNavigationView bottomNavigationView;
-
     protected final static int PERMISSION_REQUEST_CODE = 22;
     protected final static int CAMERA_PIC_REQUEST = 23;
 

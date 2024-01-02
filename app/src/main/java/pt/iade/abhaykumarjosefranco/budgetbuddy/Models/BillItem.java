@@ -20,7 +20,8 @@ public class BillItem implements Serializable {
     private String bill;
     private String period;
     private int billValue;
-    public static ArrayList<BillItem> billItems;
+
+    //public static ArrayList<BillItem> billItems;
 
     //TODO : Associate user ID, budget ID, type budget ID
 
@@ -34,18 +35,18 @@ public class BillItem implements Serializable {
         this.period = period;
         this.billValue = billValue;
 
-        if (billItems == null) {
+        /*if (billItems == null) {
             billItems = new ArrayList<BillItem>();
-        }
+        }*/
     }
 
 
 
-    public static ArrayList<BillItem> List() {
+    /*public static ArrayList<BillItem> List() {
         return billItems;
-    }
+    }*/
 
-    public static BillItem createNewBudgetItem(String bill, String period, int billValue) {
+    public static BillItem createNewBillItem(String bill, String period, int billValue) {
         int newId = generateUniqueId();
         return new BillItem(newId, bill, period, billValue);
 
@@ -54,14 +55,15 @@ public class BillItem implements Serializable {
         return idCounter++;
     }
 
+    /*
     public void save() {
         if (id == 0) {
             id = new Random().nextInt(1000) + 1;
             billItems.add(this);
         } else {
         }
-    }
-/*
+    }*/
+
     public void save(SaveResponse response) {
         // Send the object's data to our web server and update the database there.
         Thread thread = new Thread(new Runnable() {
@@ -90,7 +92,7 @@ public class BillItem implements Serializable {
             }
         });
         thread.start();
-    }*/
+    }
 
     public static BillItem GetById(int id) {
         return new BillItem(id,"","Choose the duration",0);

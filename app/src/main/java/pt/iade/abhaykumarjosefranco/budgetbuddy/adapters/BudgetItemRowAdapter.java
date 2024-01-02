@@ -22,24 +22,10 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
         clickListener = null;
     }
 
-    /**
-     * Sets the event listener when a row gets clicked by the user.
-     *
-     * @param listener Event handler for the click.
-     */
     public void setOnClickListener(ItemClickListener listener) {
         clickListener = listener;
     }
 
-    /**
-     * Inflates the layout of the row into the actual list.
-     *
-     * @param parent The ViewGroup into which the new View will be added after it is bound to
-     *               an adapter position.
-     * @param viewType The view type of the new View.
-     *
-     * @return Instantiated row layout.
-     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_budget_item, parent, false);
@@ -61,46 +47,31 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
         return items.size();
     }
 
-    /**
-     * Class responsible for recycling the views as you scroll.
-     */
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView namecategory;
         public TextView nameperiod;
         public TextView thevalue;
 
-        /**
-         * Sets up the view that was inflated.
-         *
-         * @param itemView Layout view that was inflated.
-         */
+
         public ViewHolder(View itemView) {
             super(itemView);
 
-            // Get the components in the view.
             namecategory = itemView.findViewById(R.id.spanditure);
             nameperiod = itemView.findViewById(R.id.namedperiod);
             thevalue = itemView.findViewById(R.id.givenvalue);
 
-            // Set what happens when the view gets clicked.
             itemView.setOnClickListener(this);
         }
 
-        /**
-         * Handles the onclick event of the view.
-         */
         @Override
         public void onClick(View view) {
-            // Pass the event to our custom listener in the activity.
             if (clickListener != null) {
                 clickListener.onItemClick(view, getAdapterPosition());
             }
         }
     }
 
-    /**
-     * Defines what to do when a list item gets clicked.
-     */
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
