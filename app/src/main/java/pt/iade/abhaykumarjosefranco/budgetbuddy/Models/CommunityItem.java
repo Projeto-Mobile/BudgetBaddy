@@ -47,17 +47,17 @@ public class CommunityItem implements Serializable {
         this.user5 = user5;
         this.amount5 = amount5;
     }
-    public static ArrayList<CommunityItem> List(){
+    /*public static ArrayList<CommunityItem> List(){
         ArrayList<CommunityItem> items = new ArrayList<CommunityItem>();
 
         items.add(new CommunityItem(1, "Vacation", "a", 10, "b", 20, "c", 30, "d", 40, "e", 50));
         return items;
-    }
+    }*/
 
     public static CommunityItem GetById(int id){
         return new CommunityItem(id,"name", "user1",0,"user2",0,"user3",0,"user4",0,"user5",0);
     }
-
+/*
     public void save(){
         if (id == 0){
             id = new Random().nextInt(1000) + 1;
@@ -65,9 +65,9 @@ public class CommunityItem implements Serializable {
         }else{
 
         }
-    }
+    }*/
 
-    /*
+
     public void addCommunity() {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -122,7 +122,37 @@ public class CommunityItem implements Serializable {
         });
         thread.start();
 
-    }*/
+    }
+
+    public void save(CommunityItem.SaveResponse response) {
+        // Send the object's data to our web server and update the database there.
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        // This is a brand new object and must be a INSERT in the database.
+                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/savecommunity"));
+                        String resp = req.performPostRequest(CommunityItem.this);
+
+                        // Get the new ID from the server's response.
+                        CommunityItem respItem = new Gson().fromJson(resp, CommunityItem.class);
+                        id = respItem.getId();
+                        response.response();
+                    } else {
+                        // This is an update to an existing object and must use UPDATE in the database.
+                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/savecommunity/" + id));
+                        req.performPostRequest(CommunityItem.this);
+
+                        response.response();
+                    }
+                } catch (Exception e) {
+                    Log.e("CommunityItem", e.toString());
+                }
+            }
+        });
+        thread.start();
+    }
 
     public int getId() {
         return id;
@@ -225,4 +255,9 @@ public class CommunityItem implements Serializable {
     public interface GetByIdResponse {
         public void response(CommunityItem item);
     }
+
+    public interface SaveResponse{
+        public void response();
+    }
+
 }

@@ -14,6 +14,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 
 public class createNewChallenge extends AppCompatActivity {
@@ -23,12 +24,19 @@ public class createNewChallenge extends AppCompatActivity {
     private EditText challengeEditText;
     protected ArrayList<ChallengeItem> itemsList;
 
+    protected ChallengeItem item;
+    protected int listPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_chall2);
 
-        itemsList = ChallengeItem.List();
+
+        Intent intent = getIntent();
+        listPosition = intent.getIntExtra("position",-1);
+        item = (ChallengeItem) intent.getSerializableExtra("item");
+        //itemsList = ChallengeItem.List();
 
 
         start_challenge_button = findViewById(R.id.start_challenge_button);
@@ -97,8 +105,8 @@ public class createNewChallenge extends AppCompatActivity {
 
         item.setPeriod(edittext_time.getText().toString());
         item.setChallenge(challengeEditText.getText().toString());
-        item.save();
-        ChallengeItem.challengeItems.add(item);
+        //item.save();
+        //ChallengeItem.challengeItems.add(item);
         populateView();
 
 

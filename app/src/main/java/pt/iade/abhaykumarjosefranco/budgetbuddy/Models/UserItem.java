@@ -189,5 +189,10 @@ public class UserItem implements Serializable {
     public interface GetByIdResponse {
         public void response(UserItem item);
     }
+
+    public interface SaveResponse{
+        public void response();
+    }
+
 }
 

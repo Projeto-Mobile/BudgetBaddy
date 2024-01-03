@@ -26,6 +26,7 @@ public class Spendings extends AppCompatActivity {
     protected ArrayList<SpendingItem> itemsList;
 
     protected SpendingItem item;
+    protected int listPosition;
     private Button done_button;
 
     @Override
@@ -33,7 +34,11 @@ public class Spendings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spendings);
 
-        itemsList = SpendingItem.List();
+        //itemsList = SpendingItem.List();
+
+        Intent intent = getIntent();
+        listPosition = intent.getIntExtra("position",-1);
+        item = (SpendingItem) intent.getSerializableExtra("item");
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.add);
@@ -93,9 +98,9 @@ public class Spendings extends AppCompatActivity {
         item.setPeriod(Integer.parseInt(value_s.getText().toString()));
         item.setDate(LocalDate.now());
 
-        SpendingItem.spendingItems.add(item);
+        //SpendingItem.spendingItems.add(item);
 
-        item.save();
+        //item.save();
         startActivity(intent);
     }
 

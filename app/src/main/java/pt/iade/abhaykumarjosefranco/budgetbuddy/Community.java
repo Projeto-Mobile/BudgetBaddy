@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.CommunityItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.CommunityItemAdapter;
 
@@ -32,8 +33,7 @@ public class Community extends AppCompatActivity {
 
 
         //Intent intent = getIntent();
-        itemsList = new ArrayList<>();
-
+        //itemsList = new ArrayList<>();
         //itemsList = CommunityItem.List(); THIS WAS WORKING BECAUSE OF THIS .
 
         setupComponents();
@@ -75,26 +75,34 @@ public class Community extends AppCompatActivity {
     }
 
     private void setupComponents() {
-        // Set up row adapter with our items list.
-        itemRowAdapter = new CommunityItemAdapter(this, itemsList);
 
-        Intent intent = getIntent();
+        CommunityItem.List(new CommunityItem.ListResponse() {
+            @Override
+            public void response(ArrayList<CommunityItem> items) {
+                itemsList = items;
 
-        itemRowAdapter.setOnClickListener(new CommunityItemAdapter.ItemClickListener() {
+                // Set up row adapter with our items list.
+                itemRowAdapter = new CommunityItemAdapter(Community.this, itemsList);
 
-            public void onItemClick(View view, int position) {
+                Intent intent = getIntent();
 
-                // Place our clicked item object in the intent to send to the other activity.
-                Intent intent = new Intent(Community.this, create_community.class);
-                intent.putExtra("position", position);
-                intent.putExtra("item", itemsList.get(position));
+                itemRowAdapter.setOnClickListener(new CommunityItemAdapter.ItemClickListener() {
 
-                startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                    public void onItemClick(View view, int position) {
+
+                        // Place our clicked item object in the intent to send to the other activity.
+                        Intent intent = new Intent(Community.this, create_community.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("item", itemsList.get(position));
+
+                        startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                    }
+                });
+
+                itemsListView = findViewById(R.id.communityRV);
+                itemsListView.setLayoutManager(new LinearLayoutManager(Community.this));
+                itemsListView.setAdapter(itemRowAdapter);
             }
         });
-
-        itemsListView = findViewById(R.id.communityRV);
-        itemsListView.setLayoutManager(new LinearLayoutManager(this));
-        itemsListView.setAdapter(itemRowAdapter);
     }
 }

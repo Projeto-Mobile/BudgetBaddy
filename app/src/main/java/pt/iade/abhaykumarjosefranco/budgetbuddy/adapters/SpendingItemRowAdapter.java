@@ -18,7 +18,7 @@ public class SpendingItemRowAdapter extends RecyclerView.Adapter<SpendingItemRow
 
     private ArrayList<SpendingItem> items;
     private LayoutInflater inflater;
-    private SpendingItemRowAdapter.ItemClickListener clickListener;
+    private ItemClickListener clickListener;
 
     public SpendingItemRowAdapter(Context context, ArrayList<SpendingItem> items) {
         inflater = LayoutInflater.from(context);
@@ -27,19 +27,19 @@ public class SpendingItemRowAdapter extends RecyclerView.Adapter<SpendingItemRow
     }
 
 
-    public void setOnClickListener(SpendingItemRowAdapter.ItemClickListener listener) {
+    public void setOnClickListener(ItemClickListener listener) {
         clickListener = listener;
     }
 
     private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     @Override
-    public SpendingItemRowAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_spending_item, parent, false);
-        return new SpendingItemRowAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(SpendingItemRowAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         SpendingItem item = items.get(position);
 
         holder.namespending.setText(item.getSpentcategory());

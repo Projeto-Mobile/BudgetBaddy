@@ -34,6 +34,11 @@ public class create_community extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_community);
 
+
+        Intent intent = getIntent();
+        listPosition = intent.getIntExtra("position",-1);
+        item = (CommunityItem) intent.getSerializableExtra("item");
+
         optionSpinner = findViewById(R.id.commiunity_spinner);
 
 
@@ -103,7 +108,7 @@ public class create_community extends AppCompatActivity {
         item.setAmount5(Integer.parseInt(value5.getText().toString()));
 
 
-        item.save();
+        //item.save();
         startActivity(intent);
     }
 

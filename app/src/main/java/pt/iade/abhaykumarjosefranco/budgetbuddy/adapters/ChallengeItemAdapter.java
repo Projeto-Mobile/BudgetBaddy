@@ -17,7 +17,7 @@ import pt.iade.abhaykumarjosefranco.budgetbuddy.R;
 public class ChallengeItemAdapter extends RecyclerView.Adapter<ChallengeItemAdapter.ViewHolder>{
     private ArrayList<ChallengeItem> items;
     private LayoutInflater inflater;
-    private ChallengeItemAdapter.ItemClickListener clickListener;
+    private ItemClickListener clickListener;
 
 
     public ChallengeItemAdapter(Context context, ArrayList<ChallengeItem> items) {
@@ -26,7 +26,7 @@ public class ChallengeItemAdapter extends RecyclerView.Adapter<ChallengeItemAdap
         clickListener = null;
     }
 
-    public void setOnClickListener(ChallengeItemAdapter.ItemClickListener listener) {
+    public void setOnClickListener(ItemClickListener listener) {
         clickListener = listener;
     }
 
@@ -37,7 +37,7 @@ public class ChallengeItemAdapter extends RecyclerView.Adapter<ChallengeItemAdap
     }
 
     //TODO: ID ?????
-    public void onBindViewHolder(ChallengeItemAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         ChallengeItem item = items.get(position);
 
         holder.namechallenge.setText(item.getChallenge());

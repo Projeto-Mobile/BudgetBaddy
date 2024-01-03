@@ -11,6 +11,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.SpendingItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.SpendingItemRowAdapter;
 
@@ -34,9 +35,6 @@ public class Viewspendings extends AppCompatActivity {
         listPosition = intent.getIntExtra("position",-1);
         item = (SpendingItem) intent.getSerializableExtra("item");
         setupComponents();*/
-
-        itemsList = SpendingItem.spendingItems;
-        Intent intent = getIntent();
         setupComponents();
 
     }
@@ -71,23 +69,31 @@ public class Viewspendings extends AppCompatActivity {
      */
     private void setupComponents() {
 
-        // Set up row adapter with our items list.
-        itemRowAdapter = new SpendingItemRowAdapter(this, itemsList);
-        itemRowAdapter.setOnClickListener(new SpendingItemRowAdapter.ItemClickListener() {
+        SpendingItem.List(new SpendingItem.ListResponse() {
+            @Override
+            public void response(ArrayList<SpendingItem> items) {
+                itemsList = items;
 
-            public void onItemClick(View view, int position) {
+                // Set up row adapter with our items list.
+                itemRowAdapter = new SpendingItemRowAdapter(Viewspendings.this, itemsList);
+                itemRowAdapter.setOnClickListener(new SpendingItemRowAdapter.ItemClickListener() {
 
-                // Place our clicked item object in the intent to send to the other activity.
-                Intent intent = new Intent(Viewspendings.this, Spendings.class);
-                intent.putExtra("position", position);
-                intent.putExtra("item", itemsList.get(position));
+                    public void onItemClick(View view, int position) {
 
-                startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                        // Place our clicked item object in the intent to send to the other activity.
+                        Intent intent = new Intent(Viewspendings.this, Spendings.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("item", itemsList.get(position));
+
+                        startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                    }
+                });
+
+                itemsListView = (RecyclerView) findViewById(R.id.viewbS);
+                itemsListView.setLayoutManager(new LinearLayoutManager(Viewspendings.this));
+                itemsListView.setAdapter(itemRowAdapter);
             }
         });
-
-        itemsListView = (RecyclerView) findViewById(R.id.viewbS);
-        itemsListView.setLayoutManager(new LinearLayoutManager(this));
-        itemsListView.setAdapter(itemRowAdapter);
     }
+
 }

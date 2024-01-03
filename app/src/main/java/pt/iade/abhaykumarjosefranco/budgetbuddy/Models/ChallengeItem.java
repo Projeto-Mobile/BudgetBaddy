@@ -21,7 +21,7 @@ public class ChallengeItem implements Serializable {
     private String period;
 
     // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
-    public static ArrayList<ChallengeItem> challengeItems;
+    //public static ArrayList<ChallengeItem> challengeItems;
 
     public ChallengeItem() {
         this(0, "", "");
@@ -32,9 +32,9 @@ public class ChallengeItem implements Serializable {
         this.challenge = challenge;
         this.period = period;
 
-        if (challengeItems == null) {
+       /* if (challengeItems == null) {
             challengeItems = new ArrayList<ChallengeItem>();
-        }
+        }*/
     }
 
     public static BudgetItem GetById(int id) {
@@ -42,9 +42,9 @@ public class ChallengeItem implements Serializable {
         return new BudgetItem(id, "", "", 0);
     }
 
-    public static ArrayList<ChallengeItem> List() {
+   /* public static ArrayList<ChallengeItem> List() {
         return challengeItems;
-    }
+    }*/
 
     public static ChallengeItem createNewChallengeItem(String challenge, String period) {
         int newId = generateUniqueId();
@@ -56,15 +56,45 @@ public class ChallengeItem implements Serializable {
     }
 
 
-    public void save() {
+    /*public void save() {
         // TODO: Send the object's data to our web server and update the database there.
         if (id == 0) {
             id = new Random().nextInt(1000) + 1;
             challengeItems.add(this);
         } else {
         }
-    }
+    }*/
 
+
+    public void save(ChallengeItem.SaveResponse response) {
+        // Send the object's data to our web server and update the database there.
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        // This is a brand new object and must be a INSERT in the database.
+                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/savechallenge"));
+                        String resp = req.performPostRequest(ChallengeItem.this);
+
+                        // Get the new ID from the server's response.
+                        ChallengeItem respItem = new Gson().fromJson(resp, ChallengeItem.class);
+                        id = respItem.getId();
+                        response.response();
+                    } else {
+                        // This is an update to an existing object and must use UPDATE in the database.
+                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/savechallenge/" + id));
+                        req.performPostRequest(ChallengeItem.this);
+
+                        response.response();
+                    }
+                } catch (Exception e) {
+                    Log.e("ChallengeItem", e.toString());
+                }
+            }
+        });
+        thread.start();
+    }
     /*
     public static ChallengeItem GetById(int id) {
         // TODO: Fetch the item from the web server using its id and populate the object.
@@ -72,7 +102,7 @@ public class ChallengeItem implements Serializable {
         return new ChallengeItem(id,"","");
     }*/
 
-    /*
+
     public void addChallenge() {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -127,7 +157,7 @@ public class ChallengeItem implements Serializable {
         });
         thread.start();
 
-    }*/
+    }
 
     public int getId() {
         return id;
@@ -157,6 +187,9 @@ public class ChallengeItem implements Serializable {
         public void response(ChallengeItem item);
     }
 
+    public interface SaveResponse {
+        public void response();
+    }
 }
 
 

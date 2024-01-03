@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.ChallengeItemAdapter;
 
@@ -29,9 +30,9 @@ public class ChallengesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenges);
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
         //itemsList = ChallengeItem.challengeItems;
-        itemsList = new ArrayList<>();
+        //itemsList = new ArrayList<>();
         setupComponents();
 
         create_challenges_button = findViewById(R.id.create_challenges_button);
@@ -71,28 +72,37 @@ public class ChallengesActivity extends AppCompatActivity {
     }
 
     private void setupComponents() {
-        // Set up row adapter with our items list.
-        itemRowAdapter = new ChallengeItemAdapter(this, itemsList);
 
-        Intent intent = getIntent();
+        ChallengeItem.List(new ChallengeItem.ListResponse() {
+            @Override
+            public void response(ArrayList<ChallengeItem> items) {
+                itemsList = items;
 
-        itemRowAdapter.setOnClickListener(new ChallengeItemAdapter.ItemClickListener() {
+                // Set up row adapter with our items list.
+                itemRowAdapter = new ChallengeItemAdapter(ChallengesActivity.this, itemsList);
 
-            public void onItemClick(View view, int position) {
+                Intent intent = getIntent();
 
-                // Place our clicked item object in the intent to send to the other activity.
-                Intent intent = new Intent(ChallengesActivity.this, createNewChallenge.class);
-                intent.putExtra("position", position);
-                intent.putExtra("item", itemsList.get(position));
+                itemRowAdapter.setOnClickListener(new ChallengeItemAdapter.ItemClickListener() {
 
-                startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                    public void onItemClick(View view, int position) {
+
+                        // Place our clicked item object in the intent to send to the other activity.
+                        Intent intent = new Intent(ChallengesActivity.this, createNewChallenge.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("item", itemsList.get(position));
+
+                        startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                    }
+                });
+
+                itemsListView = findViewById(R.id.challengeRV);
+                itemsListView.setLayoutManager(new LinearLayoutManager(ChallengesActivity.this));
+                itemsListView.setAdapter(itemRowAdapter);
             }
         });
-
-        itemsListView = findViewById(R.id.challengeRV);
-        itemsListView.setLayoutManager(new LinearLayoutManager(this));
-        itemsListView.setAdapter(itemRowAdapter);
     }
+
 }
 
 

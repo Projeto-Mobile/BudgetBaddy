@@ -28,7 +28,7 @@ public class SpendingItem implements Serializable {
 
     private int spentValue;
 
-    public static ArrayList<SpendingItem> spendingItems;
+    //public static ArrayList<SpendingItem> spendingItems;
 
     public SpendingItem() {
         this(0, "", 0, LocalDate.now());
@@ -40,12 +40,12 @@ public class SpendingItem implements Serializable {
         this.spentValue = spentValue;
         this.spentDate = date;
 
-        if (spendingItems == null) {
+        /*if (spendingItems == null) {
             spendingItems = new ArrayList<SpendingItem>();
-        }
+        }*/
     }
 
-    public static ArrayList<SpendingItem> List() {
+    /*public static ArrayList<SpendingItem> List() {
         return spendingItems;
     }
 
@@ -59,8 +59,8 @@ public class SpendingItem implements Serializable {
         } else {
 
         }
-    }
-    /*
+    }*/
+
     public void addSpending() {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -116,7 +116,37 @@ public class SpendingItem implements Serializable {
         });
         thread.start();
 
-    }*/
+    }
+
+    public void save(SpendingItem.SaveResponse response) {
+        // Send the object's data to our web server and update the database there.
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (id == 0) {
+                        // This is a brand new object and must be a INSERT in the database.
+                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/savespendings"));
+                        String resp = req.performPostRequest(SpendingItem.this);
+
+                        // Get the new ID from the server's response.
+                        SpendingItem respItem = new Gson().fromJson(resp, SpendingItem.class);
+                        id = respItem.getId();
+                        response.response();
+                    } else {
+                        // This is an update to an existing object and must use UPDATE in the database.
+                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/savespendings/" + id));
+                        req.performPostRequest(SpendingItem.this);
+
+                        response.response();
+                    }
+                } catch (Exception e) {
+                    Log.e("SpendingItem", e.toString());
+                }
+            }
+        });
+        thread.start();
+    }
 
     public static SpendingItem GetById(int id) {
 
@@ -159,5 +189,10 @@ public class SpendingItem implements Serializable {
     public interface GetByIdResponse {
         public void response(SpendingItem item);
     }
+
+    public interface SaveResponse{
+        public void response();
+    }
+
 
 }
