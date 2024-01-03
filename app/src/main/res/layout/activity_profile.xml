@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/travel"
+    android:background="@color/mywhite"
     tools:context=".Profile">
 
 
@@ -13,7 +13,7 @@
         android:id="@+id/signup_name"
         android:layout_width="338dp"
         android:layout_height="67dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="76dp"
         android:background="@drawable/custom_edittext"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/baseline_person_24"
@@ -32,7 +32,7 @@
         android:id="@+id/signup_email"
         android:layout_width="338dp"
         android:layout_height="67dp"
-        android:layout_marginTop="252dp"
+        android:layout_marginTop="160dp"
         android:background="@drawable/custom_edittext"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/baseline_email_24"
@@ -51,12 +51,12 @@
         android:id="@+id/signup_about"
         android:layout_width="338dp"
         android:layout_height="67dp"
-        android:layout_marginTop="332dp"
+        android:layout_marginTop="240dp"
         android:background="@drawable/custom_edittext"
         android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/info"
         android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
         android:drawablePadding="8dp"
-        android:drawableLeft="@drawable/info"
         android:drawableTint="@color/dblue"
         android:hint="@string/about_hint"
         android:padding="8dp"
@@ -71,16 +71,16 @@
         android:id="@+id/community_button"
         android:layout_width="185dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="268dp"
+        android:layout_marginBottom="228dp"
         android:backgroundTint="@color/dblue"
         android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
         android:text="@string/community_button_text"
-        android:textSize="18dp"
         android:textColor="@color/white"
+        android:textSize="18dp"
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -112,6 +112,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/random_number"
+        android:layout_width="226dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="28dp"
+        android:background="@color/white"
+        android:hint="@string/random"
+        android:textColorHint="@color/dblue"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_about" />
+
+
+    <Button
+        android:id="@+id/generate_button"
+        android:layout_width="125dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="304dp"
+        android:backgroundTint="@color/brightblue"
+        android:text="@string/generate"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/random_number"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

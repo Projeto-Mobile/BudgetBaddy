@@ -92,7 +92,9 @@ public class SignUpActivity extends AppCompatActivity {
                     if (pass.isEmpty()) {
                         signupPassword.setError("Password cannot be empty.");
                     }
-                } else {Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                } else
+                {
+                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                     intent.putExtra("name", name);
                     intent.putExtra("email", email);
                     intent.putExtra("password", pass);

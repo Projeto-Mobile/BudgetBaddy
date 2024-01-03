@@ -6,25 +6,64 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.w3c.dom.Text;
+
+import java.util.Random;
+
 public class Profile extends Activity {
 
     //private FirebaseAuth auth;
     private BottomNavigationView bottomNavigationView;
     private Button log_out_button,delete_account_button, community_button;
-
     private EditText nameEditText;
     private EditText emailEditText;
+    TextView textview_random;
+    Button generate;
+    Random ra = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        textview_random = findViewById(R.id.random_number);
+        generate = findViewById(R.id.generate_button);
+
+        generate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //int rad = ra.nextInt(10) + 1;
+
+               // textview_random.setText(Integer.toString(rad));
+                String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+                // Create an instance of Random
+                Random ra = new Random();
+
+                //int randomLength = ra.nextInt(characters.length() - 2) + 3;
+
+                int randomLength = 5;
+
+                // Generate a random string of the chosen length
+                StringBuilder randomString = new StringBuilder();
+                for (int i = 0; i < randomLength; i++) {
+                    int randomIndex = ra.nextInt(characters.length());
+                    randomString.append(characters.charAt(randomIndex));
+                }
+
+                // Display the random string in your TextView
+                textview_random.setText(randomString.toString());
+            }
+
+        });
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.profile);

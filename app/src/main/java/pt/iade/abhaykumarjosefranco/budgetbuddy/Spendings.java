@@ -62,11 +62,15 @@ public class Spendings extends AppCompatActivity {
             return false;
         });
 
+
         Button done_Button = findViewById(R.id.done_spending_button);
 
         done_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(Spendings.this, Viewspendings.class);
+                startActivity(intent);
+
                 commitView();
             }
         });
@@ -89,6 +93,8 @@ public class Spendings extends AppCompatActivity {
         date.setText(item.getDate().toString());
 
     }
+
+
     protected void commitView(){
 
         Intent intent = new Intent(Spendings.this, Viewspendings.class);
@@ -99,8 +105,8 @@ public class Spendings extends AppCompatActivity {
         item.setDate(LocalDate.now());
 
         //SpendingItem.spendingItems.add(item);
+        // item.save();
 
-        //item.save();
         startActivity(intent);
     }
 

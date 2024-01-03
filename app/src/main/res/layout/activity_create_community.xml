@@ -5,41 +5,59 @@
     android:id="@+id/spinner_community"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".create_community">
+    tools:context=".create_community"
+    android:background="@color/mywhite">
+
 
     <TextView
         android:id="@+id/sentence_challenge_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="88dp"
         android:text="@string/community_description"
         android:textColor="@color/dblue"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+
+    <EditText
+        android:id="@+id/random_number"
+        android:layout_width="226dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/white"
+        android:hint="@string/enter"
+        android:textAlignment="center"
+        android:textColorHint="@color/dblue"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sentence_challenge_view" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="184dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/community_button"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sentence_challenge_view">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Spinner
             android:id="@+id/commiunity_spinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:entries="@array/categories"
             android:scrollbarSize="20dp" />
 
@@ -179,12 +197,11 @@
         </LinearLayout>
     </LinearLayout>
 
-
     <Button
         android:id="@+id/community_button"
         android:layout_width="301dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginBottom="184dp"
         android:backgroundTint="@color/brightblue"
         android:text="@string/create_button"
         android:textSize="20dp"
