@@ -10,7 +10,6 @@ import com.google.gson.JsonElement;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 

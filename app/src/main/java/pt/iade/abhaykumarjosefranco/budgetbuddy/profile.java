@@ -19,7 +19,7 @@ import java.util.Random;
 
 public class Profile extends Activity {
 
-    //private FirebaseAuth auth;
+    private FirebaseAuth auth;
     private BottomNavigationView bottomNavigationView;
     private Button log_out_button,delete_account_button, community_button;
     private EditText nameEditText;
@@ -39,29 +39,19 @@ public class Profile extends Activity {
         generate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //int rad = ra.nextInt(10) + 1;
-
-               // textview_random.setText(Integer.toString(rad));
                 String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-                // Create an instance of Random
                 Random ra = new Random();
-
-                //int randomLength = ra.nextInt(characters.length() - 2) + 3;
 
                 int randomLength = 5;
 
-                // Generate a random string of the chosen length
                 StringBuilder randomString = new StringBuilder();
                 for (int i = 0; i < randomLength; i++) {
                     int randomIndex = ra.nextInt(characters.length());
                     randomString.append(characters.charAt(randomIndex));
                 }
 
-                // Display the random string in your TextView
                 textview_random.setText(randomString.toString());
             }
-
         });
 
 
@@ -96,7 +86,7 @@ public class Profile extends Activity {
                 startActivity(intent);
             }
         });
-        /*log_out_button.setOnClickListener(new View.OnClickListener() {
+        log_out_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Log out the user and redirect to the login activity
@@ -105,10 +95,10 @@ public class Profile extends Activity {
                 startActivity(intent);
                 finish(); // Close the current activity
             }
-        });*/
+        });
 
-        /*delete_account_button = findViewById(R.id.delete_account_button);
-        /*delete_account_button.setOnClickListener(new View.OnClickListener() {
+        delete_account_button = findViewById(R.id.delete_account_button);
+        delete_account_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Delete the user account
@@ -128,7 +118,7 @@ public class Profile extends Activity {
                     Toast.makeText(Profile.this, "No user is currently signed in", Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
 
         EditText aboutEditText = findViewById(R.id.signup_about);
 
@@ -153,7 +143,7 @@ public class Profile extends Activity {
 
         emailEditText = findViewById(R.id.signup_email);
 
-        /*FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (currentUser != null) {
             // The user that is signed in
@@ -163,6 +153,6 @@ public class Profile extends Activity {
             // Set the retrieved data to the EditText
             nameEditText.setText(name);
             emailEditText.setText(email);
-        }*/
+        }
     }
 }

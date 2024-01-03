@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    //private FirebaseAuth auth;
+    private FirebaseAuth auth;
     private EditText signupName, signupEmail, signupPassword;
     private Button signupButton;
     private TextView loginRedirectText;
@@ -28,14 +28,14 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-       // auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
         signupName = findViewById(R.id.signup_name);
         signupEmail = findViewById(R.id.signup_email);
         signupPassword = findViewById(R.id.signup_password);
         signupButton = findViewById(R.id.signup_button);
         loginRedirectText = findViewById(R.id.loginRedirectText);
 
-       /* signupButton.setOnClickListener(new View.OnClickListener() {
+        signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = signupName.getText().toString().trim();
@@ -73,45 +73,8 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
             }
-        });*/
-
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = signupName.getText().toString().trim();
-                String email = signupEmail.getText().toString().trim();
-                String pass = signupPassword.getText().toString().trim();
-
-                if (email.isEmpty() || pass.isEmpty() || name.isEmpty()) {
-                    if (name.isEmpty()) {
-                        signupEmail.setError("Username cannot be empty.");
-                    }
-                    if (email.isEmpty()) {
-                        signupEmail.setError("Email cannot be empty.");
-                    }
-                    if (pass.isEmpty()) {
-                        signupPassword.setError("Password cannot be empty.");
-                    }
-                } else
-                {
-                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                    intent.putExtra("name", name);
-                    intent.putExtra("email", email);
-                    intent.putExtra("password", pass);
-
-                    startActivity(intent);
-
-                    finish();
-                }
-            }
         });
 
-        loginRedirectText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-            }
-        });
 
 
     }

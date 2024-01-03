@@ -91,7 +91,9 @@ public class createNewChallenge extends AppCompatActivity {
                             edittext_time.setText("00:00:00");
                         }
                     }.start();
-                } setupComponents();
+                }
+
+                setupComponents();
             }
         });
 
@@ -105,12 +107,13 @@ public class createNewChallenge extends AppCompatActivity {
 
         item.setPeriod(edittext_time.getText().toString());
         item.setChallenge(challengeEditText.getText().toString());
-        //item.save();
-        //ChallengeItem.challengeItems.add(item);
-        populateView();
-
-
-        startActivity(intent);
+        item.addChallenge(new ChallengeItem.SaveResponse() {
+            @Override
+            public void response() {
+                populateView();
+                startActivity(intent);
+            }
+        });
     }
 
     protected void populateView() {

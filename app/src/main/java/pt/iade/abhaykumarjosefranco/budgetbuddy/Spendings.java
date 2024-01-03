@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
@@ -89,7 +90,7 @@ public class Spendings extends AppCompatActivity {
 
     protected void populateView(){
         name_s.setText(item.getSpentcategory());
-        value_s.setText(item.getPeriod());
+        value_s.setText(String.valueOf(item.getPeriod()));
         date.setText(item.getDate().toString());
 
     }
@@ -102,7 +103,8 @@ public class Spendings extends AppCompatActivity {
 
         item.setSpentcategory(name_s.getText().toString());
         item.setPeriod(Integer.parseInt(value_s.getText().toString()));
-        item.setDate(LocalDate.now());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        item.setDate(LocalDate.parse(date.getText().toString(), formatter));
 
         //SpendingItem.spendingItems.add(item);
         // item.save();

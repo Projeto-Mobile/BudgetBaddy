@@ -12,9 +12,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
-
-import pt.iade.abhaykumarjosefranco.budgetbuddy.Spendings;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 public class SpendingItem implements Serializable {
@@ -85,8 +82,6 @@ public class SpendingItem implements Serializable {
     public static void List(SpendingItem.ListResponse response) {
         ArrayList<SpendingItem> items = new ArrayList<SpendingItem>();
 
-        // Fetch a list of items from the web server and populate the list with them.
-
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -115,8 +110,8 @@ public class SpendingItem implements Serializable {
             }
         });
         thread.start();
-
     }
+
 
     public void save(SpendingItem.SaveResponse response) {
         // Send the object's data to our web server and update the database there.

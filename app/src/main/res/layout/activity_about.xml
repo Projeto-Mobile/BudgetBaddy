@@ -60,7 +60,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/developerInfoTextView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/emailinfoj"
@@ -73,18 +73,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/developerInfoTextView"
         app:layout_constraintVertical_bias="0.089" />
-
-    <TextView
-        android:id="@+id/versioninfo"
-        android:layout_width="115dp"
-        android:layout_height="36dp"
-        android:text="@string/version"
-        android:textColor="@color/lightgrey"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailinfo"
-        app:layout_constraintVertical_bias="0.802" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

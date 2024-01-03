@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.SpendingItem;
+
 public class OverviewActivity extends AppCompatActivity {
 
     private Button totalexpense_button, totaldue_button, totalsaving_button,spending_button,create_button;
@@ -53,8 +55,6 @@ public class OverviewActivity extends AppCompatActivity {
         });
 
 
-
-
         spending_button = findViewById(R.id.spending_button);
         spending_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +68,10 @@ public class OverviewActivity extends AppCompatActivity {
         create_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // TODO: Get the last spending from server and do this:
                 Intent intent = new Intent(OverviewActivity.this, Spendings.class);
+                intent.putExtra("item", new SpendingItem());
                 startActivity(intent);
             }
         });

@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-
-import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.ChallengeItemAdapter;
 
@@ -78,7 +76,6 @@ public class ChallengesActivity extends AppCompatActivity {
             public void response(ArrayList<ChallengeItem> items) {
                 itemsList = items;
 
-                // Set up row adapter with our items list.
                 itemRowAdapter = new ChallengeItemAdapter(ChallengesActivity.this, itemsList);
 
                 Intent intent = getIntent();
@@ -87,7 +84,7 @@ public class ChallengesActivity extends AppCompatActivity {
 
                     public void onItemClick(View view, int position) {
 
-                        // Place our clicked item object in the intent to send to the other activity.
+
                         Intent intent = new Intent(ChallengesActivity.this, createNewChallenge.class);
                         intent.putExtra("position", position);
                         intent.putExtra("item", itemsList.get(position));

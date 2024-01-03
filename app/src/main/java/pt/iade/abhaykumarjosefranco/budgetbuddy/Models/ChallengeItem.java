@@ -10,8 +10,6 @@ import com.google.gson.JsonElement;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
-
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 public class ChallengeItem implements Serializable {
@@ -103,7 +101,7 @@ public class ChallengeItem implements Serializable {
     }*/
 
 
-    public void addChallenge() {
+    public void addChallenge(ChallengeItem.SaveResponse response) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -111,7 +109,8 @@ public class ChallengeItem implements Serializable {
                     if (id == 0) {
                         WebRequest req = new WebRequest(new URL(
                                 WebRequest.LOCALHOST + "/api/challenge/add"));
-                        String response = req.performPostRequest(ChallengeItem.this);
+                        String resp = req.performPostRequest(ChallengeItem.this);
+                        response.response();
                     }
                 } catch (Exception e) {
                     Toast.makeText(null, "Web request failed: " + e.toString(),

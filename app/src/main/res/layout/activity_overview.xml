@@ -144,7 +144,8 @@
             android:hint="@string/value"
             android:textColor="@color/dblue"
             android:textColorHint="@color/lightgrey"
-            android:textSize="19sp" />
+            android:textSize="19sp"
+            android:layout_marginBottom="8dp"/>
 
         <Button
             android:id="@+id/spending_button"
