@@ -97,7 +97,7 @@ public class BillItem implements Serializable {
         return new BillItem(id,"","Choose the duration",0);
     }
 
-    public void addBill() {
+    public void addBill(BillItem.SaveResponse response) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

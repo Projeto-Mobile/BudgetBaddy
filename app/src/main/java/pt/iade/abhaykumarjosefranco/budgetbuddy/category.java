@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 
 
 public class Category extends AppCompatActivity {
@@ -167,7 +168,6 @@ public class Category extends AppCompatActivity {
      * Updates the data in the associated object with the information from the UI components.
      */
     protected void setBudget(Button button, int idType) {
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,17 +177,21 @@ public class Category extends AppCompatActivity {
                 item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
                 item.setCategory(button.getText().toString());
                 item.setPeriod(periodSpinner.getSelectedItem().toString());
-                //item.save();
-                //BudgetItem.budgetItems.add(item);
 
-                populateView();
-                startActivity(intent);
+                item.addBudget(new BudgetItem.SaveResponse() {
+                    @Override
+                    public void response() {
+                        populateView();
+                        startActivity(intent);
+                    }
+                });
             }
         });
 
         //toast.makeset
         // TODO: set type id of item.
     }
+
 
 
 }

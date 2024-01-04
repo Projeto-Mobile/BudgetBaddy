@@ -39,6 +39,7 @@ public class createNewChallenge extends AppCompatActivity {
         //itemsList = ChallengeItem.List();
 
 
+
         start_challenge_button = findViewById(R.id.start_challenge_button);
         edittext_time=findViewById(R.id.countdownTextView);
         challengeEditText = findViewById(R.id.edit_name_challenge);

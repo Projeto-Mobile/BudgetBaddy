@@ -16,6 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.CommunityItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.SpendingItem;
 
@@ -106,10 +107,14 @@ public class Spendings extends AppCompatActivity {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         item.setDate(LocalDate.parse(date.getText().toString(), formatter));
 
-        //SpendingItem.spendingItems.add(item);
-        // item.save();
+        item.addSpending(new SpendingItem.SaveResponse() {
+            @Override
+            public void response() {
+                populateView();
+                startActivity(intent);
+            }
+        });
 
-        startActivity(intent);
     }
 
 

@@ -10,6 +10,8 @@ import com.google.gson.JsonElement;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
+
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Community;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 
@@ -66,7 +68,7 @@ public class CommunityItem implements Serializable {
     }*/
 
 
-    public void addCommunity() {
+    public void addCommunity(CommunityItem.SaveResponse response) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

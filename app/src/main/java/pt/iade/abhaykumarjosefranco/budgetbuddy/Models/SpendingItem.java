@@ -58,7 +58,7 @@ public class SpendingItem implements Serializable {
         }
     }*/
 
-    public void addSpending() {
+    public void addSpending(SpendingItem.SaveResponse response) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

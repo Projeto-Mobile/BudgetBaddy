@@ -73,7 +73,7 @@ public class BudgetItem implements Serializable {
         return new BudgetItem(id,"","Choose the duration",0);
     }
 
-    public void addBudget() {
+    public void addBudget(BudgetItem.SaveResponse response) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

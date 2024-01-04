@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BillItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 
 public class TotalDue extends AppCompatActivity {
 
@@ -181,11 +182,14 @@ public class TotalDue extends AppCompatActivity {
                 item.setBillValue(Integer.parseInt(billEditText.getText().toString()));
                 item.setBill(button.getText().toString());
                 item.setPeriod(periodSpinner.getSelectedItem().toString());
-                //item.save(BillItem.SaveResponse());
-                //BillItem.billItems.add(item);
 
-                populateView();
-                startActivity(intent);
+                item.addBill(new BillItem.SaveResponse() {
+                    @Override
+                    public void response() {
+                        populateView();
+                        startActivity(intent);
+                    }
+                });
 
             }
         });

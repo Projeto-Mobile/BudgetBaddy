@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.CommunityItem;
 
 public class create_community extends AppCompatActivity {
@@ -29,6 +31,8 @@ public class create_community extends AppCompatActivity {
     protected Button button;
     private Spinner optionSpinner;
 
+    private EditText numberedittext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,7 @@ public class create_community extends AppCompatActivity {
         item = (CommunityItem) intent.getSerializableExtra("item");
 
         optionSpinner = findViewById(R.id.commiunity_spinner);
+        numberedittext = findViewById(R.id.random_number);
 
 
         username1 = (EditText) findViewById(R.id.use1);
@@ -89,7 +94,7 @@ public class create_community extends AppCompatActivity {
 
     }
 
-    protected void commitView(){
+    protected void commitView() {
 
         Intent intent = new Intent(create_community.this, Community.class);
         CommunityItem item = new CommunityItem(-1, "", "", 0, "", 0, "", 0, "", 0, "", 0);
@@ -108,8 +113,13 @@ public class create_community extends AppCompatActivity {
         item.setAmount5(Integer.parseInt(value5.getText().toString()));
 
 
-        //item.save();
-        startActivity(intent);
+        item.addCommunity(new CommunityItem.SaveResponse() {
+            @Override
+            public void response() {
+                populateView();
+                startActivity(intent);
+            }
+        });
     }
 
 

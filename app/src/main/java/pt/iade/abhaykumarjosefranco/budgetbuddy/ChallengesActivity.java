@@ -1,27 +1,39 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.Size;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import nl.dionsegijn.konfetti.core.Party;
+import nl.dionsegijn.konfetti.core.PartyFactory;
+import nl.dionsegijn.konfetti.core.emitter.Emitter;
+import nl.dionsegijn.konfetti.core.emitter.EmitterConfig;
+import nl.dionsegijn.konfetti.core.models.Shape;
+import nl.dionsegijn.konfetti.xml.KonfettiView;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.ChallengeItemAdapter;
+//import nl.dionsegijn.konfetti.xml.image.ImageUtil;
 
 public class ChallengesActivity extends AppCompatActivity {
 
-    private Button create_challenges_button;
+    private Button create_challenges_button, button;
     private static final int EDITOR_ACTIVITY_RETURN_ID = 1;
     protected RecyclerView itemsListView;
     protected ChallengeItemAdapter itemRowAdapter;
     protected ArrayList<ChallengeItem> itemsList;
-
+    private Shape.DrawableShape drawableShape = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +45,46 @@ public class ChallengesActivity extends AppCompatActivity {
         //itemsList = new ArrayList<>();
         setupComponents();
 
+        /*KonfettiView konfettiView = findViewById(R.id.konfettiView);
+
+        final Drawable drawable =
+                ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_1);
+        drawableShape = ImageUtil.loadDrawable(drawable, true, true);
+
+        konfettiView = findViewById(R.id.konfettiView);
+        EmitterConfig emitterConfig = new Emitter(5L, TimeUnit.SECONDS).perSecond(50);
+        Party party =
+                new PartyFactory(emitterConfig)
+                        .angle(270)
+                        .spread(90)
+                        .setSpeedBetween(1f, 5f)
+                        .timeToLive(2000L)
+                        .shapes(new Shape.Rectangle(0.2f), drawableShape)
+                        .sizes(new Size(12, 5f, 0.2f))
+                        .position(0.0, 0.0, 1.0, 0.0)
+                        .build();
+        konfettiView.setOnClickListener(view -> konfettiView.start(party));
+        findViewById(R.id.btnExplode)
+                .setOnClickListener(
+                        v -> {
+                            explode();
+                        });
+
+        public void explode() {
+            EmitterConfig emitterConfig = new Emitter(100L, TimeUnit.MILLISECONDS).max(100);
+            konfettiView.start(
+                    new PartyFactory(emitterConfig)
+                            .spread(360)
+                            .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE, drawableShape))
+                            .colors(Arrays.asList(0xfce18a, 0xff726d, 0xf4306d, 0xb48def))
+                            .setSpeedBetween(0f, 30f)
+                            .position(new Relative(0.5, 0.3))
+                            .build());
+        }
+
+
+         */
+
         create_challenges_button = findViewById(R.id.create_challenges_button);
         create_challenges_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +93,7 @@ public class ChallengesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     @Override
@@ -99,6 +152,8 @@ public class ChallengesActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 }
 

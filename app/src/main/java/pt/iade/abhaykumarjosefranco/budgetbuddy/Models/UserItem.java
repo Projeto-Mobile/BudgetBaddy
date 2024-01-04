@@ -132,7 +132,7 @@ public class UserItem implements Serializable {
     }
 
 
-    public void addUser() {
+    public void addUser(UserItem.SaveResponse response) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
