@@ -39,6 +39,7 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
 
         holder.namecategory.setText(item.getCategory());
         holder.nameperiod.setText(item.getPeriod());
+        holder.specificationBudget.setText(item.getPeriod());
         holder.thevalue.setText(String.valueOf(item.getBudgetValue()));
     }
 
@@ -51,7 +52,7 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView namecategory;
         public TextView nameperiod;
-        public TextView thevalue;
+        public TextView thevalue, specificationBudget;
 
 
         public ViewHolder(View itemView) {
@@ -60,6 +61,7 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
             namecategory = itemView.findViewById(R.id.spanditure);
             nameperiod = itemView.findViewById(R.id.namedperiod);
             thevalue = itemView.findViewById(R.id.givenvalue);
+            specificationBudget = itemView.findViewById(R.id.typeCategory);
 
             itemView.setOnClickListener(this);
         }

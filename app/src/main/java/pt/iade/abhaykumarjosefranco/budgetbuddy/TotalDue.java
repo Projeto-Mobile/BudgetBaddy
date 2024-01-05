@@ -20,7 +20,7 @@ import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 public class TotalDue extends AppCompatActivity {
 
     private Spinner periodSpinner;
-    private EditText billEditText;
+    private EditText billEditText,typeofbill;
     private BottomNavigationView bottomNavigationView;
     protected ArrayList<BillItem> itemsList;
 
@@ -35,6 +35,7 @@ public class TotalDue extends AppCompatActivity {
 
         periodSpinner = findViewById(R.id.spinner);
         billEditText = findViewById(R.id.budget_cate_num);
+        typeofbill = findViewById(R.id.description);
 
         //itemsList = BillItem.List();
         Intent intent = getIntent();
@@ -178,9 +179,10 @@ public class TotalDue extends AppCompatActivity {
                 Intent intent = new Intent(TotalDue.this, ViewTotaldueBudget.class);
 
 
-                BillItem item = new BillItem(-1, "", "", 0);
+                BillItem item = new BillItem(-1, "", "", "", 0);
                 item.setBillValue(Integer.parseInt(billEditText.getText().toString()));
                 item.setBill(button.getText().toString());
+                item.setType(billEditText.getText().toString());
                 item.setPeriod(periodSpinner.getSelectedItem().toString());
 
                 item.addBill(new BillItem.SaveResponse() {

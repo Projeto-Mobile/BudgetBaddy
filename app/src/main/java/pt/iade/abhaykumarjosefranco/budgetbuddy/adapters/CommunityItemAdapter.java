@@ -40,16 +40,7 @@ public class CommunityItemAdapter extends RecyclerView.Adapter<CommunityItemAdap
         CommunityItem item = items.get(position);
 
         holder.name.setText(item.getName());
-        holder.name1.setText(item.getUser1());
-        holder.budget1.setText(String.valueOf(item.getAmount1()));
-        holder.name2.setText(item.getUser2());
-        holder.budget2.setText(String.valueOf(item.getAmount2()));
-        holder.name3.setText(item.getUser3());
-        holder.budget3.setText(String.valueOf(item.getAmount3()));
-        holder.name4.setText(item.getUser4());
-        holder.budget4.setText(String.valueOf(item.getAmount4()));
-        holder.name5.setText(item.getUser5());
-        holder.budget5.setText(String.valueOf(item.getAmount5()));
+        holder.amount.setText(item.getAmount());
     }
     @Override
     public int getItemCount(){
@@ -59,20 +50,8 @@ public class CommunityItemAdapter extends RecyclerView.Adapter<CommunityItemAdap
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public  TextView name;
-        public TextView name1;
-        public TextView budget1;
+        public TextView amount;
 
-        public TextView name2;
-        public TextView budget2;
-
-        public TextView name3;
-        public TextView budget3;
-
-        public TextView name4;
-        public TextView budget4;
-
-        public TextView name5;
-        public TextView budget5;
 
 
         public ViewHolder(View itemView) {
@@ -82,20 +61,7 @@ public class CommunityItemAdapter extends RecyclerView.Adapter<CommunityItemAdap
 
             name = itemView.findViewById(R.id.chosencategory);
 
-            name1 = itemView.findViewById(R.id.user_1);
-            budget1 = itemView.findViewById(R.id.amount_1);
-
-            name2 = itemView.findViewById(R.id.user_2);
-            budget2 = itemView.findViewById(R.id.amount_2);
-
-            name3 = itemView.findViewById(R.id.user_3);
-            budget3 = itemView.findViewById(R.id.amount_3);
-
-            name4 = itemView.findViewById(R.id.user_4);
-            budget4 = itemView.findViewById(R.id.amount_4);
-
-            name5 = itemView.findViewById(R.id.user_5);
-            budget5 = itemView.findViewById(R.id.amount_5);
+            amount = itemView.findViewById(R.id.value);
             // Set what happens when the view gets clicked.
             itemView.setOnClickListener(this);
         }

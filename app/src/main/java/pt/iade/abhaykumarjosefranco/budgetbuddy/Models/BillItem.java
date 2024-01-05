@@ -17,7 +17,7 @@ public class BillItem implements Serializable {
     private static int idCounter = 0;
     private int id;
     private String bill;
-    private String period;
+    private String period,typeofexpense;
     private int billValue;
 
     //public static ArrayList<BillItem> billItems;
@@ -25,12 +25,13 @@ public class BillItem implements Serializable {
     //TODO : Associate user ID, budget ID, type budget ID
 
     public BillItem() {
-        this(0, "", "", 0);
+        this(0, "", "", "", 0);
     }
 
-    public BillItem(int id, String bill, String period, int billValue) {
+    public BillItem(int id, String bill, String typeofexpense, String period, int billValue) {
         this.id = id;
         this.bill = bill;
+        this.typeofexpense = typeofexpense;
         this.period = period;
         this.billValue = billValue;
 
@@ -45,9 +46,9 @@ public class BillItem implements Serializable {
         return billItems;
     }*/
 
-    public static BillItem createNewBillItem(String bill, String period, int billValue) {
+    public static BillItem createNewBillItem(String bill,String typeofexpense, String period, int billValue) {
         int newId = generateUniqueId();
-        return new BillItem(newId, bill, period, billValue);
+        return new BillItem(newId, bill,typeofexpense, period, billValue);
 
     }
     private static synchronized int generateUniqueId() {
@@ -94,7 +95,7 @@ public class BillItem implements Serializable {
     }
 
     public static BillItem GetById(int id) {
-        return new BillItem(id,"","Choose the duration",0);
+        return new BillItem(id,"","", "Choose the duration",0);
     }
 
     public void addBill(BillItem.SaveResponse response) {
@@ -188,6 +189,14 @@ public class BillItem implements Serializable {
 
     public void setBill(String bill) {
         this.bill = bill;
+    }
+
+    public String getType() {
+        return typeofexpense;
+    }
+
+    public void setType(String typeofexpense) {
+        this.typeofexpense = typeofexpense;
     }
 
     public String getPeriod() {

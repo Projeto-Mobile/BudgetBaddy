@@ -24,7 +24,7 @@ import nl.dionsegijn.konfetti.core.models.Shape;
 import nl.dionsegijn.konfetti.xml.KonfettiView;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.ChallengeItemAdapter;
-//import nl.dionsegijn.konfetti.xml.image.ImageUtil;
+
 
 public class ChallengesActivity extends AppCompatActivity {
 
@@ -45,45 +45,28 @@ public class ChallengesActivity extends AppCompatActivity {
         //itemsList = new ArrayList<>();
         setupComponents();
 
-        /*KonfettiView konfettiView = findViewById(R.id.konfettiView);
+       /* KonfettiView konfettiView = findViewById(R.id.konfettiView);
 
-        final Drawable drawable =
-                ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_1);
+        final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_1);
         drawableShape = ImageUtil.loadDrawable(drawable, true, true);
 
-        konfettiView = findViewById(R.id.konfettiView);
-        EmitterConfig emitterConfig = new Emitter(5L, TimeUnit.SECONDS).perSecond(50);
-        Party party =
-                new PartyFactory(emitterConfig)
-                        .angle(270)
-                        .spread(90)
-                        .setSpeedBetween(1f, 5f)
-                        .timeToLive(2000L)
-                        .shapes(new Shape.Rectangle(0.2f), drawableShape)
-                        .sizes(new Size(12, 5f, 0.2f))
-                        .position(0.0, 0.0, 1.0, 0.0)
-                        .build();
-        konfettiView.setOnClickListener(view -> konfettiView.start(party));
-        findViewById(R.id.btnExplode)
-                .setOnClickListener(
-                        v -> {
-                            explode();
-                        });
-
         public void explode() {
-            EmitterConfig emitterConfig = new Emitter(100L, TimeUnit.MILLISECONDS).max(100);
-            konfettiView.start(
-                    new PartyFactory(emitterConfig)
-                            .spread(360)
-                            .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE, drawableShape))
-                            .colors(Arrays.asList(0xfce18a, 0xff726d, 0xf4306d, 0xb48def))
-                            .setSpeedBetween(0f, 30f)
-                            .position(new Relative(0.5, 0.3))
-                            .build());
+            EmitterConfig emitterConfig = new Emitter(100L, TimeUnit.MILLISECONDS).max(100); // Corrected method name
+            konfettiView.build()
+                    .addColors(0xfce18a, 0xff726d, 0xf4306d, 0xb48def)
+                    .setDirection(0.0, 359.0)
+                    .setSpeed(1f, 30f)
+                    .setFadeOutEnabled(true)
+                    .setTimeToLive(2000L)
+                    .addShapes(Shape.Square.INSTANCE, Shape.Circle.INSTANCE, drawableShape)
+                    .setPosition(0.5f, 0.3f, 0.7f, 1.0f)
+                    .setEmitters(emitterConfig)
+                    .burst(100);
         }
 
 
-         */
+        */
+
 
         create_challenges_button = findViewById(R.id.create_challenges_button);
         create_challenges_button.setOnClickListener(new View.OnClickListener() {

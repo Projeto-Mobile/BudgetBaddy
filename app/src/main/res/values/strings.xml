@@ -148,6 +148,10 @@
     <string name="random">Press button to generate number</string>
     <string name="enter">Enter the key</string>
     <string name="generate">Generate</string>
+    <string name="type">Specify the budget</string>
+    <string name="typeB">Specify the expense</string>
+    <string name="key">Enter the key</string>
+    <string name="value_">Value for the community</string>
 
 
 </resources>

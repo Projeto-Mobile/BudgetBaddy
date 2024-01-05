@@ -18,7 +18,7 @@ import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 public class Category extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Spinner periodSpinner;
-    private EditText budgetEditText;
+    private EditText budgetEditText, typeofcategory;
     protected ArrayList<BudgetItem> itemsList;
 
     protected BudgetItem item;
@@ -39,6 +39,7 @@ public class Category extends AppCompatActivity {
 
         periodSpinner = findViewById(R.id.spinner);
         budgetEditText = findViewById(R.id.budget_cate_num2);
+        typeofcategory = findViewById(R.id.descriptionExpense);
 
 
         dinningout_button = findViewById(R.id.dinningout_button);
@@ -164,18 +165,16 @@ public class Category extends AppCompatActivity {
         */
     }
 
-    /**
-     * Updates the data in the associated object with the information from the UI components.
-     */
     protected void setBudget(Button button, int idType) {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Category.this, ViewBudget.class);
 
-                BudgetItem item = new BudgetItem(-1, "", "", 0);
+                BudgetItem item = new BudgetItem(-1, "", "", "", 0);
                 item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
                 item.setCategory(button.getText().toString());
+                item.setType(typeofcategory.getText().toString());
                 item.setPeriod(periodSpinner.getSelectedItem().toString());
 
                 item.addBudget(new BudgetItem.SaveResponse() {

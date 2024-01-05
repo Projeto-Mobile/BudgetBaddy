@@ -35,10 +35,10 @@ public class ChallengeItem implements Serializable {
         }*/
     }
 
-    public static BudgetItem GetById(int id) {
+    /*public static ChallengeItem GetById(int id) {
         // TODO: Fetch the item using its id and populate the object.
-        return new BudgetItem(id, "", "", 0);
-    }
+        return new ChallengeItem(id, "", "", 0);
+    }*/
 
    /* public static ArrayList<ChallengeItem> List() {
         return challengeItems;
@@ -218,7 +218,6 @@ public class ChallengeItem implements Serializable {
     private String challenge;
     private String period;
 
-    // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
     public static ArrayList<ChallengeItem> challengeItems;
 
     public ChallengeItem() {

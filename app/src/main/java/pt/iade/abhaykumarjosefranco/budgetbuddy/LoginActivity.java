@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (pass.isEmpty()) {
                     loginPassword.setError("Password cannot be empty.");
                 } else {
-                   auth.signInWithEmailAndPassword(email, pass)
+                    auth.signInWithEmailAndPassword(email, pass)
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
@@ -56,7 +56,6 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                     finish();
                                 }
-
                                 // public void onRequestPermissionResult()
                             });
                 }
@@ -69,5 +68,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
+
     }
 }

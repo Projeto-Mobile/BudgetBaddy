@@ -1,15 +1,23 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 
+import android.telecom.Call;
 import android.util.Log;
+import android.view.PixelCopy;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.common.api.Response;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
+
+import javax.security.auth.callback.Callback;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
@@ -21,6 +29,8 @@ public class UserItem implements Serializable {
     private String name;
     private String password;
     private String email;
+    private double lat;
+    private double lng;
 
     // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
     //public static ArrayList<UserItem> userItems;
@@ -99,7 +109,6 @@ public class UserItem implements Serializable {
     }*/
 
 
-
     public static UserItem GetById(int id) {
         // TODO: Fetch the item from the web server using its id and populate the object.
 
@@ -151,6 +160,38 @@ public class UserItem implements Serializable {
         });
         thread.start();
     }
+
+    /*
+    String path = "http://localhost:8080/bomb/localizacao/" + lat + "/" + lng;
+
+    public void serveruser(UserItem.SaveResponse response) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Request rq = new Request.Builder().url(path).build();
+                    OkHttpClient UserItem = new OkHttpClient();
+
+                    UserItem.newCall(rq).enqueue(new Callback() {
+                        public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                            Log.d("Error", "" + e);
+                        }
+
+
+                        public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                            Log.d("Message", "" + response.body().string());
+                        }
+                    });
+                } catch (Exception ex) {
+                    Log.d("Exception", "" + ex);
+                } finally {
+                    // urlConnection.disconnect();
+                }
+            }
+        });
+        thread.start();
+    }*/
+
 
     public int getId() {
         return id;

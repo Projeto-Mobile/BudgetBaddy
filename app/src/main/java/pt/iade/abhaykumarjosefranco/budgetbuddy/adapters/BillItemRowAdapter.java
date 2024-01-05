@@ -39,6 +39,7 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
 
         holder.namebill.setText(item.getBill());
         holder.nameperiod.setText(item.getPeriod());
+        holder.specification.setText(item.getPeriod());
         holder.values.setText(String.valueOf(item.getBillValue()));
 
     }
@@ -51,7 +52,7 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView namebill;
         public TextView nameperiod;
-        public TextView values;
+        public TextView values, specification;
 
 
         public ViewHolder(View itemView) {
@@ -60,6 +61,7 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
             namebill = itemView.findViewById(R.id.namedbill);
             nameperiod = itemView.findViewById(R.id.chosenperiod);
             values = itemView.findViewById(R.id.selectedvalue);
+            specification = itemView.findViewById(R.id.typeBill);
 
             itemView.setOnClickListener(this);
         }

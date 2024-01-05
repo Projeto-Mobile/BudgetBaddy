@@ -18,19 +18,21 @@ public class BudgetItem implements Serializable {
     private static int idCounter = 0;
     private int id;
     private String category;
-    private String period;
+    private String typeC;
+    private String period, type;
     private int budgetValue;
 
     // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
    // public static ArrayList<BudgetItem> budgetItems;
 
     public BudgetItem() {
-        this(0, "", "", 0);
+        this(0, "","", "", 0);
     }
 
-    public BudgetItem(int id, String category, String period, int budgetValue) {
+    public BudgetItem(int id, String category,String Type, String period, int budgetValue) {
         this.id = id;
         this.category = category;
+        this.type = type;
         this.period = period;
         this.budgetValue = budgetValue;
 
@@ -43,10 +45,10 @@ public class BudgetItem implements Serializable {
         return budgetItems;
     }*/
 
-    public static BudgetItem createNewBudgetItem(String category, String period, int budgetValue) {
+    public static BudgetItem createNewBudgetItem(String category, String type,  String period, int budgetValue) {
         // This method creates a new BudgetItem with the provided values.
         int newId = generateUniqueId(); // You should implement this method to generate a unique ID.
-        return new BudgetItem(newId, category, period, budgetValue);
+        return new BudgetItem(newId, category,type , period, budgetValue);
 
     }
     private static synchronized int generateUniqueId() {
@@ -70,7 +72,7 @@ public class BudgetItem implements Serializable {
     public static BudgetItem GetById(int id) {
         // TODO: Fetch the item from the web server using its id and populate the object.
 
-        return new BudgetItem(id,"","Choose the duration",0);
+        return new BudgetItem(id,"","", "Choose the duration",0);
     }
 
     public void addBudget(BudgetItem.SaveResponse response) {
@@ -169,6 +171,14 @@ public class BudgetItem implements Serializable {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+
+    public String getType() {
+        return typeC;
+    }
+    public void setType(String typeC) {
+        this.typeC = typeC;
     }
 
     public String getPeriod() {

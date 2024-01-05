@@ -24,7 +24,14 @@
            android:layout_height="wrap_content"
            android:textSize="20sp"
            android:textStyle="bold"
+           android:textAlignment="center"
            tools:text="@string/bill_hint" />
+
+       <TextView
+           android:id="@+id/typeBill"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           tools:text="@string/typeB" />
 
        <TextView
            android:id="@+id/chosenperiod"

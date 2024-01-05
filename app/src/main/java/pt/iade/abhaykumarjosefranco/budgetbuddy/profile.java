@@ -24,36 +24,11 @@ public class Profile extends Activity {
     private Button log_out_button,delete_account_button, community_button;
     private EditText nameEditText;
     private EditText emailEditText;
-    TextView textview_random;
-    Button generate;
-    Random ra = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        textview_random = findViewById(R.id.random_number);
-        generate = findViewById(R.id.generate_button);
-
-        generate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                Random ra = new Random();
-
-                int randomLength = 5;
-
-                StringBuilder randomString = new StringBuilder();
-                for (int i = 0; i < randomLength; i++) {
-                    int randomIndex = ra.nextInt(characters.length());
-                    randomString.append(characters.charAt(randomIndex));
-                }
-
-                textview_random.setText(randomString.toString());
-            }
-        });
-
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.profile);
@@ -143,6 +118,7 @@ public class Profile extends Activity {
 
         emailEditText = findViewById(R.id.signup_email);
 
+
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (currentUser != null) {
@@ -154,5 +130,6 @@ public class Profile extends Activity {
             nameEditText.setText(name);
             emailEditText.setText(email);
         }
+
     }
 }

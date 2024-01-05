@@ -6,12 +6,15 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.annotations.JsonAdapter;
 
 import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.DateJsonAdapter;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 public class SpendingItem implements Serializable {
@@ -19,9 +22,9 @@ public class SpendingItem implements Serializable {
     private static int idCounter = 0;
     private int id;
     private String spentcategory;
-    //@JsonAdapter(DateJsonAdapter.class)
+    @JsonAdapter(DateJsonAdapter.class)
     private LocalDate spentDate;
-    //@JsonAdapter(DateJsonAdapter.class)
+    @JsonAdapter(DateJsonAdapter.class)
 
     private int spentValue;
 
