@@ -64,7 +64,7 @@ public class ChallengeItem implements Serializable {
     }*/
 
 
-    public void save(ChallengeItem.SaveResponse response) {
+    /*public void save(ChallengeItem.SaveResponse response) {
         // Send the object's data to our web server and update the database there.
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -93,7 +93,7 @@ public class ChallengeItem implements Serializable {
         });
         thread.start();
     }
-    /*
+
     public static ChallengeItem GetById(int id) {
         // TODO: Fetch the item from the web server using its id and populate the object.
 
@@ -133,7 +133,7 @@ public class ChallengeItem implements Serializable {
                 try {
                     try {
                         WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/BudgetBuddy/challenges"));
+                                WebRequest.LOCALHOST + "/api/challenge/list"));
                         String resp = req.performGetRequest();
 
                         // Get the array from the response.

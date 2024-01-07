@@ -22,6 +22,7 @@ import nl.dionsegijn.konfetti.core.emitter.Emitter;
 import nl.dionsegijn.konfetti.core.emitter.EmitterConfig;
 import nl.dionsegijn.konfetti.core.models.Shape;
 import nl.dionsegijn.konfetti.xml.KonfettiView;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.ChallengeItemAdapter;
 
@@ -33,7 +34,9 @@ public class ChallengesActivity extends AppCompatActivity {
     protected RecyclerView itemsListView;
     protected ChallengeItemAdapter itemRowAdapter;
     protected ArrayList<ChallengeItem> itemsList;
-    private Shape.DrawableShape drawableShape = null;
+    //private Shape.DrawableShape drawableShape = null;
+
+    protected ChallengeItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,9 @@ public class ChallengesActivity extends AppCompatActivity {
         //Intent intent = getIntent();
         //itemsList = ChallengeItem.challengeItems;
         //itemsList = new ArrayList<>();
+
+        Intent intent = getIntent();
+        item = (ChallengeItem) intent.getSerializableExtra("item");
         setupComponents();
 
        /* KonfettiView konfettiView = findViewById(R.id.konfettiView);
@@ -62,10 +68,7 @@ public class ChallengesActivity extends AppCompatActivity {
                     .setPosition(0.5f, 0.3f, 0.7f, 1.0f)
                     .setEmitters(emitterConfig)
                     .burst(100);
-        }
-
-
-        */
+        }*/
 
 
         create_challenges_button = findViewById(R.id.create_challenges_button);

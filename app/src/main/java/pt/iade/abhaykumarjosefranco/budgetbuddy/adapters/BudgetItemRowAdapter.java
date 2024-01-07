@@ -1,5 +1,8 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy.adapters;
+
 import pt.iade.abhaykumarjosefranco.budgetbuddy.R;
+import java.time.format.DateTimeFormatter;
+
 
 import android.widget.TextView;
 import android.content.Context;
@@ -26,6 +29,7 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
         clickListener = listener;
     }
 
+    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_budget_item, parent, false);
@@ -38,8 +42,12 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
         BudgetItem item = items.get(position);
 
         holder.namecategory.setText(item.getCategory());
-        holder.nameperiod.setText(item.getPeriod());
-        holder.specificationBudget.setText(item.getPeriod());
+
+        holder.startperiod.setText(item.getDatestart().format(dateFormatter));
+        holder.endperiod.setText(item.getDateend().format(dateFormatter));
+        holder.specificationBudget.setText(item.getType());
+
+
         holder.thevalue.setText(String.valueOf(item.getBudgetValue()));
     }
 
@@ -51,7 +59,7 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView namecategory;
-        public TextView nameperiod;
+        public TextView startperiod, endperiod;
         public TextView thevalue, specificationBudget;
 
 
@@ -59,7 +67,8 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
             super(itemView);
 
             namecategory = itemView.findViewById(R.id.spanditure);
-            nameperiod = itemView.findViewById(R.id.namedperiod);
+            startperiod = itemView.findViewById(R.id.startperiod);
+            endperiod = itemView.findViewById(R.id.endperiod);
             thevalue = itemView.findViewById(R.id.givenvalue);
             specificationBudget = itemView.findViewById(R.id.typeCategory);
 

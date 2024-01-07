@@ -161,37 +161,6 @@ public class UserItem implements Serializable {
         thread.start();
     }
 
-    /*
-    String path = "http://localhost:8080/bomb/localizacao/" + lat + "/" + lng;
-
-    public void serveruser(UserItem.SaveResponse response) {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Request rq = new Request.Builder().url(path).build();
-                    OkHttpClient UserItem = new OkHttpClient();
-
-                    UserItem.newCall(rq).enqueue(new Callback() {
-                        public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                            Log.d("Error", "" + e);
-                        }
-
-
-                        public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                            Log.d("Message", "" + response.body().string());
-                        }
-                    });
-                } catch (Exception ex) {
-                    Log.d("Exception", "" + ex);
-                } finally {
-                    // urlConnection.disconnect();
-                }
-            }
-        });
-        thread.start();
-    }*/
-
 
     public int getId() {
         return id;

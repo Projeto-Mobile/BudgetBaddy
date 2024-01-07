@@ -11,6 +11,8 @@ import android.widget.Spinner;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BillItem;
@@ -19,8 +21,7 @@ import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 
 public class TotalDue extends AppCompatActivity {
 
-    private Spinner periodSpinner;
-    private EditText billEditText,typeofbill;
+    private EditText billEditText,typeofbill, datestarts, dateends;
     private BottomNavigationView bottomNavigationView;
     protected ArrayList<BillItem> itemsList;
 
@@ -33,7 +34,11 @@ public class TotalDue extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_total_due);
 
-        periodSpinner = findViewById(R.id.spinner);
+
+
+        datestarts = findViewById(R.id.starting);
+        dateends = findViewById(R.id.ending);
+
         billEditText = findViewById(R.id.budget_cate_num);
         typeofbill = findViewById(R.id.description);
 
@@ -179,16 +184,20 @@ public class TotalDue extends AppCompatActivity {
                 Intent intent = new Intent(TotalDue.this, ViewTotaldueBudget.class);
 
 
-                BillItem item = new BillItem(-1, "", "", "", 0);
+                BillItem item = new BillItem(-1, "", "", 0,  LocalDate.now(), LocalDate.now());
                 item.setBillValue(Integer.parseInt(billEditText.getText().toString()));
                 item.setBill(button.getText().toString());
                 item.setType(billEditText.getText().toString());
-                item.setPeriod(periodSpinner.getSelectedItem().toString());
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                item.setDatestart(LocalDate.parse(datestarts.getText().toString(), formatter));
+                item.setDateend(LocalDate.parse(dateends.getText().toString(), formatter));
 
                 item.addBill(new BillItem.SaveResponse() {
                     @Override
                     public void response() {
                         populateView();
+                        intent.putExtra("item", item);
                         startActivity(intent);
                     }
                 });

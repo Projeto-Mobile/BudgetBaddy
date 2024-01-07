@@ -143,11 +143,11 @@
         android:id="@+id/set_budget_category_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/set_budget"
         android:textColor="@color/lightgrey"
         android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/budget_cate_num"
+        app:layout_constraintBottom_toTopOf="@+id/starting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent" />
@@ -156,15 +156,14 @@
         android:id="@+id/budget_cate_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="@string/enter_budget"
         android:inputType="number"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/archeive"
@@ -209,31 +208,48 @@
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="262dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="36dp"
-        android:background="@color/background"
-        android:entries="@array/periods"
+
+    <EditText
+        android:id="@+id/starting"
+        android:layout_width="172dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="@string/datestart"
+        android:textColorHint="@color/lightgrey"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/budget_cate_num"
+        app:layout_constraintEnd_toStartOf="@+id/ending"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ending"
+        android:layout_width="172dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="@string/dateend"
+        android:textColorHint="@color/lightgrey"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/budget_cate_num"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout3" />
+        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginBottom="116dp"
         android:ems="10"
         android:hint="@string/typeB"
         android:textColorHint="@color/lightgrey"
         android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

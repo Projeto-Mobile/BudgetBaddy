@@ -6,19 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
-import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
 
 
 public class Category extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
-    private Spinner periodSpinner;
-    private EditText budgetEditText, typeofcategory;
+    private EditText budgetEditText, typeofcategory,datestarts, dateends;
     protected ArrayList<BudgetItem> itemsList;
 
     protected BudgetItem item;
@@ -37,7 +37,10 @@ public class Category extends AppCompatActivity {
         listPosition = intent.getIntExtra("position",-1);
         item = (BudgetItem) intent.getSerializableExtra("item");
 
-        periodSpinner = findViewById(R.id.spinner);
+
+        datestarts = (EditText) findViewById(R.id.startDate);
+        dateends = (EditText)  findViewById(R.id.endDate);
+
         budgetEditText = findViewById(R.id.budget_cate_num2);
         typeofcategory = findViewById(R.id.descriptionExpense);
 
@@ -153,16 +156,10 @@ public class Category extends AppCompatActivity {
      */
     protected void populateView() {
 
-        // TODO: Get item from list and use it:
-        /*
-        budgetEditText.setText(String.valueOf(item.getBudgetValue()));
 
-        String[] periods = getResources().getStringArray(R.array.periods);
-        for (int i = 0; i < periods.length; i++) {
-            if (periods[i].equals(item.getPeriod()))
-                periodSpinner.setSelection(i);
-        }
-        */
+
+        //datestarts.setText(item.getDatestart().toString());
+        //dateends.setText(item.getDateend().toString());
     }
 
     protected void setBudget(Button button, int idType) {
@@ -171,16 +168,20 @@ public class Category extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Category.this, ViewBudget.class);
 
-                BudgetItem item = new BudgetItem(-1, "", "", "", 0);
+                BudgetItem item = new BudgetItem(-1, "", "",  0, LocalDate.now(), LocalDate.now());
                 item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
                 item.setCategory(button.getText().toString());
                 item.setType(typeofcategory.getText().toString());
-                item.setPeriod(periodSpinner.getSelectedItem().toString());
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                item.setDatestart(LocalDate.parse(datestarts.getText().toString(), formatter));
+                item.setDateend(LocalDate.parse(dateends.getText().toString(), formatter));
 
                 item.addBudget(new BudgetItem.SaveResponse() {
                     @Override
                     public void response() {
                         populateView();
+                        intent.putExtra("item", item);
                         startActivity(intent);
                     }
                 });

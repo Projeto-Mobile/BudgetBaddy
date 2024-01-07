@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mywhite">
+    android:background="@color/white">
 
 
     <TextView
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/overview"
+        android:textStyle="bold"
         android:textColor="@color/dblue"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,25 +64,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/total_due_button" />
 
-
-    <TextView
-        android:id="@+id/signupNameTextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/custom_edittext"
-        android:backgroundTint="@color/white"
-        android:drawablePadding="8dp"
-        android:hint="@string/name_hint_profile"
-        android:padding="8dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.72"
-        app:layout_constraintStart_toEndOf="@+id/overview_view"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView

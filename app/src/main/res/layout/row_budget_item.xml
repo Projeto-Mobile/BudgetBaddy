@@ -35,7 +35,13 @@
             tools:text="@string/type" />
 
         <TextView
-            android:id="@+id/namedperiod"
+            android:id="@+id/startperiod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/period_hint" />
+
+        <TextView
+            android:id="@+id/endperiod"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="@string/period_hint" />

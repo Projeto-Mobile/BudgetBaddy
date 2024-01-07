@@ -91,7 +91,7 @@ public class SpendingItem implements Serializable {
                 try {
                     try {
                         WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/BudgetBuddy/spending"));
+                                WebRequest.LOCALHOST + "/api/spending/list"));
                         String resp = req.performGetRequest();
 
                         // Get the array from the response.

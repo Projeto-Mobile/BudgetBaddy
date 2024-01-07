@@ -30,11 +30,10 @@ public class Viewspendings extends AppCompatActivity {
         setContentView(R.layout.activity_viewspendings);
 
 
-        /*itemsList = SpendingItem.List();
         Intent intent = getIntent();
         listPosition = intent.getIntExtra("position",-1);
         item = (SpendingItem) intent.getSerializableExtra("item");
-        setupComponents();*/
+
         setupComponents();
 
     }

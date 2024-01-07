@@ -6,19 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Spendings">
 
-    <EditText
-        android:id="@+id/expensename"
-        android:layout_width="227dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="208dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/name_hint"
-        android:textColorHint="@color/lightgrey"
+
+    <Spinner
+        android:id="@+id/spending_spinner"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="52dp"
+        android:entries="@array/categories"
+        android:scrollbarSize="20dp"
+        android:background="@color/background"
+        app:layout_constraintBottom_toTopOf="@+id/expensevalue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.128" />
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/expensevalue"

@@ -21,6 +21,8 @@ public class ViewBudget extends AppCompatActivity {
     protected BudgetItemRowAdapter itemRowAdapter;
     protected ArrayList<BudgetItem> itemsList;
 
+    protected BudgetItem item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,8 @@ public class ViewBudget extends AppCompatActivity {
 
 
         //itemsList = BudgetItem.budgetItems;
-        //Intent intent = getIntent();
+        Intent intent = getIntent();
+        item = (BudgetItem) intent.getSerializableExtra("item");
         setupComponents();
 
     }

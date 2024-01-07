@@ -82,7 +82,7 @@ public class CommunityItem implements Serializable {
                 try {
                     try {
                         WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/BudgetBuddy/community"));
+                                WebRequest.LOCALHOST + "/api/community/list"));
                         String resp = req.performGetRequest();
 
                         // Get the array from the response.

@@ -24,6 +24,7 @@ public class Community extends AppCompatActivity {
     protected RecyclerView itemsListView;
     protected CommunityItemAdapter itemRowAdapter;
     protected ArrayList<CommunityItem> itemsList;
+    protected CommunityItem item;
 
 
     @Override
@@ -31,11 +32,12 @@ public class Community extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
 
-
         //Intent intent = getIntent();
         //itemsList = new ArrayList<>();
         //itemsList = CommunityItem.List(); THIS WAS WORKING BECAUSE OF THIS .
 
+        Intent intent = getIntent();
+        item = (CommunityItem) intent.getSerializableExtra("item");
         setupComponents();
 
         add_button = findViewById(R.id.add_community_button);

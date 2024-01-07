@@ -20,7 +20,6 @@ public class WalletActivity extends AppCompatActivity {
     protected final static int PERMISSION_REQUEST_CODE = 22;
     protected final static int CAMERA_PIC_REQUEST = 23;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -145,6 +145,9 @@
 
     <string name="bill_hint">Name of the bill here.</string>
 
+    <string name="datestart">Start date</string>
+    <string name="dateend">End date</string>
+
     <string name="random">Press button to generate number</string>
     <string name="enter">Enter the key</string>
     <string name="generate">Generate</string>

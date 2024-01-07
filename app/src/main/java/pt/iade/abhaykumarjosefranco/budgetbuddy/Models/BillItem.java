@@ -6,18 +6,25 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.annotations.JsonAdapter;
 
 import java.io.Serializable;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.DateJsonAdapter;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 public class BillItem implements Serializable {
     private static int idCounter = 0;
     private int id;
     private String bill;
-    private String period,typeofexpense;
+    private String typeofexpense;
+    @JsonAdapter(DateJsonAdapter.class)
+    private LocalDate datestart;
+    private LocalDate dateend;
+    @JsonAdapter(DateJsonAdapter.class)
     private int billValue;
 
     //public static ArrayList<BillItem> billItems;
@@ -25,14 +32,15 @@ public class BillItem implements Serializable {
     //TODO : Associate user ID, budget ID, type budget ID
 
     public BillItem() {
-        this(0, "", "", "", 0);
+        this(0, "", "",  0, LocalDate.now(), LocalDate.now());
     }
 
-    public BillItem(int id, String bill, String typeofexpense, String period, int billValue) {
+    public BillItem(int id, String bill, String typeofexpense, int billValue,  LocalDate date1, LocalDate date2) {
         this.id = id;
         this.bill = bill;
+        this.datestart = date1;
+        this.dateend = date2;
         this.typeofexpense = typeofexpense;
-        this.period = period;
         this.billValue = billValue;
 
         /*if (billItems == null) {
@@ -44,11 +52,11 @@ public class BillItem implements Serializable {
 
     /*public static ArrayList<BillItem> List() {
         return billItems;
-    }*/
+    }
 
-    public static BillItem createNewBillItem(String bill,String typeofexpense, String period, int billValue) {
+    public static BillItem createNewBillItem(String bill,String typeofexpense, int billValue) {
         int newId = generateUniqueId();
-        return new BillItem(newId, bill,typeofexpense, period, billValue);
+        return new BillItem(newId, bill,typeofexpense, billValue);
 
     }
     private static synchronized int generateUniqueId() {
@@ -62,7 +70,7 @@ public class BillItem implements Serializable {
             billItems.add(this);
         } else {
         }
-    }*/
+    }
 
     public void save(SaveResponse response) {
         // Send the object's data to our web server and update the database there.
@@ -92,10 +100,10 @@ public class BillItem implements Serializable {
             }
         });
         thread.start();
-    }
+    }*/
 
     public static BillItem GetById(int id) {
-        return new BillItem(id,"","", "Choose the duration",0);
+        return new BillItem(id,"","",0,  LocalDate.now(), LocalDate.now());
     }
 
     public void addBill(BillItem.SaveResponse response) {
@@ -105,7 +113,7 @@ public class BillItem implements Serializable {
                 try {
                     if (id == 0) {
                         WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/bill/add"));
+                                WebRequest.LOCALHOST + "/api/budgets/add"));
                         String response = req.performPostRequest(BillItem.this);
                     }
                 } catch (Exception e) {
@@ -118,6 +126,7 @@ public class BillItem implements Serializable {
         thread.start();
     }
 
+
     public static void List(BillItem.ListResponse response) {
         ArrayList<BillItem> items = new ArrayList<BillItem>();
 
@@ -129,7 +138,7 @@ public class BillItem implements Serializable {
                 try {
                     try {
                         WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/BudgetBuddy/bills"));
+                                WebRequest.LOCALHOST + "/api/budgets/list"));
                         String resp = req.performGetRequest();
 
                         // Get the array from the response.
@@ -162,7 +171,7 @@ public class BillItem implements Serializable {
                 try {
                     try {
                         WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/bill/" + id));
+                                WebRequest.LOCALHOST + "/api/budgets/" + id));
                         String resp = req.performGetRequest();
 
                         response.response(new Gson().fromJson(resp, BillItem.class));
@@ -199,12 +208,19 @@ public class BillItem implements Serializable {
         this.typeofexpense = typeofexpense;
     }
 
-    public String getPeriod() {
-        return period;
+    public LocalDate getDatestart() {
+        return datestart;
     }
 
-    public void setPeriod(String period) {
-        this.period = period;
+    public void setDatestart(LocalDate datestart) {
+        this.datestart = datestart;
+    }
+    public LocalDate getDateend() {
+        return dateend;
+    }
+
+    public void setDateend(LocalDate dateend) {
+        this.dateend = dateend;
     }
 
     public int getBillValue() {

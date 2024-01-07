@@ -1,15 +1,12 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
-import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.CommunityItem;
 
 public class create_community extends AppCompatActivity {
@@ -20,7 +17,6 @@ public class create_community extends AppCompatActivity {
 
     protected Button button;
     private Spinner optionSpinner;
-
     private EditText numberedittext;
 
     @Override
@@ -49,15 +45,9 @@ public class create_community extends AppCompatActivity {
             }
         });
     }
-
-
-
     protected void populateView(){
 
         item.setName(optionSpinner.getSelectedItem().toString());
-
-
-        //name.setText(item.getName());
 
         value1.setText(item.getAmount());
 
@@ -79,6 +69,7 @@ public class create_community extends AppCompatActivity {
             @Override
             public void response() {
                 populateView();
+                intent.putExtra("item", item);
                 startActivity(intent);
             }
         });

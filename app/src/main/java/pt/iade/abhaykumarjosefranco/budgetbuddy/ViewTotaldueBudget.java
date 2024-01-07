@@ -23,6 +23,7 @@ public class ViewTotaldueBudget extends AppCompatActivity {
     protected RecyclerView itemsListView;
     protected BillItemRowAdapter itemRowAdapter;
     protected ArrayList<BillItem> itemsList;
+    protected BillItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,9 @@ public class ViewTotaldueBudget extends AppCompatActivity {
 
         //itemsList = BillItem.billItems;
         //Intent intent = getIntent();
+
+        Intent intent = getIntent();
+        item = (BillItem) intent.getSerializableExtra("item");
         setupComponents();
 
     }

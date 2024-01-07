@@ -23,7 +23,7 @@ import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.SpendingItem;
 public class Spendings extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-    private EditText name_s;
+    private Spinner name_s;
     private EditText value_s,date;
     protected ArrayList<SpendingItem> itemsList;
 
@@ -82,7 +82,7 @@ public class Spendings extends AppCompatActivity {
 
     private void setupComponents(){
 
-        name_s = (EditText) findViewById(R.id.expensename);
+        name_s = (Spinner) findViewById(R.id.spending_spinner);
         value_s = (EditText) findViewById(R.id.expensevalue);
         date = (EditText) findViewById(R.id.date_spent);
 
@@ -90,7 +90,8 @@ public class Spendings extends AppCompatActivity {
     }
 
     protected void populateView(){
-        name_s.setText(item.getSpentcategory());
+
+        item.setSpentcategory(name_s.getSelectedItem().toString());
         value_s.setText(String.valueOf(item.getPeriod()));
         date.setText(item.getDate().toString());
 
@@ -102,7 +103,7 @@ public class Spendings extends AppCompatActivity {
         Intent intent = new Intent(Spendings.this, Viewspendings.class);
         SpendingItem item = new SpendingItem(-1, "",0, LocalDate.now());
 
-        item.setSpentcategory(name_s.getText().toString());
+        item.setSpentcategory(name_s.getSelectedItem().toString());
         item.setPeriod(Integer.parseInt(value_s.getText().toString()));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         item.setDate(LocalDate.parse(date.getText().toString(), formatter));
@@ -111,6 +112,7 @@ public class Spendings extends AppCompatActivity {
             @Override
             public void response() {
                 populateView();
+                intent.putExtra("item", item);
                 startActivity(intent);
             }
         });

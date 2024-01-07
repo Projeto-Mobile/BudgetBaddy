@@ -112,6 +112,7 @@ public class createNewChallenge extends AppCompatActivity {
             @Override
             public void response() {
                 populateView();
+                intent.putExtra("item", item);
                 startActivity(intent);
             }
         });

@@ -6,11 +6,14 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.annotations.JsonAdapter;
 
 import java.io.Serializable;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.DateJsonAdapter;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 public class BudgetItem implements Serializable {
@@ -19,22 +22,27 @@ public class BudgetItem implements Serializable {
     private int id;
     private String category;
     private String typeC;
-    private String period, type;
+
+    @JsonAdapter(DateJsonAdapter.class)
+    private LocalDate datestart;
+    private LocalDate dateend;
+    @JsonAdapter(DateJsonAdapter.class)
     private int budgetValue;
 
     // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
    // public static ArrayList<BudgetItem> budgetItems;
 
     public BudgetItem() {
-        this(0, "","", "", 0);
+        this(0, "","", 0, LocalDate.now(), LocalDate.now());
     }
 
-    public BudgetItem(int id, String category,String Type, String period, int budgetValue) {
+    public BudgetItem(int id, String category,String typeC,  int budgetValue, LocalDate date1, LocalDate date2) {
         this.id = id;
         this.category = category;
-        this.type = type;
-        this.period = period;
+        this.typeC = typeC;
         this.budgetValue = budgetValue;
+        this.datestart = date1;
+        this.dateend = date2;
 
         /*if (budgetItems == null) {
             budgetItems = new ArrayList<BudgetItem>();
@@ -43,12 +51,12 @@ public class BudgetItem implements Serializable {
 
     /*public static ArrayList<BudgetItem> List() {
         return budgetItems;
-    }*/
+    }
 
-    public static BudgetItem createNewBudgetItem(String category, String type,  String period, int budgetValue) {
+    public static BudgetItem createNewBudgetItem(String category, String type, int budgetValue) {
         // This method creates a new BudgetItem with the provided values.
         int newId = generateUniqueId(); // You should implement this method to generate a unique ID.
-        return new BudgetItem(newId, category,type , period, budgetValue);
+        return new BudgetItem(newId, category,type , budgetValue);
 
     }
     private static synchronized int generateUniqueId() {
@@ -72,7 +80,7 @@ public class BudgetItem implements Serializable {
     public static BudgetItem GetById(int id) {
         // TODO: Fetch the item from the web server using its id and populate the object.
 
-        return new BudgetItem(id,"","", "Choose the duration",0);
+        return new BudgetItem(id,"","", 0, LocalDate.now(), LocalDate.now());
     }
 
     public void addBudget(BudgetItem.SaveResponse response) {
@@ -82,7 +90,7 @@ public class BudgetItem implements Serializable {
                 try {
                     if (id == 0) {
                         WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/budget/add"));
+                                WebRequest.LOCALHOST + "/api/budgets/add"));
                         String response = req.performPostRequest(BudgetItem.this);
                     }
                 } catch (Exception e) {
@@ -95,7 +103,7 @@ public class BudgetItem implements Serializable {
         thread.start();
     }
 
-    public void save(SaveResponse response) {
+    /*public void save(SaveResponse response) {
         // Send the object's data to our web server and update the database there.
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -123,7 +131,7 @@ public class BudgetItem implements Serializable {
             }
         });
         thread.start();
-    }
+    }*/
 
 
     public static void List(BudgetItem.ListResponse response) {
@@ -137,7 +145,7 @@ public class BudgetItem implements Serializable {
                 try {
                     try {
                         WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/BudgetBuddy/budgets"));
+                                WebRequest.LOCALHOST + "/api/budgets/list"));
                         String resp = req.performGetRequest();
 
                         // Get the array from the response.
@@ -173,7 +181,6 @@ public class BudgetItem implements Serializable {
         this.category = category;
     }
 
-
     public String getType() {
         return typeC;
     }
@@ -181,12 +188,18 @@ public class BudgetItem implements Serializable {
         this.typeC = typeC;
     }
 
-    public String getPeriod() {
-        return period;
+    public LocalDate getDatestart() {
+        return datestart;
+    }
+    public void setDatestart(LocalDate datestart) {
+        this.datestart = datestart;
+    }
+    public LocalDate getDateend() {
+        return dateend;
     }
 
-    public void setPeriod(String period) {
-        this.period = period;
+    public void setDateend(LocalDate dateend) {
+        this.dateend = dateend;
     }
 
     public int getBudgetValue() {

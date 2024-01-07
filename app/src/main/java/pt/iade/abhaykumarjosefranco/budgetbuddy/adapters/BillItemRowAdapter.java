@@ -9,6 +9,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.ViewHolder>{
@@ -27,6 +29,7 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
         clickListener = listener;
     }
 
+    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_bill_item, parent, false);
@@ -38,8 +41,11 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
         BillItem item = items.get(position);
 
         holder.namebill.setText(item.getBill());
-        holder.nameperiod.setText(item.getPeriod());
-        holder.specification.setText(item.getPeriod());
+
+        holder.startperiodBill.setText(item.getDatestart().format(dateFormatter));
+        holder.endperiodBill.setText(item.getDateend().format(dateFormatter));
+        holder.specification.setText(item.getType());
+
         holder.values.setText(String.valueOf(item.getBillValue()));
 
     }
@@ -51,7 +57,7 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView namebill;
-        public TextView nameperiod;
+        public TextView startperiodBill, endperiodBill;
         public TextView values, specification;
 
 
@@ -59,8 +65,9 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
             super(itemView);
 
             namebill = itemView.findViewById(R.id.namedbill);
-            nameperiod = itemView.findViewById(R.id.chosenperiod);
             values = itemView.findViewById(R.id.selectedvalue);
+            startperiodBill = itemView.findViewById(R.id.startperiod);
+            endperiodBill = itemView.findViewById(R.id.endperiod);
             specification = itemView.findViewById(R.id.typeBill);
 
             itemView.setOnClickListener(this);
