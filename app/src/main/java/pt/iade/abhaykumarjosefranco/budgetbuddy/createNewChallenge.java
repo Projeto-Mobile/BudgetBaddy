@@ -35,7 +35,7 @@ public class createNewChallenge extends AppCompatActivity {
 
         Intent intent = getIntent();
         listPosition = intent.getIntExtra("position",-1);
-        item = (ChallengeItem) intent.getSerializableExtra("item");
+        //item = (ChallengeItem) intent.getSerializableExtra("item");
         //itemsList = ChallengeItem.List();
 
 
@@ -102,17 +102,19 @@ public class createNewChallenge extends AppCompatActivity {
     //add confetti to the layout or sound at the end of the challenge/count down time
 
     private void setupComponents(){
-        Intent intent = new Intent(createNewChallenge.this, ChallengesActivity.class);
 
-        ChallengeItem item = new ChallengeItem(-1, "", "00:00:00");
-
+        item = new ChallengeItem(-1, "", "00:00:00");
         item.setPeriod(edittext_time.getText().toString());
         item.setChallenge(challengeEditText.getText().toString());
+
+        Intent intent = new Intent(createNewChallenge.this, ChallengesActivity.class);
         item.addChallenge(new ChallengeItem.SaveResponse() {
             @Override
             public void response() {
                 populateView();
                 intent.putExtra("item", item);
+                intent.putExtra("position", listPosition);
+                setResult(AppCompatActivity.RESULT_OK, intent);
                 startActivity(intent);
             }
         });
@@ -121,7 +123,7 @@ public class createNewChallenge extends AppCompatActivity {
     protected void populateView() {
 
 
-        ChallengeItem item = new ChallengeItem(-1, "", "00:00:00");
+        item = new ChallengeItem(-1, "", "00:00:00");
 
         item.setPeriod(edittext_time.getText().toString());
         item.setChallenge(challengeEditText.getText().toString());

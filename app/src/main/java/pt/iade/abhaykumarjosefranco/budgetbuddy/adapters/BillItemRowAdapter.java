@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.ViewHolder>{
     private ArrayList<BillItem> items;
@@ -29,7 +30,7 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
         clickListener = listener;
     }
 
-    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_bill_item, parent, false);
@@ -46,7 +47,8 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
         holder.endperiodBill.setText(item.getDateend().format(dateFormatter));
         holder.specification.setText(item.getType());
 
-        holder.values.setText(String.valueOf(item.getBillValue()));
+        //holder.values.setText(String.valueOf(item.getBillValue()));
+        holder.values.setText(String.format(Locale.ENGLISH, "%d", item.getBillValue() ));
 
     }
 

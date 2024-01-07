@@ -27,7 +27,7 @@ public class create_community extends AppCompatActivity {
 
         Intent intent = getIntent();
         listPosition = intent.getIntExtra("position",-1);
-        item = (CommunityItem) intent.getSerializableExtra("item");
+        //item = (CommunityItem) intent.getSerializableExtra("item");
 
         optionSpinner = findViewById(R.id.commiunity_spinner);
         numberedittext = findViewById(R.id.random_number);
@@ -48,7 +48,6 @@ public class create_community extends AppCompatActivity {
     protected void populateView(){
 
         item.setName(optionSpinner.getSelectedItem().toString());
-
         value1.setText(item.getAmount());
 
         commitView();
@@ -57,19 +56,19 @@ public class create_community extends AppCompatActivity {
 
     protected void commitView() {
 
-        Intent intent = new Intent(create_community.this, Community.class);
-        CommunityItem item = new CommunityItem(-1, "",0);
-
+        item = new CommunityItem(-1, "",0);
         item.setName(optionSpinner.getSelectedItem().toString());
-
         item.setAmount(Integer.parseInt(value1.getText().toString()));
 
 
+        Intent intent = new Intent(create_community.this, Community.class);
         item.addCommunity(new CommunityItem.SaveResponse() {
             @Override
             public void response() {
                 populateView();
                 intent.putExtra("item", item);
+                intent.putExtra("position", listPosition);
+                setResult(AppCompatActivity.RESULT_OK, intent);
                 startActivity(intent);
             }
         });

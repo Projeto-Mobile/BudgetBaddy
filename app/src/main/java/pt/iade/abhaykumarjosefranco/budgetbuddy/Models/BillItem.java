@@ -1,5 +1,8 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -23,8 +26,8 @@ public class BillItem implements Serializable {
     private String typeofexpense;
     @JsonAdapter(DateJsonAdapter.class)
     private LocalDate datestart;
-    private LocalDate dateend;
     @JsonAdapter(DateJsonAdapter.class)
+    private LocalDate dateend;
     private int billValue;
 
     //public static ArrayList<BillItem> billItems;
@@ -106,6 +109,7 @@ public class BillItem implements Serializable {
         return new BillItem(id,"","",0,  LocalDate.now(), LocalDate.now());
     }
 
+    /*
     public void addBill(BillItem.SaveResponse response) {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -124,6 +128,35 @@ public class BillItem implements Serializable {
             }
         });
         thread.start();
+    }*/
+
+    public void add(Context context) {
+        new Thread(() -> {
+            try {
+                // This will always use the 'add' endpoint
+                String endpoint = "/api/budgets/add";
+                WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + endpoint));
+
+                // Prepare and send the request
+                String jsonBody = new Gson().toJson(this);
+                String response = req.performPostRequest(null, jsonBody, "application/json");
+
+                // Process the response
+                BillItem respItem = new Gson().fromJson(response, BillItem.class);
+                id = respItem.getId(); // Update the id with the new item's id
+
+                // Update UI on success
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    Toast.makeText(context, "Bill added successfully", Toast.LENGTH_SHORT).show();
+                });
+            } catch (Exception e) {
+                // Update UI on error
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    Toast.makeText(context, "Failed to add Bill: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Log.e("Billitem", "Add failed", e);
+                });
+            }
+        }).start();
     }
 
 

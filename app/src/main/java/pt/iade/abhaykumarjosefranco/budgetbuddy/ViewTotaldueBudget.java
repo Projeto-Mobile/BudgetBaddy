@@ -87,7 +87,31 @@ public class ViewTotaldueBudget extends AppCompatActivity {
         itemsListView.setAdapter(itemRowAdapter);
     }*/
 
+
     private void setupComponents() {
+        itemsListView = findViewById(R.id.viewb);
+        itemsListView.setLayoutManager(new LinearLayoutManager(this));
+        itemsList = new ArrayList<>();
+        itemRowAdapter = new BillItemRowAdapter(this, itemsList);
+
+
+        BillItem.List(new BillItem.ListResponse() {
+            @Override
+            public void response(ArrayList<BillItem> items) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        itemsList.clear();
+                        itemsList.addAll(items);
+                        itemsListView.setAdapter(itemRowAdapter);
+                        itemRowAdapter.notifyDataSetChanged();
+                    }
+                });
+
+            }
+        });
+    }
+    /*private void setupComponents() {
 
         BillItem.List(new BillItem.ListResponse() {
             @Override
@@ -113,5 +137,5 @@ public class ViewTotaldueBudget extends AppCompatActivity {
             }
 
         });
-    }
+    }*/
 }

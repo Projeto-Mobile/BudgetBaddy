@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +36,10 @@ public class TotalDue extends AppCompatActivity {
         setContentView(R.layout.activity_total_due);
 
 
+        Intent intent = getIntent();
+        listPosition = intent.getIntExtra("position",-1);
+        //item = (BillItem) intent.getSerializableExtra("item");
+
 
         datestarts = findViewById(R.id.starting);
         dateends = findViewById(R.id.ending);
@@ -43,9 +48,6 @@ public class TotalDue extends AppCompatActivity {
         typeofbill = findViewById(R.id.description);
 
         //itemsList = BillItem.List();
-        Intent intent = getIntent();
-        listPosition = intent.getIntExtra("position",-1);
-        item = (BillItem) intent.getSerializableExtra("item");
         //setBill();
 
 
@@ -165,45 +167,60 @@ public class TotalDue extends AppCompatActivity {
     }
 
 
-    protected void populateView() {
-
-        /*budgetEditText.setText(item.getBillValue());
-
-        String[] periods = getResources().getStringArray(R.array.periods);
-        for (int i = 0; i < periods.length; i++) {
-            if (periods[i].equals(item.getPeriod()))
-                periodSpinner.setSelection(i);
-        }*/
-    }
-
     protected void setBill(Button button, int idType) {
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TotalDue.this, ViewTotaldueBudget.class);
 
-
-                BillItem item = new BillItem(-1, "", "", 0,  LocalDate.now(), LocalDate.now());
+                item = new BillItem(-1, "", "", 0,  LocalDate.now(), LocalDate.now());
                 item.setBillValue(Integer.parseInt(billEditText.getText().toString()));
                 item.setBill(button.getText().toString());
                 item.setType(billEditText.getText().toString());
-
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 item.setDatestart(LocalDate.parse(datestarts.getText().toString(), formatter));
                 item.setDateend(LocalDate.parse(dateends.getText().toString(), formatter));
+                commitView();
 
-                item.addBill(new BillItem.SaveResponse() {
-                    @Override
-                    public void response() {
-                        populateView();
-                        intent.putExtra("item", item);
-                        startActivity(intent);
-                    }
-                });
+                item.add(TotalDue.this);
+                Intent intent = new Intent(TotalDue.this, ViewTotaldueBudget.class);
+                intent.putExtra("position", listPosition);
+                intent.putExtra("item", item);
+                setResult(AppCompatActivity.RESULT_OK, intent);
+                setupComponents();
 
             }
         });
 
     }
+
+    private void setupComponents() {
+        billEditText = (EditText) findViewById(R.id.budget_cate_num);
+        typeofbill = (EditText) findViewById(R.id.description);
+        datestarts = (EditText) findViewById(R.id.starting);
+        dateends = (EditText) findViewById(R.id.ending);
+        populateView();
+
+    }
+
+    protected void populateView() {
+        if (item != null) {
+            billEditText.setText(String.valueOf(item.getBillValue()));
+            typeofbill.setText(item.getType());
+            datestarts.setText(item.getDatestart().toString());
+            dateends.setText(item.getDateend().toString());
+        } else {
+            Log.e("Bill", "is null");
+        }
+    }
+
+    protected void commitView(){
+        item.setBillValue(Integer.parseInt(billEditText.getText().toString()));
+        item.setType(typeofbill.getText().toString());
+        item.setDatestart(LocalDate.parse(datestarts.getText().toString()));
+        item.setDateend(LocalDate.parse(dateends.getText().toString()));
+
+    }
+
+
 }

@@ -40,7 +40,7 @@ public class Spendings extends AppCompatActivity {
 
         Intent intent = getIntent();
         listPosition = intent.getIntExtra("position",-1);
-        item = (SpendingItem) intent.getSerializableExtra("item");
+        //item = (SpendingItem) intent.getSerializableExtra("item");
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.add);
@@ -99,20 +99,22 @@ public class Spendings extends AppCompatActivity {
 
 
     protected void commitView(){
-
-        Intent intent = new Intent(Spendings.this, Viewspendings.class);
-        SpendingItem item = new SpendingItem(-1, "",0, LocalDate.now());
+        item = new SpendingItem(-1, "",0, LocalDate.now());
 
         item.setSpentcategory(name_s.getSelectedItem().toString());
         item.setPeriod(Integer.parseInt(value_s.getText().toString()));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         item.setDate(LocalDate.parse(date.getText().toString(), formatter));
 
+        Intent intent = new Intent(Spendings.this, Viewspendings.class);
+
         item.addSpending(new SpendingItem.SaveResponse() {
             @Override
             public void response() {
                 populateView();
                 intent.putExtra("item", item);
+                intent.putExtra("position", listPosition);
+                setResult(AppCompatActivity.RESULT_OK, intent);
                 startActivity(intent);
             }
         });

@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.Locale;
+
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 
 public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdapter.ViewHolder> {
@@ -29,7 +31,7 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
         clickListener = listener;
     }
 
-    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_budget_item, parent, false);
@@ -42,13 +44,13 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
         BudgetItem item = items.get(position);
 
         holder.namecategory.setText(item.getCategory());
-
         holder.startperiod.setText(item.getDatestart().format(dateFormatter));
         holder.endperiod.setText(item.getDateend().format(dateFormatter));
         holder.specificationBudget.setText(item.getType());
 
 
-        holder.thevalue.setText(String.valueOf(item.getBudgetValue()));
+        //holder.thevalue.setText(String.valueOf(item.getBudgetValue()));
+        holder.thevalue.setText(String.format(Locale.ENGLISH, "%d", item.getBudgetValue() ));
     }
 
     @Override

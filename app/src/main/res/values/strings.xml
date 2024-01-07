@@ -156,5 +156,9 @@
     <string name="key">Enter the key</string>
     <string name="value_">Value for the community</string>
 
+    <string name="login">Login to</string>
+    <string name="account">your account</string>
+    <string name="sign">Create a</string>
+    <string name="acc">new account</string>
 
 </resources>
