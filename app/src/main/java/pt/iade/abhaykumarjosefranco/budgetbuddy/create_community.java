@@ -70,6 +70,7 @@ public class create_community extends AppCompatActivity {
                 intent.putExtra("position", listPosition);
                 setResult(AppCompatActivity.RESULT_OK, intent);
                 startActivity(intent);
+
             }
         });
     }
