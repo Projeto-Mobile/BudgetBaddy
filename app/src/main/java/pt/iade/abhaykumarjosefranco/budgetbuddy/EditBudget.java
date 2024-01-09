@@ -3,39 +3,39 @@ package pt.iade.abhaykumarjosefranco.budgetbuddy;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.UserItem;
 
 
-public class Category extends AppCompatActivity {
-    private BottomNavigationView bottomNavigationView;
-    private EditText budgetEditText, typeofcategory,datestarts, dateends;
+public class EditBudget extends AppCompatActivity {
+    private EditText budgetEditText, description, datestarts, dateends;
     protected ArrayList<BudgetItem> itemsList;
 
     protected BudgetItem item;
-    protected int listPosition;
     private Button dinningout_button, travel_button, subscription_button, shopping_button, leisure_button, personalcare_button, specialoccassions_button, transportation_button, workexpenses_button, others_button;
 
+    private UserItem user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_edit_budget);
+
+        setupComponents();
 
         //itemsList = BudgetItem.List();
 
+
         Intent intent = getIntent();
-        listPosition = intent.getIntExtra("position",-1);
+        user = (UserItem) intent.getSerializableExtra("user") ;
         //item = (BudgetItem) intent.getSerializableExtra("item");
 
 
@@ -43,7 +43,7 @@ public class Category extends AppCompatActivity {
         dateends = (EditText)  findViewById(R.id.endDate);
 
         budgetEditText = findViewById(R.id.budget_cate_num2);
-        typeofcategory = findViewById(R.id.descriptionExpense);
+        description = findViewById(R.id.descriptionExpense);
 
 
         dinningout_button = findViewById(R.id.dinningout_button);
@@ -125,29 +125,6 @@ public class Category extends AppCompatActivity {
                 setBudget(others_button, 10);
             }
         });
-
-
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.add);
-
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.home) {
-                startActivity(new Intent(getApplicationContext(), OverviewActivity.class));
-                finish();
-                return true;
-            } else if (item.getItemId() == R.id.wallet) {
-                startActivity(new Intent(getApplicationContext(), WalletActivity.class));
-                finish();
-                return true;
-            } else if (item.getItemId() == R.id.add) {
-                return true;
-            } else if (item.getItemId() == R.id.profile) {
-                startActivity(new Intent(getApplicationContext(), Profile.class));
-                finish();
-                return true;
-            }
-            return false;
-        });
     }
 
 
@@ -157,23 +134,20 @@ public class Category extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                item = new BudgetItem(-1, "", "",  0, LocalDate.now(), LocalDate.now());
-                item.setCategory(button.getText().toString());
-                item.setType(typeofcategory.getText().toString());
-                item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                item.setDatestart(LocalDate.parse(datestarts.getText().toString(), formatter));
-                item.setDateend(LocalDate.parse(dateends.getText().toString(), formatter));
-                commitView();
+                item = new BudgetItem();
+                commitView(button.getText().toString());
 
-                item.add(Category.this);
-                Intent intent = new Intent(Category.this, ViewBudget.class);
-                intent.putExtra("position", listPosition);
-                intent.putExtra("item", item);
-                setResult(AppCompatActivity.RESULT_OK, intent);
-                setupComponents();
+                item.add(EditBudget.this, new BudgetItem.SaveResponse() {
+                    @Override
+                    public void response() {
+                        Intent returnIntent = new Intent();
+                        returnIntent.putExtra("item", item);
+                        returnIntent.putExtra("user", user);
+                        setResult(AppCompatActivity.RESULT_OK, returnIntent);
 
-
+                        finish();
+                    }
+                });
 
             }
         });
@@ -183,34 +157,21 @@ public class Category extends AppCompatActivity {
     }
     private void setupComponents() {
         budgetEditText = (EditText) findViewById(R.id.budget_cate_num2);
-        typeofcategory = (EditText) findViewById(R.id.descriptionExpense);
+        description = (EditText) findViewById(R.id.descriptionExpense);
         datestarts = (EditText) findViewById(R.id.startDate);
         dateends = (EditText) findViewById(R.id.endDate);
-        populateView();
 
     }
-    protected void populateView() {
-        if (item != null) {
-            budgetEditText.setText(String.valueOf(item.getBudgetValue()));
-            typeofcategory.setText(item.getType());
-            datestarts.setText(item.getDatestart().toString());
-            dateends.setText(item.getDateend().toString());
-        } else {
-            // Trate o caso em que o item é null
-            Log.e("Category", "is null");
-        }
 
-
-
-        //datestarts.setText(item.getDatestart().toString());
-        //dateends.setText(item.getDateend().toString());
-    }
-    protected void commitView(){
+    protected void commitView(String categoryName){
+        item.setName(description.getText().toString());
+        item.getCategory().setName(categoryName);
+        item.getCategory().setTipId(1);
         item.setBudgetValue(Integer.parseInt(budgetEditText.getText().toString()));
-        item.setType(typeofcategory.getText().toString());
-        item.setDatestart(LocalDate.parse(datestarts.getText().toString()));
-        item.setDateend(LocalDate.parse(dateends.getText().toString()));
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        item.setDateStart(LocalDate.parse(datestarts.getText().toString(), formatter));
+        item.setDateEnd(LocalDate.parse(dateends.getText().toString(), formatter));
+        item.setUser(user);
     }
 
 

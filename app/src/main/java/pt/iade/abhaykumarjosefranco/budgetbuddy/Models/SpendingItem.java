@@ -1,5 +1,8 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,33 +15,32 @@ import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.DateJsonAdapter;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 public class SpendingItem implements Serializable {
 
-    private static int idCounter = 0;
     private int id;
-    private String spentcategory;
+    private String name;
     @JsonAdapter(DateJsonAdapter.class)
-    private LocalDate spentDate;
-    @JsonAdapter(DateJsonAdapter.class)
-
-    private int spentValue;
+    private LocalDate date;
+    private int spendValue;
+    UserItem user;
 
     //public static ArrayList<SpendingItem> spendingItems;
 
     public SpendingItem() {
-        this(0, "", 0, LocalDate.now());
+        this(0, 0,LocalDate.now(),  "",null);
     }
 
-    public SpendingItem(int id, String spentcategory, int spentValue, LocalDate date) {
+    public SpendingItem(int id, int spendValue, LocalDate date, String name, UserItem user) {
         this.id = id;
-        this.spentcategory = spentcategory;
-        this.spentValue = spentValue;
-        this.spentDate = date;
+        this.spendValue = spendValue;
+        this.date = date;
+        this.name = name;
+        this.user = user;
+        
 
         /*if (spendingItems == null) {
             spendingItems = new ArrayList<SpendingItem>();
@@ -61,29 +63,39 @@ public class SpendingItem implements Serializable {
         }
     }*/
 
-    public void addSpending(SpendingItem.SaveResponse response) {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (id == 0) {
-                        WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/spending/add"));
-                        String response = req.performPostRequest(SpendingItem.this);
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(null, "Web request failed: " + e.toString(),
-                            Toast.LENGTH_LONG).show();
-                    Log.e("SpendingItems", e.toString());
-                }
+    public void add(Context context, SpendingItem.SaveResponse response) {
+        new Thread(() -> {
+            try {
+                // This will always use the 'add' endpoint
+                String endpoint = "/api/spending/add";
+                WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + endpoint));
+
+                String resp = req.performPostRequest(SpendingItem.this);
+
+                // Process the response
+                SpendingItem respItem = new Gson().fromJson(resp, SpendingItem.class);
+                id = respItem.getId(); // Update the id with the new item's id
+                response.response();
+
+                // Update UI on success
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    Toast.makeText(context, "Spending added successfully", Toast.LENGTH_SHORT).show();
+                });
+            } catch (Exception e) {
+                // Update UI on error
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    Toast.makeText(context, "Failed to add Budget: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Log.e("SpendingItem", "Add failed", e);
+                });
             }
-        });
-        thread.start();
+        }).start();
     }
 
 
     public static void List(SpendingItem.ListResponse response) {
         ArrayList<SpendingItem> items = new ArrayList<SpendingItem>();
+
+        // Fetch a list of items from the web server and populate the list with them.
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -113,70 +125,51 @@ public class SpendingItem implements Serializable {
             }
         });
         thread.start();
+
     }
 
 
-    public void save(SpendingItem.SaveResponse response) {
-        // Send the object's data to our web server and update the database there.
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (id == 0) {
-                        // This is a brand new object and must be a INSERT in the database.
-                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/savespendings"));
-                        String resp = req.performPostRequest(SpendingItem.this);
 
-                        // Get the new ID from the server's response.
-                        SpendingItem respItem = new Gson().fromJson(resp, SpendingItem.class);
-                        id = respItem.getId();
-                        response.response();
-                    } else {
-                        // This is an update to an existing object and must use UPDATE in the database.
-                        WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + "/api/savespendings/" + id));
-                        req.performPostRequest(SpendingItem.this);
 
-                        response.response();
-                    }
-                } catch (Exception e) {
-                    Log.e("SpendingItem", e.toString());
-                }
-            }
-        });
-        thread.start();
-    }
-
-    public static SpendingItem GetById(int id) {
-
-        return new SpendingItem(id,"",0,LocalDate.now());
-    }
 
     public int getId() {
         return id;
     }
 
-    public String getSpentcategory() {
-        return spentcategory;
+    public void setId(int  id) {
+        this.id = id;
     }
 
-    public void setSpentcategory(String spentcategory) {
-        this.spentcategory = spentcategory;
+    public String getName() {
+        return name;
     }
 
-    public int getPeriod() {
-        return spentValue;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setPeriod(int spentValue) {
-        this.spentValue = spentValue;
+    public int getSpendValue() {
+        return spendValue;
+    }
+
+    public void setSpendValue(int spentValue) {
+        this.spendValue = spentValue;
     }
 
     public LocalDate getDate() {
-        return spentDate;
+        return date;
     }
 
     public void setDate(LocalDate spentDate) {
-        this.spentDate = spentDate;
+        this.date = spentDate;
+    }
+
+    public UserItem getUser() {
+        return user;
+    }
+
+    public void setUser(UserItem user) {
+        this.user = user;
     }
 
 

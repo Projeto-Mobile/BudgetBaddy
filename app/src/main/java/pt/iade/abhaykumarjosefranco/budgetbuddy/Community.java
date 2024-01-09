@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.CommunityItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.UserItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.CommunityItemAdapter;
 
 
@@ -25,7 +26,7 @@ public class Community extends AppCompatActivity {
     protected CommunityItemAdapter itemRowAdapter;
     protected ArrayList<CommunityItem> itemsList;
     protected CommunityItem item;
-
+    private UserItem user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,9 @@ public class Community extends AppCompatActivity {
         //itemsList = CommunityItem.List(); THIS WAS WORKING BECAUSE OF THIS .
 
         Intent intent = getIntent();
-        item = (CommunityItem) intent.getSerializableExtra("item");
+        //item = (CommunityItem) intent.getSerializableExtra("item");
+        user = (UserItem) intent.getSerializableExtra("user") ;
+
         setupComponents();
 
         add_button = findViewById(R.id.add_community_button);

@@ -24,6 +24,7 @@ import nl.dionsegijn.konfetti.core.models.Shape;
 import nl.dionsegijn.konfetti.xml.KonfettiView;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.UserItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.ChallengeItemAdapter;
 
 
@@ -38,6 +39,8 @@ public class ChallengesActivity extends AppCompatActivity {
 
     protected ChallengeItem item;
 
+    private  UserItem user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +51,9 @@ public class ChallengesActivity extends AppCompatActivity {
         //itemsList = new ArrayList<>();
 
         Intent intent = getIntent();
-        item = (ChallengeItem) intent.getSerializableExtra("item");
+        //item = (ChallengeItem) intent.getSerializableExtra("item");
+        user = (UserItem) intent.getSerializableExtra("user") ;
+
         setupComponents();
 
        /* KonfettiView konfettiView = findViewById(R.id.konfettiView);

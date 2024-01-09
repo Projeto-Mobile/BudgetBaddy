@@ -13,17 +13,24 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.UserItem;
+
 public class WalletActivity extends AppCompatActivity {
 
     private Button oldreceipt_button, picture_button;
     private BottomNavigationView bottomNavigationView;
     protected final static int PERMISSION_REQUEST_CODE = 22;
     protected final static int CAMERA_PIC_REQUEST = 23;
+    private UserItem user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
+
+        Intent intent = getIntent();
+        user = (UserItem) intent.getSerializableExtra("user") ;
+
 
         oldreceipt_button = findViewById(R.id.oldreceipt_button);
         picture_button = findViewById(R.id.picture_button);
@@ -41,17 +48,13 @@ public class WalletActivity extends AppCompatActivity {
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.home) {
-                startActivity(new Intent(getApplicationContext(), OverviewActivity.class));
+                startActivity(new Intent(getApplicationContext(), OverviewActivity.class).putExtra("user", user));
                 finish();
                 return true;
             } else if (item.getItemId() == R.id.wallet) {
                 return true;
-            } else if (item.getItemId() == R.id.add) {
-                startActivity(new Intent(getApplicationContext(), Category.class));
-                finish();
-                return true;
             } else if (item.getItemId() == R.id.profile) {
-                startActivity(new Intent(getApplicationContext(), Profile.class));
+                startActivity(new Intent(getApplicationContext(), Profile.class).putExtra("user", user));
                 finish();
                 return true;
             }

@@ -29,21 +29,25 @@ public class BillItem implements Serializable {
     @JsonAdapter(DateJsonAdapter.class)
     private LocalDate dateend;
     private int billValue;
+    CategoryItem category;
+    UserItem user;
+    private String name;
 
     //public static ArrayList<BillItem> billItems;
 
     //TODO : Associate user ID, budget ID, type budget ID
 
     public BillItem() {
-        this(0, "", "",  0, LocalDate.now(), LocalDate.now());
+        this(0, "", new CategoryItem(),null, LocalDate.now(), LocalDate.now(),0);
     }
 
-    public BillItem(int id, String bill, String typeofexpense, int billValue,  LocalDate date1, LocalDate date2) {
+    public BillItem(int id, String name, CategoryItem category, UserItem user,  LocalDate date1, LocalDate date2, int billValue) {
         this.id = id;
-        this.bill = bill;
+        this.name = name;
+        this.category = category;
+        this.user = user;
         this.datestart = date1;
         this.dateend = date2;
-        this.typeofexpense = typeofexpense;
         this.billValue = billValue;
 
         /*if (billItems == null) {
@@ -105,9 +109,7 @@ public class BillItem implements Serializable {
         thread.start();
     }*/
 
-    public static BillItem GetById(int id) {
-        return new BillItem(id,"","",0,  LocalDate.now(), LocalDate.now());
-    }
+
 
     /*
     public void addBill(BillItem.SaveResponse response) {
@@ -130,20 +132,21 @@ public class BillItem implements Serializable {
         thread.start();
     }*/
 
-    public void add(Context context) {
+    public void add(Context context, BillItem.SaveResponse response) {
         new Thread(() -> {
             try {
                 // This will always use the 'add' endpoint
                 String endpoint = "/api/budgets/add";
                 WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + endpoint));
 
-                // Prepare and send the request
-                String jsonBody = new Gson().toJson(this);
-                String response = req.performPostRequest(null, jsonBody, "application/json");
+                String resp = req.performPostRequest(BillItem.this);
 
                 // Process the response
-                BillItem respItem = new Gson().fromJson(response, BillItem.class);
+                BillItem respItem = new Gson().fromJson(resp, BillItem.class);
                 id = respItem.getId(); // Update the id with the new item's id
+                category.setId(respItem.getCategory().getId());
+
+                response.response();
 
                 // Update UI on success
                 new Handler(Looper.getMainLooper()).post(() -> {
@@ -153,12 +156,11 @@ public class BillItem implements Serializable {
                 // Update UI on error
                 new Handler(Looper.getMainLooper()).post(() -> {
                     Toast.makeText(context, "Failed to add Bill: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                    Log.e("Billitem", "Add failed", e);
+                    Log.e("BillItem", "Add failed", e);
                 });
             }
         }).start();
     }
-
 
     public static void List(BillItem.ListResponse response) {
         ArrayList<BillItem> items = new ArrayList<BillItem>();
@@ -196,33 +198,13 @@ public class BillItem implements Serializable {
 
     }
 
-    public static void GetById(int id, GetByIdResponse response) {
-        // Fetch the item from the web server using its id and populate the object.
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    try {
-                        WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/budgets/" + id));
-                        String resp = req.performGetRequest();
-
-                        response.response(new Gson().fromJson(resp, BillItem.class));
-                    } catch (Exception e) {
-                        Toast.makeText(null, "Web request failed: " + e.toString(),
-                                Toast.LENGTH_LONG).show();
-                        Log.e("BillItem", e.toString());
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread.start();
-    }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int  id) {
+        this.id = id;
     }
 
     public String getBill() {
@@ -231,6 +213,15 @@ public class BillItem implements Serializable {
 
     public void setBill(String bill) {
         this.bill = bill;
+    }
+
+
+    public CategoryItem getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryItem category) {
+        this.category = category;
     }
 
     public String getType() {
@@ -264,6 +255,14 @@ public class BillItem implements Serializable {
         this.billValue = billValue;
     }
 
+    public UserItem getUser() {
+        return user;
+    }
+
+    public void setUser(UserItem user) {
+        this.user = user;
+    }
+
     public interface ListResponse {
         public void response(ArrayList<BillItem> items);
     }
@@ -275,6 +274,15 @@ public class BillItem implements Serializable {
     public interface SaveResponse{
         public void response();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
 }
 

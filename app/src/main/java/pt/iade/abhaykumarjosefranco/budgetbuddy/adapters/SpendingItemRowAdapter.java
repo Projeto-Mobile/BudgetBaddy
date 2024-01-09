@@ -31,7 +31,7 @@ public class SpendingItemRowAdapter extends RecyclerView.Adapter<SpendingItemRow
         clickListener = listener;
     }
 
-    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_spending_item, parent, false);
@@ -42,8 +42,8 @@ public class SpendingItemRowAdapter extends RecyclerView.Adapter<SpendingItemRow
     public void onBindViewHolder(ViewHolder holder, int position) {
         SpendingItem item = items.get(position);
 
-        holder.namespending.setText(item.getSpentcategory());
-        holder.thevalue.setText(String.valueOf(item.getPeriod()));
+        holder.namespending.setText(item.getName());
+        holder.thevalue.setText(String.valueOf(item.getSpendValue()));
         holder.dates.setText(item.getDate().format(dateFormatter));
     }
 

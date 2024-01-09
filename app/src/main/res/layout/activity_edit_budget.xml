@@ -5,84 +5,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mywhite"
-    tools:context=".Category">
+    tools:context=".EditBudget">
 
 
     <TextView
         android:id="@+id/set_budget_categorie_view2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="208dp"
+        android:layout_marginTop="40dp"
         android:text="@string/set_budget"
         android:textColor="@color/dblue"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
     <EditText
         android:id="@+id/descriptionExpense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/type"
         android:textColorHint="@color/lightgrey"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/budget_cate_num2"
+        app:layout_constraintStart_toStartOf="@+id/budget_cate_num2"
         app:layout_constraintTop_toBottomOf="@+id/budget_cate_num2" />
-
 
     <EditText
         android:id="@+id/startDate"
         android:layout_width="172dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/datestart"
         android:textColorHint="@color/lightgrey"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/budget_cate_num2"
-        app:layout_constraintEnd_toStartOf="@+id/endDate"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/set_budget_categorie_view2" />
 
 
     <EditText
         android:id="@+id/endDate"
         android:layout_width="172dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/dateend"
         android:textColorHint="@color/lightgrey"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/budget_cate_num2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_budget_categorie_view2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/startDate" />
 
     <EditText
         android:id="@+id/budget_cate_num2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/enter_budget"
         android:inputType="number"
         android:textColorHint="@color/lightgrey"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.577"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintTop_toBottomOf="@+id/startDate" />
 
     <TextView
         android:id="@+id/categories"
@@ -211,20 +203,6 @@
         </TableRow>
     </TableLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="384dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/bottom_background"
-        app:backgroundTint="@color/dblue"
-        app:itemIconTint="@android:color/white"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

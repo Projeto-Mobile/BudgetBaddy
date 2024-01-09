@@ -16,9 +16,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
-import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
-import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.CommunityItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.SpendingItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.UserItem;
 
 public class Spendings extends AppCompatActivity {
 
@@ -26,10 +25,9 @@ public class Spendings extends AppCompatActivity {
     private Spinner name_s;
     private EditText value_s,date;
     protected ArrayList<SpendingItem> itemsList;
-
     protected SpendingItem item;
-    protected int listPosition;
-    private Button done_button;
+    private UserItem user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,25 +37,23 @@ public class Spendings extends AppCompatActivity {
         //itemsList = SpendingItem.List();
 
         Intent intent = getIntent();
-        listPosition = intent.getIntExtra("position",-1);
-        //item = (SpendingItem) intent.getSerializableExtra("item");
+        user = (UserItem) intent.getSerializableExtra("user") ;
+
+        setupComponents();
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.add);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.home) {
-                startActivity(new Intent(getApplicationContext(), OverviewActivity.class));
+                startActivity(new Intent(getApplicationContext(), OverviewActivity.class).putExtra("user", user));
                 finish();
                 return true;
             } else if (item.getItemId() == R.id.wallet) {
-                startActivity(new Intent(getApplicationContext(), WalletActivity.class));
+                startActivity(new Intent(getApplicationContext(), WalletActivity.class).putExtra("user", user));
                 finish();
                 return true;
-            } else if (item.getItemId() == R.id.add) {
-                return true;
             } else if (item.getItemId() == R.id.profile) {
-                startActivity(new Intent(getApplicationContext(), Profile.class));
+                startActivity(new Intent(getApplicationContext(), Profile.class).putExtra("user", user));
                 finish();
                 return true;
             }
@@ -70,14 +66,26 @@ public class Spendings extends AppCompatActivity {
         done_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Spendings.this, Viewspendings.class);
-                startActivity(intent);
 
+
+                item = new SpendingItem();
                 commitView();
-            }
-        });
 
-        setupComponents();
+                item.add(Spendings.this, new SpendingItem.SaveResponse() {
+                    @Override
+                    public void response() {
+                        Intent returnIntent = new Intent();
+                        returnIntent.putExtra("item", item);
+                        returnIntent.putExtra("user", user);
+                        setResult(AppCompatActivity.RESULT_OK, returnIntent);
+
+                        finish();
+                    }
+                });
+
+            }
+
+        });
     }
 
     private void setupComponents(){
@@ -86,38 +94,17 @@ public class Spendings extends AppCompatActivity {
         value_s = (EditText) findViewById(R.id.expensevalue);
         date = (EditText) findViewById(R.id.date_spent);
 
-        populateView();
     }
 
-    protected void populateView(){
-
-        item.setSpentcategory(name_s.getSelectedItem().toString());
-        value_s.setText(String.valueOf(item.getPeriod()));
-        date.setText(item.getDate().toString());
-
-    }
 
 
     protected void commitView(){
-        item = new SpendingItem(-1, "",0, LocalDate.now());
 
-        item.setSpentcategory(name_s.getSelectedItem().toString());
-        item.setPeriod(Integer.parseInt(value_s.getText().toString()));
+        item.setName(name_s.getSelectedItem().toString());
+        item.setSpendValue(Integer.parseInt(value_s.getText().toString()));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         item.setDate(LocalDate.parse(date.getText().toString(), formatter));
-
-        Intent intent = new Intent(Spendings.this, Viewspendings.class);
-
-        item.addSpending(new SpendingItem.SaveResponse() {
-            @Override
-            public void response() {
-                populateView();
-                intent.putExtra("item", item);
-                intent.putExtra("position", listPosition);
-                setResult(AppCompatActivity.RESULT_OK, intent);
-                startActivity(intent);
-            }
-        });
+        item.setUser(user);
 
     }
 

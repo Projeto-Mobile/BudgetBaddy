@@ -20,38 +20,34 @@ import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.DateJsonAdapter;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 public class BudgetItem implements Serializable {
-
-    private static int idCounter = 0;
     private int id;
-    private String category;
-    private String typeC;
-
+    private String name;
+    CategoryItem category;
+    UserItem user;
     @JsonAdapter(DateJsonAdapter.class)
-    private LocalDate datestart;
+    private LocalDate dateStart;
     @JsonAdapter(DateJsonAdapter.class)
-    private LocalDate dateend;
-
+    private LocalDate dateEnd;
     private int budgetValue;
+
 
     // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
     // public static ArrayList<BudgetItem> budgetItems;
 
     public BudgetItem() {
-        this(0, "","", 0, LocalDate.now(), LocalDate.now());
+        this(0, "", new CategoryItem(),null, LocalDate.now(), LocalDate.now(), 0);
     }
 
-    public BudgetItem(int id, String category,String typeC,  int budgetValue, LocalDate date1, LocalDate date2) {
+    public BudgetItem(int id, String name, CategoryItem category, UserItem user, LocalDate dateStart, LocalDate dateEnd, int budgetValue) {
         this.id = id;
+        this.name = name;
         this.category = category;
-        this.typeC = typeC;
+        this.user = user;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
         this.budgetValue = budgetValue;
-        this.datestart = date1;
-        this.dateend = date2;
-
-        /*if (budgetItems == null) {
-            budgetItems = new ArrayList<BudgetItem>();
-        }*/
     }
+
 
     /*public static ArrayList<BudgetItem> List() {
         return budgetItems;
@@ -81,25 +77,21 @@ public class BudgetItem implements Serializable {
         }
     }*/
 
-    public static BudgetItem GetById(int id) {
-        // TODO: Fetch the item from the web server using its id and populate the object.
-
-        return new BudgetItem(id,"","", 0, LocalDate.now(), LocalDate.now());
-    }
-    public void add(Context context) {
+    public void add(Context context, SaveResponse response) {
         new Thread(() -> {
             try {
                 // This will always use the 'add' endpoint
                 String endpoint = "/api/budgets/add";
                 WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + endpoint));
 
-                // Prepare and send the request
-                String jsonBody = new Gson().toJson(this);
-                String response = req.performPostRequest(null, jsonBody, "application/json");
+                String resp = req.performPostRequest(BudgetItem.this);
 
                 // Process the response
-                BudgetItem respItem = new Gson().fromJson(response, BudgetItem.class);
+                BudgetItem respItem = new Gson().fromJson(resp, BudgetItem.class);
                 id = respItem.getId(); // Update the id with the new item's id
+                category.setId(respItem.getCategory().getId());
+
+                response.response();
 
                 // Update UI on success
                 new Handler(Looper.getMainLooper()).post(() -> {
@@ -202,37 +194,54 @@ public class BudgetItem implements Serializable {
         thread.start();
 
     }
+
     public int getId() {
         return id;
     }
 
-    public String getCategory() {
+
+
+    public void setId(int  id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public CategoryItem getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(CategoryItem category) {
         this.category = category;
     }
 
-    public String getType() {
-        return typeC;
-    }
-    public void setType(String typeC) {
-        this.typeC = typeC;
+    public UserItem getUser() {
+        return user;
     }
 
-    public LocalDate getDatestart() {
-        return datestart;
-    }
-    public void setDatestart(LocalDate datestart) {
-        this.datestart = datestart;
-    }
-    public LocalDate getDateend() {
-        return dateend;
+    public void setUser(UserItem user) {
+        this.user = user;
     }
 
-    public void setDateend(LocalDate dateend) {
-        this.dateend = dateend;
+    public LocalDate getDateStart() {
+        return dateStart;
+    }
+
+    public void setDateStart(LocalDate dateStart) {
+        this.dateStart = dateStart;
+    }
+
+    public LocalDate getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(LocalDate dateEnd) {
+        this.dateEnd = dateEnd;
     }
 
     public int getBudgetValue() {
@@ -242,6 +251,7 @@ public class BudgetItem implements Serializable {
     public void setBudgetValue(int budgetValue) {
         this.budgetValue = budgetValue;
     }
+
 
     public interface ListResponse {
         public void response(ArrayList<BudgetItem> items);

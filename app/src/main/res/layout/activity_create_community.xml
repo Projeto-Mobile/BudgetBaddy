@@ -23,34 +23,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
-        android:id="@+id/random_number"
-        android:layout_width="226dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/white"
-        android:hint="@string/enter"
-        android:textAlignment="center"
-        android:textColorHint="@color/dblue"
-        android:backgroundTint="@color/background"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sentence_challenge_view" />
-
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="136dp"
         android:layout_marginEnd="10dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/random_number">
+        app:layout_constraintTop_toBottomOf="@+id/sentence_challenge_view">
 
 
         <Spinner
@@ -76,11 +60,11 @@
 
             <EditText
                 android:id="@+id/valueforthecommunity"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
                 tools:hint="@string/value_" />
 
 

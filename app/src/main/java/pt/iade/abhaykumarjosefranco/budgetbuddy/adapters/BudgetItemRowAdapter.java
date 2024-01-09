@@ -43,10 +43,10 @@ public class BudgetItemRowAdapter extends RecyclerView.Adapter<BudgetItemRowAdap
     public void onBindViewHolder(ViewHolder holder, int position) {
         BudgetItem item = items.get(position);
 
-        holder.namecategory.setText(item.getCategory());
-        holder.startperiod.setText(item.getDatestart().format(dateFormatter));
-        holder.endperiod.setText(item.getDateend().format(dateFormatter));
-        holder.specificationBudget.setText(item.getType());
+        holder.namecategory.setText(item.getCategory().getName());
+        holder.startperiod.setText(item.getDateStart().format(dateFormatter));
+        holder.endperiod.setText(item.getDateEnd().format(dateFormatter));
+        holder.specificationBudget.setText(item.getName());
 
 
         //holder.thevalue.setText(String.valueOf(item.getBudgetValue()));

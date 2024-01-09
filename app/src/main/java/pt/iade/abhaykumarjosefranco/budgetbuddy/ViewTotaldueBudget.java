@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BillItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.UserItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.BillItemRowAdapter;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.BudgetItemRowAdapter;
 
@@ -24,6 +25,7 @@ public class ViewTotaldueBudget extends AppCompatActivity {
     protected BillItemRowAdapter itemRowAdapter;
     protected ArrayList<BillItem> itemsList;
     protected BillItem item;
+    UserItem user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +33,8 @@ public class ViewTotaldueBudget extends AppCompatActivity {
         setContentView(R.layout.activity_view_totaldue_budget);
 
 
-        //itemsList = BillItem.billItems;
-        //Intent intent = getIntent();
-
         Intent intent = getIntent();
-        item = (BillItem) intent.getSerializableExtra("item");
+        user = (UserItem) intent.getSerializableExtra("user");
         setupComponents();
 
     }
@@ -50,19 +49,11 @@ public class ViewTotaldueBudget extends AppCompatActivity {
             // Check if the activity was successful.
             if (resultCode == AppCompatActivity.RESULT_OK) {
                 // Get extras returned to us.
-                int position = data.getIntExtra("position", -1);
                 BillItem updatedItem = (BillItem) data.getSerializableExtra("item");
-                Log.e("onActivityResult", "updatedItemId=" +updatedItem.getId());
 
-                if (position == -1) {
-                    // Add the item to the list it was created new.
-                    itemsList.add(updatedItem);
-                    itemRowAdapter.notifyItemInserted(itemsList.size() - 1);
-                } else {
-                    // Updates an existing item on the list.
-                    itemsList.set(position, updatedItem);
-                    itemRowAdapter.notifyItemChanged(position);
-                }
+                itemsList.add(updatedItem);
+                itemRowAdapter.notifyItemInserted(itemsList.size() - 1);
+
             }
         }
     }
@@ -111,6 +102,8 @@ public class ViewTotaldueBudget extends AppCompatActivity {
             }
         });
     }
+
+
     /*private void setupComponents() {
 
         BillItem.List(new BillItem.ListResponse() {

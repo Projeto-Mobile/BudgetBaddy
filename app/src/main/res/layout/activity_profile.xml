@@ -9,11 +9,21 @@
     tools:context=".Profile">
 
 
+    <ImageView
+        android:layout_width="105dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/img_4"
+        app:layout_constraintBottom_toTopOf="@+id/signup_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <EditText
         android:id="@+id/signup_name"
         android:layout_width="338dp"
         android:layout_height="67dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="128dp"
         android:background="@drawable/custom_edittext"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/baseline_person_24"
@@ -32,7 +42,7 @@
         android:id="@+id/signup_email"
         android:layout_width="338dp"
         android:layout_height="67dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="216dp"
         android:background="@drawable/custom_edittext"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/baseline_email_24"
@@ -48,29 +58,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/key"
-        android:layout_width="338dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="244dp"
-        android:background="@drawable/custom_edittext"
-        android:backgroundTint="@color/white"
-        android:drawableLeft="@drawable/key"
-        android:drawablePadding="8dp"
-        android:drawableTint="@color/dblue"
-        android:hint="@string/key"
-        android:padding="8dp"
-        android:textColor="@color/lblue"
-        android:textColorHint="@color/dblue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
         android:id="@+id/signup_about"
         android:layout_width="338dp"
         android:layout_height="67dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="296dp"
         android:background="@drawable/custom_edittext"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/info"
@@ -88,9 +79,9 @@
 
     <Button
         android:id="@+id/community_button"
-        android:layout_width="185dp"
+        android:layout_width="338dp"
         android:layout_height="55dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/dblue"
         android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
         android:text="@string/community_button_text"
@@ -98,6 +89,7 @@
         android:textSize="18dp"
         app:iconTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_about" />
 

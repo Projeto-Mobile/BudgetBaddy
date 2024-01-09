@@ -1,5 +1,8 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy.Models;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,6 +20,9 @@ public class ChallengeItem implements Serializable {
     private int id;
     private String challenge;
     private String period;
+    CategoryItem category;
+    UserItem user;
+
 
     // TODO: REMOVE THIS FOR WEB SERVER IMPLEMENTATION.
     //public static ArrayList<ChallengeItem> challengeItems;
@@ -101,25 +107,34 @@ public class ChallengeItem implements Serializable {
     }*/
 
 
-    public void addChallenge(ChallengeItem.SaveResponse response) {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (id == 0) {
-                        WebRequest req = new WebRequest(new URL(
-                                WebRequest.LOCALHOST + "/api/challenge/add"));
-                        String resp = req.performPostRequest(ChallengeItem.this);
-                        response.response();
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(null, "Web request failed: " + e.toString(),
-                            Toast.LENGTH_LONG).show();
-                    Log.e("ChallengeItem", e.toString());
-                }
+    public void add(Context context, ChallengeItem.SaveResponse response) {
+        new Thread(() -> {
+            try {
+                // This will always use the 'add' endpoint
+                String endpoint = "/api/challenge/add";
+                WebRequest req = new WebRequest(new URL(WebRequest.LOCALHOST + endpoint));
+
+                String resp = req.performPostRequest(ChallengeItem.this);
+
+                // Process the response
+                ChallengeItem respItem = new Gson().fromJson(resp, ChallengeItem.class);
+                id = respItem.getId(); // Update the id with the new item's id
+                category.setId(respItem.getCategory().getId());
+
+                response.response();
+
+                // Update UI on success
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    Toast.makeText(context, "Challenge added successfully", Toast.LENGTH_SHORT).show();
+                });
+            } catch (Exception e) {
+                // Update UI on error
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    Toast.makeText(context, "Failed to add Challenge: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Log.e("ChallengeItem", "Add failed", e);
+                });
             }
-        });
-        thread.start();
+        }).start();
     }
 
     public static void List(ChallengeItem.ListResponse response) {
@@ -148,6 +163,7 @@ public class ChallengeItem implements Serializable {
                         Toast.makeText(null, "Web request failed: " + e.toString(),
                                 Toast.LENGTH_LONG).show();
                         Log.e("Challenge", e.toString());
+
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -160,6 +176,10 @@ public class ChallengeItem implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int  id) {
+        this.id = id;
     }
 
     public String getChallenge() {
@@ -180,6 +200,22 @@ public class ChallengeItem implements Serializable {
 
     public interface ListResponse {
         public void response(ArrayList<ChallengeItem> items);
+    }
+
+    public CategoryItem getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryItem category) {
+        this.category = category;
+    }
+
+    public UserItem getUser() {
+        return user;
+    }
+
+    public void setUser(UserItem user) {
+        this.user = user;
     }
 
     public interface GetByIdResponse {

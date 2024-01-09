@@ -17,7 +17,6 @@ public class create_community extends AppCompatActivity {
 
     protected Button button;
     private Spinner optionSpinner;
-    private EditText numberedittext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,6 @@ public class create_community extends AppCompatActivity {
         //item = (CommunityItem) intent.getSerializableExtra("item");
 
         optionSpinner = findViewById(R.id.commiunity_spinner);
-        numberedittext = findViewById(R.id.random_number);
 
         value1 = (EditText) findViewById(R.id.valueforthecommunity);
 

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BillItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.ChallengeItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.UserItem;
 
 public class TotalDue extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class TotalDue extends AppCompatActivity {
 
     protected BillItem item;
     protected int listPosition;
+    private UserItem user;
     private Button waterbill, electricity, health, education, childcare, mortgage, insurance, loan, taxes, others,button_bill;
 
     @Override
@@ -37,15 +39,17 @@ public class TotalDue extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        listPosition = intent.getIntExtra("position",-1);
+        user = (UserItem) intent.getSerializableExtra("user") ;
+
+        setupComponents();
         //item = (BillItem) intent.getSerializableExtra("item");
 
 
-        datestarts = findViewById(R.id.starting);
+        /*datestarts = findViewById(R.id.starting);
         dateends = findViewById(R.id.ending);
 
         billEditText = findViewById(R.id.budget_cate_num);
-        typeofbill = findViewById(R.id.description);
+        typeofbill = findViewById(R.id.description);*/
 
         //itemsList = BillItem.List();
         //setBill();
@@ -143,7 +147,6 @@ public class TotalDue extends AppCompatActivity {
 
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.add);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.home) {
@@ -153,8 +156,6 @@ public class TotalDue extends AppCompatActivity {
             } else if (item.getItemId() == R.id.wallet) {
                 startActivity(new Intent(getApplicationContext(), WalletActivity.class));
                 finish();
-                return true;
-            } else if (item.getItemId() == R.id.add) {
                 return true;
             } else if (item.getItemId() == R.id.profile) {
                 startActivity(new Intent(getApplicationContext(), Profile.class));
@@ -168,6 +169,54 @@ public class TotalDue extends AppCompatActivity {
 
 
     protected void setBill(Button button, int idType) {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                item = new BillItem();
+                commitView(button.getText().toString());
+
+                item.add(TotalDue.this, new BillItem.SaveResponse() {
+                    @Override
+                    public void response() {
+                        Intent returnIntent = new Intent();
+                        returnIntent.putExtra("item", item);
+                        returnIntent.putExtra("user", user);
+                        setResult(AppCompatActivity.RESULT_OK, returnIntent);
+
+                        finish();
+                    }
+                });
+
+            }
+        });
+
+        //toast.makeset
+        // TODO: set type id of item.
+    }
+
+
+    private void setupComponents() {
+        billEditText = findViewById(R.id.budget_cate_num);
+        typeofbill = findViewById(R.id.description);
+        datestarts = findViewById(R.id.starting);
+        dateends = findViewById(R.id.ending);
+
+    }
+
+    protected void commitView(String categoryName){
+        item.setName(typeofbill.getText().toString());
+        item.getCategory().setName(categoryName);
+        item.getCategory().setTipId(2);
+        item.setBillValue(Integer.parseInt(billEditText.getText().toString()));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        item.setDatestart(LocalDate.parse(datestarts.getText().toString(), formatter));
+        item.setDateend(LocalDate.parse(dateends.getText().toString(), formatter));
+        item.setUser(user);
+    }
+
+    /*protected void setBill(Button button, int idType) {
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,35 +241,8 @@ public class TotalDue extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 
-    private void setupComponents() {
-        billEditText = (EditText) findViewById(R.id.budget_cate_num);
-        typeofbill = (EditText) findViewById(R.id.description);
-        datestarts = (EditText) findViewById(R.id.starting);
-        dateends = (EditText) findViewById(R.id.ending);
-        populateView();
-
-    }
-
-    protected void populateView() {
-        if (item != null) {
-            billEditText.setText(String.valueOf(item.getBillValue()));
-            typeofbill.setText(item.getType());
-            datestarts.setText(item.getDatestart().toString());
-            dateends.setText(item.getDateend().toString());
-        } else {
-            Log.e("Bill", "is null");
-        }
-    }
-
-    protected void commitView(){
-        item.setBillValue(Integer.parseInt(billEditText.getText().toString()));
-        item.setType(typeofbill.getText().toString());
-        item.setDatestart(LocalDate.parse(datestarts.getText().toString()));
-        item.setDateend(LocalDate.parse(dateends.getText().toString()));
-
-    }
 
 
 }

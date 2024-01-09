@@ -45,7 +45,7 @@ public class BillItemRowAdapter extends RecyclerView.Adapter<BillItemRowAdapter.
 
         holder.startperiodBill.setText(item.getDatestart().format(dateFormatter));
         holder.endperiodBill.setText(item.getDateend().format(dateFormatter));
-        holder.specification.setText(item.getType());
+        holder.specification.setText(item.getName());
 
         //holder.values.setText(String.valueOf(item.getBillValue()));
         holder.values.setText(String.format(Locale.ENGLISH, "%d", item.getBillValue() ));

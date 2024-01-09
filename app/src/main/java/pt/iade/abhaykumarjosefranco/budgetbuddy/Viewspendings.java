@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.BudgetItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.SpendingItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.UserItem;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.BudgetItemRowAdapter;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.adapters.SpendingItemRowAdapter;
 
 public class Viewspendings extends AppCompatActivity {
@@ -23,6 +25,7 @@ public class Viewspendings extends AppCompatActivity {
 
     protected SpendingItem item;
     protected int listPosition;
+    private UserItem user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +34,10 @@ public class Viewspendings extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        listPosition = intent.getIntExtra("position",-1);
-        item = (SpendingItem) intent.getSerializableExtra("item");
+        user = (UserItem) intent.getSerializableExtra("user") ;
+
+        //listPosition = intent.getIntExtra("position",-1);
+        //item = (SpendingItem) intent.getSerializableExtra("item");
 
         setupComponents();
 
@@ -47,50 +52,35 @@ public class Viewspendings extends AppCompatActivity {
             // Check if the activity was successful.
             if (resultCode == AppCompatActivity.RESULT_OK) {
                 // Get extras returned to us.
-                int position = data.getIntExtra("position", -1);
                 SpendingItem updatedItem = (SpendingItem) data.getSerializableExtra("item");
 
-                if (position == -1) {
-                    // Add the item to the list it was created new.
-                    itemsList.add(updatedItem);
-                    itemRowAdapter.notifyItemInserted(itemsList.size() - 1);
-                } else {
-                    // Updates an existing item on the list.
-                    itemsList.set(position, updatedItem);
-                    itemRowAdapter.notifyItemChanged(position);
-                }
+                itemsList.add(updatedItem);
+                itemRowAdapter.notifyItemInserted(itemsList.size() - 1);
+
             }
         }
     }
 
-    /**
-     * Sets up the components and event handlers in the activity.
-     */
+
     private void setupComponents() {
+        itemsListView = findViewById(R.id.viewbS);
+        itemsListView.setLayoutManager(new LinearLayoutManager(this));
+        itemsList = new ArrayList<>();
+        itemRowAdapter = new SpendingItemRowAdapter(this, itemsList);
 
         SpendingItem.List(new SpendingItem.ListResponse() {
             @Override
             public void response(ArrayList<SpendingItem> items) {
-                itemsList = items;
-
-                // Set up row adapter with our items list.
-                itemRowAdapter = new SpendingItemRowAdapter(Viewspendings.this, itemsList);
-                itemRowAdapter.setOnClickListener(new SpendingItemRowAdapter.ItemClickListener() {
-
-                    public void onItemClick(View view, int position) {
-
-                        // Place our clicked item object in the intent to send to the other activity.
-                        Intent intent = new Intent(Viewspendings.this, Spendings.class);
-                        intent.putExtra("position", position);
-                        intent.putExtra("item", itemsList.get(position));
-
-                        startActivityForResult(intent, EDITOR_ACTIVITY_RETURN_ID);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        itemsList.clear();
+                        itemsList.addAll(items);
+                        itemsListView.setAdapter(itemRowAdapter);
+                        itemRowAdapter.notifyDataSetChanged();
                     }
                 });
 
-                itemsListView = (RecyclerView) findViewById(R.id.viewbS);
-                itemsListView.setLayoutManager(new LinearLayoutManager(Viewspendings.this));
-                itemsListView.setAdapter(itemRowAdapter);
             }
         });
     }

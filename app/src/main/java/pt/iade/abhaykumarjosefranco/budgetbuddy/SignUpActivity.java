@@ -1,6 +1,5 @@
 package pt.iade.abhaykumarjosefranco.budgetbuddy;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,26 +8,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.UserItem;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private FirebaseAuth auth;
+    //private FirebaseAuth auth;
     private EditText signupName, signupEmail, signupPassword;
     private Button signupButton;
     private TextView loginRedirectText;
+
+    protected int listPosition;
+    private UserItem user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        auth = FirebaseAuth.getInstance();
+        //auth = FirebaseAuth.getInstance();
         signupName = findViewById(R.id.signup_name);
         signupEmail = findViewById(R.id.signup_email);
         signupPassword = findViewById(R.id.signup_password);
@@ -38,9 +36,9 @@ public class SignUpActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = signupName.getText().toString().trim();
-                String email = signupEmail.getText().toString().trim();
-                String pass = signupPassword.getText().toString().trim();
+                String name = signupName.getText().toString();
+                String email = signupEmail.getText().toString();
+                String pass = signupPassword.getText().toString();
 
                 if (email.isEmpty() || pass.isEmpty() || name.isEmpty()) {
                     if (name.isEmpty()) {
@@ -53,7 +51,24 @@ public class SignUpActivity extends AppCompatActivity {
                         signupPassword.setError("Password cannot be empty.");
                     }
                 } else {
-                    auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+                    user = new UserItem();
+                    user.setEmail(email);
+                    user.setName(name);
+                    user.setPassword(pass);
+
+
+                    user.add(SignUpActivity.this, new UserItem.SaveResponse() {
+                        @Override
+                        public void response() {
+                            Intent intent = new Intent(SignUpActivity.this, OverviewActivity.class);
+                            intent.putExtra("user", user);
+                            startActivity(intent);
+
+                        }
+                    });
+
+                    /*auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
@@ -63,7 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 Toast.makeText(SignUpActivity.this, "Signup Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
-                    });
+                    });*/
                 }
             }
         });
@@ -74,5 +89,13 @@ public class SignUpActivity extends AppCompatActivity {
                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
             }
         });
+
+
+    }
+
+    private void setupComponents() {
+
+
+
     }
 }

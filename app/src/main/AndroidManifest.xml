@@ -45,7 +45,7 @@
             android:name=".Community"
             android:exported="false" />
         <activity
-            android:name=".Category"
+            android:name=".EditBudget"
             android:exported="false" />
         <activity
             android:name=".OverviewActivity"
