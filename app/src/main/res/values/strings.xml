@@ -160,5 +160,7 @@
     <string name="account">your account</string>
     <string name="sign">Create a</string>
     <string name="acc">new account</string>
+    <string name="splurge">Add splurges</string>
+    <string name="splurgeview">View my splurges</string>
 
 </resources>

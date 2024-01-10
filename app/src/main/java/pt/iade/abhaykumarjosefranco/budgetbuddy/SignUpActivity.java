@@ -61,7 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
                     user.add(SignUpActivity.this, new UserItem.SaveResponse() {
                         @Override
                         public void response() {
-                            Intent intent = new Intent(SignUpActivity.this, OverviewActivity.class);
+                            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                             intent.putExtra("user", user);
                             startActivity(intent);
 

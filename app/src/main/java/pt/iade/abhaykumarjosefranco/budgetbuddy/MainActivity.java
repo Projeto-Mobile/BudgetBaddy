@@ -10,6 +10,7 @@ import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.UserItem;
 public class MainActivity extends AppCompatActivity {
 
     private UserItem user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, EditBudget.class);
+                Intent intent = new Intent(MainActivity.this, OverviewActivity.class);
                 startActivity(intent);
 
                 finish();
