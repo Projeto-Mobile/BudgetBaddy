@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Models.CommunityItem;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.R;
@@ -40,7 +41,9 @@ public class CommunityItemAdapter extends RecyclerView.Adapter<CommunityItemAdap
         CommunityItem item = items.get(position);
 
         holder.name.setText(item.getName());
-        holder.amount.setText(item.getAmount());
+        //holder.amount.setText(item.getAmount());
+
+        holder.amount.setText(String.format(Locale.ENGLISH, "%d", item.getValue() ));
     }
     @Override
     public int getItemCount(){

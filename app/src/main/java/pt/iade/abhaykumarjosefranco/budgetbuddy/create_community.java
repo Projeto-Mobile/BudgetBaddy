@@ -46,7 +46,7 @@ public class create_community extends AppCompatActivity {
     protected void populateView(){
 
         item.setName(optionSpinner.getSelectedItem().toString());
-        value1.setText(item.getAmount());
+        value1.setText(item.getValue());
 
         commitView();
 
@@ -56,7 +56,7 @@ public class create_community extends AppCompatActivity {
 
         item = new CommunityItem(-1, "",0);
         item.setName(optionSpinner.getSelectedItem().toString());
-        item.setAmount(Integer.parseInt(value1.getText().toString()));
+        item.setValue(Integer.parseInt(value1.getText().toString()));
 
 
         Intent intent = new Intent(create_community.this, Community.class);

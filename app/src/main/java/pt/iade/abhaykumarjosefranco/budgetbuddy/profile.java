@@ -47,8 +47,6 @@ public class Profile extends Activity {
         Intent intent = getIntent();
         user= (UserItem) intent.getSerializableExtra("user");
 
-        setupComponents();
-
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
@@ -150,17 +148,7 @@ public class Profile extends Activity {
 
     }
 
-    private void setupComponents() {
-        nameEditText = findViewById(R.id.signup_name);
-        emailEditText = findViewById(R.id.signup_email);
 
-        commitView();
-    }
-    protected void commitView(){
-        user.setName(nameEditText.getText().toString());
-        user.setEmail(emailEditText.getText().toString());
-
-    }
 
 
 

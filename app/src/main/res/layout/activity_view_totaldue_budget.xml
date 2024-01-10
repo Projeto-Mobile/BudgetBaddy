@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewTotaldueBudget"
-    android:background="@color/white">
+    android:background="@color/mywhite">
 
     <TextView
         android:id="@+id/ViewBudget"

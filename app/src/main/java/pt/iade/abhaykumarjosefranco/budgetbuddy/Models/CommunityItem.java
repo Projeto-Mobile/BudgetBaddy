@@ -11,24 +11,23 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 
-import pt.iade.abhaykumarjosefranco.budgetbuddy.Community;
 import pt.iade.abhaykumarjosefranco.budgetbuddy.Utilities.WebRequest;
 
 
 public class CommunityItem implements Serializable {
 
     private int id;
-    private int amount;
+    private int value;
 
-    private String name_community;
+    private String name;
 
     public CommunityItem(){
        this(0, "",  0);
     }
-    public CommunityItem(int id, String name_community, int amount){
+    public CommunityItem(int id, String name, int value){
         this.id = id;
-        this.name_community = name_community;
-        this.amount = amount;
+        this.name = name;
+        this.value = value;
     }
     /*public static ArrayList<CommunityItem> List(){
         ArrayList<CommunityItem> items = new ArrayList<CommunityItem>();
@@ -146,20 +145,20 @@ public class CommunityItem implements Serializable {
     }
 
     public String getName() {
-        return name_community;
+        return name;
     }
 
     public void setName(String name_community) {
-        this.name_community = name_community;
+        this.name = name_community;
     }
 
 
-    public int getAmount() {
-        return amount;
+    public int getValue() {
+        return value;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setValue(int value) {
+        this.value = value;
     }
 
 

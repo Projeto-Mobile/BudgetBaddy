@@ -162,5 +162,6 @@
     <string name="acc">new account</string>
     <string name="splurge">Add splurges</string>
     <string name="splurgeview">View my splurges</string>
+    <string name="add">Add</string>
 
 </resources>
